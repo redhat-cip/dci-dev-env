@@ -1,0 +1,52 @@
+db:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-DB
+    ports:
+        - "5432:5432"
+es:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-ES
+    ports:
+        - "9200:9200"
+        - "9300:9300"
+api:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-API
+    volumes:
+        - ./dci-control-server:/opt/dci-control-server
+    links:
+        - db
+        - es
+    ports:
+        - "5000:5000"
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+tox:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-TOX
+    volumes:
+        - ./dci-control-server:/opt/dci/
+        - ./python-dciclient:/opt/dci-client/
+    links:
+        - db
+        - es
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+app:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-APP
+    ports:
+        - "8000:8000"
+        - "35729:35729"
+    volumes:
+        - ./dci-ui:/opt/dci-ui
+        - /tmp/.X11-unix:/tmp/.X11-unix
+    links:
+        - api
+    environment:
+        - DISPLAY
+    command: /bin/bash
+    stdin_open: true
+    tty: true

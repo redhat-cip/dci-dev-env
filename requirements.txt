@@ -1,0 +1,2 @@
+git-review
+docker-compose>=1.3
