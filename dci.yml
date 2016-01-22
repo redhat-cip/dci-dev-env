@@ -14,6 +14,7 @@ api:
     dockerfile: dockerfiles/Dockerfile-API
     volumes:
         - ./dci-control-server:/opt/dci-control-server
+        - ./settings:/tmp/settings
     links:
         - db
         - es
@@ -28,6 +29,7 @@ tox:
     volumes:
         - ./dci-control-server:/opt/dci/
         - ./python-dciclient:/opt/dci-client/
+        - ./settings:/tmp/settings
     links:
         - db
         - es

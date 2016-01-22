@@ -13,4 +13,6 @@ RUN pip install -r /tmp/requirements.txt
 
 WORKDIR /opt/dci-control-server
 ENV PYTHONPATH /opt/dci-control-server
+ENV DCI_SETTINGS_FILE /tmp/settings/settings.py
+
 EXPOSE 5000
