@@ -46,7 +46,8 @@ There is five container for running the application
   for running the application but is a helper in order to run tests
   on the client and the API
   (see `the following section for details <#tox-container>`_).
-
+* **dci_doc**: helper for building the documentation of the project
+  (see `the following section for details <#doc-container>`_).
 
 API container
 ~~~~~~~~~~~~~
@@ -88,3 +89,15 @@ dedicated container, just after attaching it with
 This container is a helper for launching tests on the client and/or the api,
 just navigate to the correct project directory and run the tox command in order
 to launch the tests.
+
+DOC container
+~~~~~~~~~~~~~
+
+This container is particular because it is not started by default.
+It only provides an entrypoint for the sphinx documentation generation.
+
+To run it and see the default commands type:
+``docker-compose -f dci.yml run doc``
+
+To generate an html output of the doc for a preview type:
+``docker-compose -f dci.yml run doc html``

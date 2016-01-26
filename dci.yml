@@ -36,6 +36,11 @@ tox:
     command: /bin/bash
     stdin_open: true
     tty: true
+doc:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-DOC
+    volumes:
+       - ./dci-doc:/opt/dci-doc/
 app:
     build: .
     dockerfile: dockerfiles/Dockerfile-APP
