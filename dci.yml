@@ -3,6 +3,13 @@ db:
     dockerfile: dockerfiles/Dockerfile-DB
     ports:
         - "5432:5432"
+dbwatcher:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-DB-watcher
+    links:
+      - db
+    volumes:
+      - .:/mnt/
 es:
     build: .
     dockerfile: dockerfiles/Dockerfile-ES

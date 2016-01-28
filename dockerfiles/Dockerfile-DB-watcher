@@ -1,0 +1,23 @@
+# DCI DB WATCHER
+#
+# VERSION               0.0.1
+
+
+FROM fedora
+
+ENV PGPASSFILE /tmp/.pgpass
+ENV PGHOST db
+ENV PGDATABASE dci_control_server
+ENV PGUSER dci
+
+RUN dnf update -y
+RUN dnf install -y postgresql postgresql_autodoc graphviz
+
+RUN echo "*:*:$PGDATABASE:dci:password" > ${PGPASSFILE}
+RUN chmod 600 ${PGPASSFILE}
+
+
+WORKDIR /mnt/
+
+CMD postgresql_autodoc -t dot && dot $PGDATABASE.dot -Tpng > dci.png && \
+    rm $PGDATABASE.dot
