@@ -48,6 +48,8 @@ There is five container for running the application
   (see `the following section for details <#tox-container>`_).
 * **dci_doc**: helper for building the documentation of the project
   (see `the following section for details <#doc-container>`_).
+* **dci_dbwatcher**: helper for interacting with the database.
+  (see `the following section for details <#dbwatcher-container>`_).
 
 API container
 ~~~~~~~~~~~~~
@@ -101,3 +103,20 @@ To run it and see the default commands type:
 
 To generate an html output of the doc for a preview type:
 ``docker-compose -f dci.yml run doc html``
+
+DBwatcher container
+~~~~~~~~~~~~~~~~~~~
+
+This container is ran, generates a schema of the db in png format,
+then stopped. You will have to run it again and attach it in order to interact
+with the database.
+
+To run and attach the container type:
+``docker-compose -f dci.yml run dbwatcher bash``
+
+Then you can run ``psql`` it will directly attach to the dci_control_server
+database.
+
+If you want to generate the database schema again just run the container
+without overriding the entrypoint:
+``docker-compose -f dci.yml run dbwatcher``
