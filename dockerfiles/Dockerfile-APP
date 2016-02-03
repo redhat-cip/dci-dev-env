@@ -12,7 +12,7 @@ RUN echo -e "[google-chrome]\n" \
 
 RUN dnf update -y
 RUN dnf install -y nodejs npm tar bzip2 make freetype fontconfig \
-    google-chrome-stable libexif
+    google-chrome-stable libexif git
 
 WORKDIR /tmp
 RUN curl -O http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip
