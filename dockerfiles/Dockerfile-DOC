@@ -1,9 +1,11 @@
 FROM fedora
 
 RUN dnf update -y
-RUN dnf install -y make python-sphinx
-
-RUN pip install sphinx_rtd_theme
+RUN dnf install -y make python-pip
 
 WORKDIR /opt/dci-doc
+
+COPY dci-doc/requirements.txt .
+RUN pip install -r requirements.txt
+
 ENTRYPOINT ["make"]
