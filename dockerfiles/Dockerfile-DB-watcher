@@ -11,7 +11,7 @@ ENV PGDATABASE dci_control_server
 ENV PGUSER dci
 
 RUN dnf update -y
-RUN dnf install -y postgresql postgresql_autodoc graphviz
+RUN dnf install -y postgresql-client postgresql-autodoc graphviz
 
 RUN echo "*:*:$PGDATABASE:dci:password" > ${PGPASSFILE}
 RUN chmod 600 ${PGPASSFILE}
