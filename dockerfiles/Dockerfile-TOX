@@ -3,7 +3,7 @@
 # VERSION               0.0.1
 
 
-FROM fedora
+FROM fedora:23
 
 RUN dnf update -y
 RUN dnf install -y gcc libpqxx-devel libffi-devel python-devel \

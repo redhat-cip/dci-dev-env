@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:23
 
 RUN echo -e "[google-chrome]\n" \
     "\rname=google-chrome - x86_64\n" \
