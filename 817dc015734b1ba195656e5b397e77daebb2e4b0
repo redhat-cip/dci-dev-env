@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fafc7978_f5da3216",
+        "filename": "dockerfiles/Dockerfile-DB-watcher",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 247
+      },
+      "writtenOn": "2016-03-09T22:27:46Z",
+      "side": 1,
+      "message": "In order to limit the number of layers, you should actually flatten this with the previous RUN command.\n\nRUN dnf update -y \u0026\u0026 dnf install -y postgresql graphviz \u0026\u0026 dnf clean all",
+      "revId": "817dc015734b1ba195656e5b397e77daebb2e4b0",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
