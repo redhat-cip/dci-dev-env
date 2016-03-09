@@ -1,7 +1,11 @@
-FROM fedora
+# DCI DOC
+#
+# VERSION               0.0.1
 
-RUN dnf update -y
-RUN dnf install -y make python-pip
+
+FROM fedora:23
+
+RUN dnf update -y && dnf install -y make python-pip && dnf clean all
 
 WORKDIR /opt/dci-doc
 
