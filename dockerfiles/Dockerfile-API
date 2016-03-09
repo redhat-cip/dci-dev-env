@@ -3,10 +3,9 @@
 # VERSION               0.0.1
 
 
-FROM fedora
+FROM fedora:23
 
-RUN dnf update -y
-RUN dnf install -y gcc libpqxx-devel libffi-devel python-devel redhat-rpm-config
+RUN dnf update -y && dnf install -y gcc libpqxx-devel libffi-devel python-devel redhat-rpm-config && dnf clean all
 
 ADD dci-control-server/requirements.txt /tmp/
 RUN pip install -r /tmp/requirements.txt
