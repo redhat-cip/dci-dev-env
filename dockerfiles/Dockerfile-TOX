@@ -3,11 +3,11 @@
 # VERSION               0.0.1
 
 
-FROM fedora
+FROM fedora:23
 
-RUN dnf update -y
-RUN dnf install -y gcc libpqxx-devel libffi-devel python-devel \
-    python-tox git python3-devel redhat-rpm-config
+RUN dnf update -y && dnf install -y gcc libpqxx-devel libffi-devel \
+    python-devel python-tox git python3-devel redhat-rpm-config \
+    && dnf clean all
 
 RUN easy_install -U pip
 RUN easy_install-3.4 -U pip
