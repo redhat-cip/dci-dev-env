@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fafc7978_d85e4512",
+        "filename": "dockerfiles/Dockerfile-DB-watcher",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 247
+      },
+      "writtenOn": "2016-03-10T15:50:49Z",
+      "side": 1,
+      "message": "I\u0027d tag this to a specific version if you\u0027re expecting this to be linked to Fedora 23.\n\nFROM fedora:23",
+      "revId": "ef9d460c2690e784a51e1162bfdfa0c99c641644",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
