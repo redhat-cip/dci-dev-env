@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da01753e_71b498f2",
+        "filename": "dockerfiles/Dockerfile-API",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 247
+      },
+      "writtenOn": "2016-03-11T14:20:07Z",
+      "side": 1,
+      "message": "Run this and the next line on a single RUN, along with a \u0027dnf clean all\u0027 at the end.",
+      "revId": "3c2bb015544c4d6e16e94ed12b54ff7e43508999",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da01753e_51b994e8",
+        "filename": "dockerfiles/Dockerfile-APP",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 247
+      },
+      "writtenOn": "2016-03-11T14:20:07Z",
+      "side": 1,
+      "message": "Should add some sort of header here so that we know what this file is for. Not going to comment on all the files, but this goes for all the Dockerfiles :)\n\n# Version: 0.0.1\nFROM fedora:23\nMAINTAINER John Smith \"john.smith@redhat.com\"\nENV REFRESHED_AT 2016-03-11",
+      "revId": "3c2bb015544c4d6e16e94ed12b54ff7e43508999",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da01753e_f1c7e862",
+        "filename": "dockerfiles/Dockerfile-DB",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 247
+      },
+      "writtenOn": "2016-03-11T14:20:07Z",
+      "side": 1,
+      "message": "Flatten these RUN lines and add \u0027dnf clean all\u0027 at the end.",
+      "revId": "3c2bb015544c4d6e16e94ed12b54ff7e43508999",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da01753e_d1c46461",
+        "filename": "dockerfiles/Dockerfile-DOC",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 247
+      },
+      "writtenOn": "2016-03-11T14:20:07Z",
+      "side": 1,
+      "message": "Same flatten comment",
+      "revId": "3c2bb015544c4d6e16e94ed12b54ff7e43508999",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da01753e_31a170aa",
+        "filename": "dockerfiles/Dockerfile-DOC",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 247
+      },
+      "writtenOn": "2016-03-11T14:20:07Z",
+      "side": 1,
+      "message": "Unnecessary newline",
+      "revId": "3c2bb015544c4d6e16e94ed12b54ff7e43508999",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da01753e_71abf889",
+        "filename": "dockerfiles/Dockerfile-TOX",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 247
+      },
+      "writtenOn": "2016-03-11T14:20:07Z",
+      "side": 1,
+      "message": "Flatten all these RUN lines",
+      "revId": "3c2bb015544c4d6e16e94ed12b54ff7e43508999",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
