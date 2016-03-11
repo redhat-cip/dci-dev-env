@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da01753e_b1da80e7",
+        "filename": "dockerfiles/Dockerfile-API",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 247
+      },
+      "writtenOn": "2016-03-11T18:48:08Z",
+      "side": 1,
+      "message": "For readability, I\u0027d do it like:\n\nRUN dnf update -y \u0026\u0026 \\\n    dnf install -y gcc libpqxx-devel libffi-devel python-devel redhat-rpm-config \u0026\u0026 \\\n    dnf clean all\n\n\nNot a big thing, but I like this style better.",
+      "revId": "0337b30e53728185221eb5b02d4e73906941af76",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
