@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af0899e_4e7293e6",
+        "filename": "utils/bootstrap.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 247
+      },
+      "writtenOn": "2016-03-16T14:13:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure I like all these extra newlines :)",
+      "revId": "ce996e522a64cc2e13d7cad8939f2a3e2035fb65",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
