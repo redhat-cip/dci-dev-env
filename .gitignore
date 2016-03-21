@@ -1,6 +1,7 @@
 .venv
 dci-ci-jenkins-slave
 dci-control-server
+dci-infra
 python-dciclient
 dci-ui
 dci-doc
