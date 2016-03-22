@@ -40,9 +40,7 @@ api:
         - grafana
     ports:
         - "5000:5000"
-    command: /bin/bash
-    stdin_open: true
-    tty: true
+    command: python /opt/dci-control-server/scripts/runtestserver.py
 tox:
     build: .
     dockerfile: dockerfiles/Dockerfile-TOX
@@ -55,8 +53,6 @@ tox:
         - es
         - influxdb
     command: /bin/bash
-    stdin_open: true
-    tty: true
 doc:
     build: .
     dockerfile: dockerfiles/Dockerfile-DOC
@@ -75,7 +71,6 @@ app:
         - api
     environment:
         - DISPLAY
-    command: /bin/bash
     stdin_open: true
     tty: true
 client:
