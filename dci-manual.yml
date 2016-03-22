@@ -1,0 +1,4 @@
+app:
+    command: /bin/bash
+api:
+    command: /bin/bash
