@@ -1,6 +1,8 @@
 db:
     build: .
     dockerfile: dockerfiles/Dockerfile-DB
+    volumes:
+        - ./dci-control-server:/opt/dci-control-server
     ports:
         - "5432:5432"
 dbwatcher:
@@ -27,7 +29,7 @@ api:
         - es
     ports:
         - "5000:5000"
-    command: /bin/bash
+    command: python /opt/dci-control-server/scripts/runtestserver.py
     stdin_open: true
     tty: true
 tox:
@@ -61,6 +63,5 @@ app:
         - api
     environment:
         - DISPLAY
-    command: /bin/bash
     stdin_open: true
     tty: true
