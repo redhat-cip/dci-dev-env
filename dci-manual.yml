@@ -1,0 +1,8 @@
+app:
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+api:
+    command: /bin/bash
+    stdin_open: true
+    tty: true
