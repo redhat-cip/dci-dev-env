@@ -26,6 +26,11 @@ SQLALCHEMY_DATABASE_URI = (
 )
 
 es_url = six.moves.urllib_parse.urlparse(os.environ.get('ES_PORT'))
-
 ES_URL = es_url.hostname
 ES_PORT = es_url.port
+
+influxdb_url = six.moves.urllib_parse.urlparse(
+    os.environ.get('INFLUXDB_PORT_8086_TCP')
+)
+INFLUXDB_HOST = influxdb_url.hostname
+INFLUXDB_PORT = influxdb_url.port
