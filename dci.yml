@@ -78,3 +78,15 @@ app:
     command: /bin/bash
     stdin_open: true
     tty: true
+client:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-CLIENT
+    privileged: true
+    links:
+        - api
+    volumes:
+        - ./python-dciclient:/opt/python-dciclient/
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: /sbin/init
+    stdin_open: true
+    tty: true
