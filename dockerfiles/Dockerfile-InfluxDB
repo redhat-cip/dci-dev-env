@@ -1,0 +1,16 @@
+# DCI InfluxDB
+#
+# VERSION               0.0.1
+
+
+FROM fedora:23
+
+RUN dnf update -y && dnf install -y https://s3.amazonaws.com/influxdb/influxdb-0.11.0-1.x86_64.rpm && dnf clean all
+
+USER influxdb
+
+EXPOSE 8083
+EXPOSE 8086
+
+CMD ["sh", "-c", "/usr/bin/influxd -config /etc/influxdb/influxdb.conf >>/dev/null 3>>/var/log/influxdb/influxd.log"]
+

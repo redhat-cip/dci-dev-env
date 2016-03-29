@@ -16,6 +16,12 @@ es:
     ports:
         - "9200:9200"
         - "9300:9300"
+influxdb:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-InfluxDB
+    ports:
+        - "8083:8083"
+        - "8086:8086"
 api:
     build: .
     dockerfile: dockerfiles/Dockerfile-API
