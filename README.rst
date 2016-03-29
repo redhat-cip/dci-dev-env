@@ -54,6 +54,8 @@ There is five container for running the application
   (see `the following section for details <#doc-container>`_).
 * **dci_dbwatcher**: helper for interacting with the database.
   (see `the following section for details <#dbwatcher-container>`_).
+* **dci_dciclient**: contains the python-dciclient.
+  (see `the following section for details <#dciclient-container>`_).
 
 API container
 ~~~~~~~~~~~~~
@@ -124,3 +126,35 @@ database.
 If you want to generate the database schema again just run the container
 without overriding the entrypoint:
 ``docker-compose -f dci.yml run dbwatcher``
+
+DCICLIENT container
+~~~~~~~~~~~~~~~~~~~
+
+This container allows one to run the python-dciclient within it.
+
+This container is special in several ways compares to the others:
+
+  * It runs CentOS 7 and not Fedora 23
+  * It runs systemd
+  * It runs an sshd daemon (root/root)
+
+In the following section we will assume that we run the commands in the
+dedicated container, just after attaching it with
+``docker attach <container-name>``
+
+To initialize this container you need to perform some operations:
+
+* Install the dciclient library, as well as the agents and feeders:
+ ``cd /opt/python-dciclient && pip install -e .``
+ ``cd /opt/python-dciclient/agents && pip install -e .``
+ ``cd /opt/python-dciclient/feeders && pip install -e .``
+
+* Create a local.sh file with the following credentials and source it:
+
+.. code:: bash
+
+  export DCI_LOGIN=admin
+  export DCI_PASSWORD=admin
+  export DCI_CS_URL=http://$API_CONTAINER_IP:5000
+
+Note: The $API_CONTAINER_IP can be optained by running ``docker inspect --format '{{ .NetworkSettings.IPAddress }}' <container-id>``
