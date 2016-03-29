@@ -32,3 +32,7 @@ ES_PORT = es_url.port
 influxdb_url = six.moves.urllib_parse.urlparse(os.environ.get('INFLUXDB_PORT'))
 INFLUXDB_HOST = influxdb_url.hostname
 INFLUXDB_PORT = influxdb_url.port
+
+grafana_url = six.moves.urllib_parse.urlparse(os.environ.get('GRAFANA_PORT'))
+GRAFANA_HOST = grafana_url.hostname
+GRAFANA_PORT = grafana_url.port
