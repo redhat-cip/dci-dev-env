@@ -38,6 +38,8 @@ There is five container for running the application
   serve on localhost port 9200 and 9300.
 * **dci_influxdb**: contains the influxdb time series database, it is started
   by default and serve on localhost port 8083 and 8086.
+* **dci_grafana**: contains the grafana dashboard server, it is started by
+  default and serve on localhost port 3000.
 * **dci_api**: contains the api of the application, it must be started manually
   (see `the following section for details <#api-container>`_). The API is
   served on localhost port 5000.
