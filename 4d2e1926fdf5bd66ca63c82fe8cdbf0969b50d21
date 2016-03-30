@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af0899e_f51ce7c3",
+        "filename": "dockerfiles/Dockerfile-Grafana",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-03-30T13:26:21Z",
+      "side": 1,
+      "message": "is it possible to break this line ?",
+      "revId": "4d2e1926fdf5bd66ca63c82fe8cdbf0969b50d21",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
