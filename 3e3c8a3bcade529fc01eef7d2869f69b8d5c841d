@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af0899e_357e6fe5",
+        "filename": "dockerfiles/Dockerfile-InfluxDB",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-03-30T13:28:12Z",
+      "side": 1,
+      "message": "can you break this to \n\n    RUN dnf update -y \u0026\u0026 \\\n        dnf install -y https://s3.amazonaws.com/influxdb/influxdb-0.11.0-1.x86_64.rpm \u0026\u0026 \\\n        dnf clean all",
+      "revId": "3e3c8a3bcade529fc01eef7d2869f69b8d5c841d",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af0899e_9583e3cb",
+        "filename": "dockerfiles/Dockerfile-InfluxDB",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-03-30T13:28:12Z",
+      "side": 1,
+      "message": "is it possible to break this line ?",
+      "revId": "3e3c8a3bcade529fc01eef7d2869f69b8d5c841d",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
