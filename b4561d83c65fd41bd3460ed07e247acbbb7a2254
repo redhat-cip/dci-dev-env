@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3afa9182_2cb633dd",
+        "filename": "dockerfiles/Dockerfile-InfluxDB",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-04-07T08:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3afa9182_2cbab3e1",
+      "revId": "b4561d83c65fd41bd3460ed07e247acbbb7a2254",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3afa9182_0cbff7d1",
         "filename": "settings/settings.py",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3afa9182_cca96f7d",
+        "filename": "settings/settings.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-04-07T08:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3afa9182_0cbff7d1",
+      "revId": "b4561d83c65fd41bd3460ed07e247acbbb7a2254",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3afa9182_6cb4bbf2",
         "filename": "settings/settings_test.py",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2016-04-07T08:26:09Z",
       "side": 1,
       "message": "same remark on indent as http://softwarefactory-project.io/r/#/c/3333/5/settings/settings.py",
+      "revId": "b4561d83c65fd41bd3460ed07e247acbbb7a2254",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3afa9182_ecac2b8f",
+        "filename": "settings/settings_test.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-04-07T08:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3afa9182_6cb4bbf2",
       "revId": "b4561d83c65fd41bd3460ed07e247acbbb7a2254",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
