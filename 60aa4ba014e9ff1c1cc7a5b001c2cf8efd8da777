@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3afa9182_8ccac76c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-04-07T08:27:53Z",
+      "side": 1,
+      "message": "Dockerfile ?",
+      "revId": "60aa4ba014e9ff1c1cc7a5b001c2cf8efd8da777",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3afa9182_accd0389",
+        "filename": "dockerfiles/Dockerfile-Grafana",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-04-07T08:27:53Z",
+      "side": 1,
+      "message": "wrong indent\n\n    RUN crudini --set /etc/grafana/grafana.ini \u0027auth.anonymous\u0027 enabled true \u0026\u0026 \\\n        crudini --set /etc/grafana/grafana.ini \u0027users\u0027 allow_sign_up false",
+      "revId": "60aa4ba014e9ff1c1cc7a5b001c2cf8efd8da777",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
