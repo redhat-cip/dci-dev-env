@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3afa9182_2ca113aa",
+        "filename": "README.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-04-07T08:35:02Z",
+      "side": 1,
+      "message": "why not just client ? we already have a dci prefix:\n\ndci_client",
+      "revId": "2c095c1c4f517ab54ad19d512bf9eadf2c6bce11",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3afa9182_0ca6d7c1",
+        "filename": "README.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-04-07T08:35:02Z",
+      "side": 1,
+      "message": "Client container",
+      "revId": "2c095c1c4f517ab54ad19d512bf9eadf2c6bce11",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3afa9182_ac94e344",
+        "filename": "README.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-04-07T08:35:02Z",
+      "side": 1,
+      "message": "why not setting the working dir to /opt/python-dciclient and avoid the cd part ?",
+      "revId": "2c095c1c4f517ab54ad19d512bf9eadf2c6bce11",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3afa9182_4c873f10",
+        "filename": "README.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-04-07T08:35:02Z",
+      "side": 1,
+      "message": "is it possible to do this:\n\n    pip install -e . agents feeders \n\n?",
+      "revId": "2c095c1c4f517ab54ad19d512bf9eadf2c6bce11",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3afa9182_ac7b4328",
+        "filename": "README.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-04-07T08:35:02Z",
+      "side": 1,
+      "message": "can we provide a local.sh.example with those values filled?",
+      "revId": "2c095c1c4f517ab54ad19d512bf9eadf2c6bce11",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3afa9182_8c78072d",
+        "filename": "dockerfiles/Dockerfile-DCICLIENT",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-04-07T08:35:02Z",
+      "side": 1,
+      "message": "wrong indent",
+      "revId": "2c095c1c4f517ab54ad19d512bf9eadf2c6bce11",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3afa9182_ec754b33",
+        "filename": "dockerfiles/Dockerfile-DCICLIENT",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-04-07T08:35:02Z",
+      "side": 1,
+      "message": "add a workdir to the mounted dir",
+      "revId": "2c095c1c4f517ab54ad19d512bf9eadf2c6bce11",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
