@@ -22,6 +22,11 @@ influxdb:
     ports:
         - "8083:8083"
         - "8086:8086"
+grafana:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-Grafana
+    ports:
+        - "3000:3000"
 api:
     build: .
     dockerfile: dockerfiles/Dockerfile-API
@@ -32,6 +37,7 @@ api:
         - db
         - es
         - influxdb
+        - grafana
     ports:
         - "5000:5000"
     command: /bin/bash
