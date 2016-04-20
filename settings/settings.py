@@ -25,8 +25,10 @@ SQLALCHEMY_DATABASE_URI = (
     'postgresql://dci:password@%s/dci_control_server' % db_url.netloc
 )
 
+SQLALCHEMY_ECHO = False
 es_url = six.moves.urllib_parse.urlparse(os.environ.get('ES_PORT'))
-ES_URL = es_url.hostname
+
+ES_HOST = es_url.hostname
 ES_PORT = es_url.port
 
 influxdb_url = six.moves.urllib_parse.urlparse(
