@@ -6,7 +6,8 @@
 FROM fedora:23
 
 RUN dnf update -y && \
-    dnf install -y gcc libpqxx-devel libffi-devel python-devel redhat-rpm-config python-lxml libxslt-devel && \
+    dnf install -y gcc libpqxx-devel libffi-devel python-devel \
+    redhat-rpm-config python-lxml libxslt-devel && \
     dnf clean all
 
 ADD dci-control-server/requirements.txt /tmp/
