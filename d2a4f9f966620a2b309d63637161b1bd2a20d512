@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a106d94_fba68a52",
+        "filename": "dci-db_init.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-06-02T08:23:29Z",
+      "side": 1,
+      "message": "is it possible to split this on multiple lines ?",
+      "revId": "d2a4f9f966620a2b309d63637161b1bd2a20d512",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a106d94_1b81e68f",
+        "filename": "dci.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-06-02T08:23:29Z",
+      "side": 1,
+      "message": "I do not understand why we need this volume in this container, can you give me an example ?",
+      "revId": "d2a4f9f966620a2b309d63637161b1bd2a20d512",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a106d94_fb7deab2",
+        "filename": "dci.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-06-02T08:23:29Z",
+      "side": 1,
+      "message": "remove \n\nstdin_open: true\ntty: true",
+      "revId": "d2a4f9f966620a2b309d63637161b1bd2a20d512",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a106d94_3b6822f5",
+        "filename": "dci.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-06-02T08:23:29Z",
+      "side": 1,
+      "message": "remove lines:\n\n  stdin_open: true\n  tty: true \n\nalso, and put them in the manual yaml file",
+      "revId": "d2a4f9f966620a2b309d63637161b1bd2a20d512",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
