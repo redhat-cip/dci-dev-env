@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a106d94_5e3187a1",
+        "filename": "dci-manual.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-06-07T12:26:37Z",
+      "side": 1,
+      "message": "add stdin and tty",
+      "revId": "83ef7c14ca08abed1f1718f0fe5cdb8b8bf03288",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a106d94_def577cc",
+        "filename": "dci-manual.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-06-07T12:26:37Z",
+      "side": 1,
+      "message": "add stdin and tty",
+      "revId": "83ef7c14ca08abed1f1718f0fe5cdb8b8bf03288",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a106d94_9e149ff6",
+        "filename": "dci-manual.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-06-07T12:26:37Z",
+      "side": 1,
+      "message": "remove tox here",
+      "revId": "83ef7c14ca08abed1f1718f0fe5cdb8b8bf03288",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a106d94_5e0a27d3",
+        "filename": "dci.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-06-07T12:26:37Z",
+      "side": 1,
+      "message": "keep stdin and tty here",
+      "revId": "83ef7c14ca08abed1f1718f0fe5cdb8b8bf03288",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a106d94_be0fdbe0",
+        "filename": "dci.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 186
+      },
+      "writtenOn": "2016-06-07T12:26:37Z",
+      "side": 1,
+      "message": "remove stdin and tty here",
+      "revId": "83ef7c14ca08abed1f1718f0fe5cdb8b8bf03288",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
