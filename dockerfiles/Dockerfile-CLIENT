@@ -27,7 +27,7 @@ RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N '
 EXPOSE 22
 
 RUN yum install -y gcc git libpqxx-devel libffi-devel python-devel epel-release  && \
-    yum install -y https://packages.distributed-ci.io/dci-release.el7.noarch.rpm python-pip && \
+    yum install -y http://packages.distributed-ci.io/dci-release.el7.noarch.rpm python-pip && \
     yum install -y python-influxdb python2-influxdb-collectd-write
 
 ADD python-dciclient/requirements.txt /tmp/
