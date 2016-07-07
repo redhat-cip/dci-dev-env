@@ -5,12 +5,15 @@
 
 FROM fedora:23
 
-RUN dnf update -y && dnf install -y make python-pip && dnf clean all
+RUN dnf update -y && dnf install -y make python-pip git gcc redhat-rpm-config python-devel && dnf clean all
+
+WORKDIR /tmp
+
+ADD dci-doc/requirements.txt requirements.txt
+ADD dci-doc/python-dciclient python-dciclient
+RUN pip install -r ./requirements.txt
 
 WORKDIR /opt/dci-doc
-
-ADD dci-doc/requirements.txt /tmp/
-RUN pip install -r /tmp/requirements.txt
 
 # By default build the html version of the docs.
 ENTRYPOINT "make" "html"
