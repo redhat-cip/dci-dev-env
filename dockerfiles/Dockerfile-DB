@@ -5,10 +5,10 @@
 
 FROM fedora:23
 
-RUN dnf update -y && dnf install -y postgresql-server postgresql-contrib && dnf clean all
+RUN dnf update -y && dnf install -y postgresql-server postgresql-contrib postgresql && dnf clean all
 
 ENV PGDATA /var/lib/pgsql/data
-ENV PASSWORD "password"
+ENV PASSWORD "dci"
 
 USER postgres
 
@@ -28,9 +28,8 @@ RUN sed -i \
 
 RUN /usr/bin/pg_ctl -w -t 300 start &&\
     psql -c "CREATE USER dci WITH SUPERUSER PASSWORD '${PASSWORD}';" &&\
-    createdb -O dci dci_control_server
+    createdb -O dci dci
 
 VOLUME ["$PGDATA"]
 EXPOSE 5432
 CMD ["postgres"]
-
