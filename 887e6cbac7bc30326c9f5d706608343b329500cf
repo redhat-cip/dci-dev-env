@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7adec928_1e2c4d4a",
+        "filename": "dci-db_init.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 33
+      },
+      "writtenOn": "2016-07-15T12:58:16Z",
+      "side": 1,
+      "message": "You do not need to run the test server to initiate the DB. It might cause some problems with dci.yml since you are running the test server twice.",
+      "revId": "887e6cbac7bc30326c9f5d706608343b329500cf",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
