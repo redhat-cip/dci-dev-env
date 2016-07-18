@@ -34,6 +34,24 @@
       "revId": "887e6cbac7bc30326c9f5d706608343b329500cf",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adec928_bee35904",
+        "filename": "dci-db_init.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 107
+      },
+      "writtenOn": "2016-07-18T12:36:45Z",
+      "side": 1,
+      "message": "It\u0027s just an automated way when you do a docker-compose up to get everything working automatically. When you start the docker-compose now, you have to launch manually the runtestserver.py",
+      "parentUuid": "7adec928_1e2c4d4a",
+      "revId": "887e6cbac7bc30326c9f5d706608343b329500cf",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
