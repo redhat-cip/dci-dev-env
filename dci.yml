@@ -3,30 +3,12 @@ db:
     dockerfile: dockerfiles/Dockerfile-DB
     ports:
         - "5432:5432"
-dbwatcher:
-    build: .
-    dockerfile: dockerfiles/Dockerfile-DB-watcher
-    links:
-      - db
-    volumes:
-      - .:/mnt/
 es:
     build: .
     dockerfile: dockerfiles/Dockerfile-ES
     ports:
         - "9200:9200"
         - "9300:9300"
-influxdb:
-    build: .
-    dockerfile: dockerfiles/Dockerfile-InfluxDB
-    ports:
-        - "8083:8083"
-        - "8086:8086"
-grafana:
-    build: .
-    dockerfile: dockerfiles/Dockerfile-Grafana
-    ports:
-        - "3000:3000"
 api:
     build: .
     dockerfile: dockerfiles/Dockerfile-API
@@ -36,30 +18,9 @@ api:
     links:
         - db
         - es
-        - influxdb
-        - grafana
     ports:
         - "5000:5000"
     command: python /opt/dci-control-server/scripts/runtestserver.py
-tox:
-    build: .
-    dockerfile: dockerfiles/Dockerfile-TOX
-    volumes:
-        - ./dci-control-server:/opt/dci/
-        - ./python-dciclient:/opt/dci-client/
-        - ./settings:/tmp/settings
-    links:
-        - db
-        - es
-        - influxdb
-    command: /bin/bash
-    stdin_open: true
-    tty: true
-doc:
-    build: .
-    dockerfile: dockerfiles/Dockerfile-DOC
-    volumes:
-       - ./dci-doc:/opt/dci-doc/
 app:
     build: .
     dockerfile: dockerfiles/Dockerfile-APP
@@ -73,15 +34,3 @@ app:
         - api
     environment:
         - DISPLAY
-client:
-    build: .
-    dockerfile: dockerfiles/Dockerfile-CLIENT
-    privileged: true
-    links:
-        - api
-    volumes:
-        - ./python-dciclient:/opt/python-dciclient/
-        - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    command: /sbin/init
-    stdin_open: true
-    tty: true

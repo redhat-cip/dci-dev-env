@@ -1,0 +1,55 @@
+dbwatcher:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-DB-watcher
+    links:
+      - db
+    volumes:
+      - .:/mnt/
+influxdb:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-InfluxDB
+    ports:
+        - "8083:8083"
+        - "8086:8086"
+grafana:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-Grafana
+    ports:
+        - "3000:3000"
+tox:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-TOX
+    volumes:
+        - ./dci-control-server:/opt/dci/
+        - ./python-dciclient:/opt/dci-client/
+        - ./settings:/tmp/settings
+    links:
+        - db
+        - es
+        - influxdb
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+doc:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-DOC
+    volumes:
+       - ./dci-doc:/opt/dci-doc/
+client:
+    build: .
+    dockerfile: dockerfiles/Dockerfile-CLIENT
+    privileged: true
+    links:
+        - api
+    volumes:
+        - ./python-dciclient:/opt/python-dciclient/
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: /sbin/init
+    stdin_open: true
+    tty: true
+api:
+  links:
+        - db
+        - es
+        - influxdb
+        - grafana
