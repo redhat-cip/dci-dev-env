@@ -22,11 +22,13 @@ For running dci in docker compose follow those steps:
   you can install those requirements by simply typing:
   ``pip install -U -r requirements.txt``
 * you have two way to launch the environment, the automated and the manual
-  * for the automated just launch ``docker-compose -f dci.yml -f dci-db_init.yml up``
+  * for the automated just launch ``docker-compose -f dci.yml -f dci-db_init.yml up -d``
     And after the first boot of the env you can stay
     with ``docker-compose -f dci.yml up`` to keep your database
-  * to get the manual way use : ``docker-compose -f dci.yml -f dci-manual.yml up``
+  * to get the manual way use : ``docker-compose -f dci.yml -f dci-manual.yml up -d``
     it will let you attach the api and the webapp
+* for a complete environment with the monitoring, testing and client you
+  can run: ``docker-compose -f dci.yml -f dci-optional.yml up -d``
 
 Now the environment is up and running, you can attach containers in order to
 run parts of the applications. For further information see
