@@ -28,7 +28,7 @@ EXPOSE 22
 
 RUN yum install -y gcc git libpqxx-devel libffi-devel python-devel epel-release  && \
     yum install -y http://packages.distributed-ci.io/dci-release.el7.noarch.rpm python-pip && \
-    yum install -y python-influxdb python2-influxdb-collectd-write
+    yum install -y python-influxdb python2-influxdb-collectd-write openssl-devel
 
 ADD python-dciclient/requirements.txt /tmp/
 RUN pip install -r /tmp/requirements.txt
