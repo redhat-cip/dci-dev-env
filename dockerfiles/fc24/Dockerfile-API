@@ -6,7 +6,7 @@
 FROM fedora:24
 
 RUN dnf update -y && \
-    dnf install -y gcc libpqxx-devel libffi-devel python-devel \
+    dnf install -y gcc libpqxx-devel libffi-devel python-devel gcc-c++ \
     redhat-rpm-config python-lxml libxslt-devel  python-swiftclient && \
     dnf clean all
 
