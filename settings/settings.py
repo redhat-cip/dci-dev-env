@@ -42,3 +42,5 @@ GRAFANA_HOST = grafana_url.hostname
 GRAFANA_PORT = grafana_url.port
 
 FILES_UPLOAD_FOLDER = '/var/lib/dci-control-server/files'
+
+ZMQ_CONN = os.environ.get('WORKER_PORT_5557_TCP')

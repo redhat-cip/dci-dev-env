@@ -1,0 +1,40 @@
+# DCI DCICLIENT
+#
+# VERSION               0.0.1
+
+
+FROM fedora:24
+
+ENV container docker
+
+RUN dnf -y --allowerasing install systemd systemd-libs openssh-server redhat-rpm-config openssl-devel
+RUN dnf -y update; dnf clean all; \
+(cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/anaconda.target.wants/*;
+
+VOLUME [ "/sys/fs/cgroup" ]
+
+
+RUN dnf -y install openssh-server; yum clean all; systemctl enable sshd.service
+RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
+
+RUN dnf update -y && \
+    dnf install -y gcc libpqxx-devel libffi-devel python-devel gcc-c++ \
+    redhat-rpm-config python-lxml libxslt-devel  python-swiftclient supervisor && \
+    dnf clean all
+
+ADD dci-control-server/requirements.txt /tmp/
+RUN pip install -r /tmp/requirements.txt
+
+RUN dnf -y install postfix
+RUN systemctl enable postfix
+
+EXPOSE 22 5557
+
+CMD ["/sbin/init"]
