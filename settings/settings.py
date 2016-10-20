@@ -42,3 +42,5 @@ STORE_TENANT_NAME = 'test'
 swift_url = six.moves.urllib_parse.urlparse(os.environ.get('SWIFT_PORT'))
 STORE_AUTH_URL = 'http://%s:5000/v2.0' % swift_url.hostname
 STORE_CONTAINER = 'test'
+
+ZMQ_CONN = os.environ.get('WORKER_PORT_5557_TCP')
