@@ -1,0 +1,21 @@
+api:
+    links:
+        - db
+        - es
+        - influxdb
+        - grafana
+        - swift
+swift:
+    build: .
+    dockerfile: dockerfiles/services/Dockerfile-SWIFT
+    privileged: true
+    ports:
+        - "23:22"
+        - "6001:6001"
+        - "6002:6002"
+        - "6003:6003"
+    volumes:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: /sbin/init
+    stdin_open: true
+    tty: true
