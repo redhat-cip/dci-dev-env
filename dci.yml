@@ -85,3 +85,15 @@ client:
     command: /sbin/init
     stdin_open: true
     tty: true
+worker:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-WORKER
+    privileged: true
+    links:
+        - api
+    volumes:
+        - ./dci-control-server:/opt/dci-control-server
+        - ./settings:/tmp/settings
+    command: /sbin/init
+    stdin_open: true
+    tty: true
