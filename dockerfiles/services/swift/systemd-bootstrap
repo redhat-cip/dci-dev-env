@@ -1,0 +1,14 @@
+[Unit]
+Description=/etc/rc.local Compatibility
+ConditionFileIsExecutable=/sbin/bootstrap.sh
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/bootstrap.sh
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+
+[Install]
+WantedBy=multi-user.target
