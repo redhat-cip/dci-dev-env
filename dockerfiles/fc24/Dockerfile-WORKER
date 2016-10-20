@@ -1,0 +1,31 @@
+FROM fedora:24
+
+LABEL name="DCI WORKER" version="0.0.1"
+MAINTAINER DCI Team <distributed-ci@redhat.com>
+
+ENV container docker
+
+RUN dnf -y install https://packages.distributed-ci.io/dci-release.fc23.noarch.rpm && \
+    dnf clean all
+
+RUN dnf -y install systemd && dnf clean all && \
+(cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/anaconda.target.wants/*;
+
+VOLUME ["/sys/fs/cgroup", "/tmp", "/run"]
+
+RUN dnf -y install openssh-server; yum clean all; systemctl enable sshd.service
+RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
+
+RUN dnf -y install postfix dci-api
+RUN systemctl enable postfix dci-worker
+
+EXPOSE 22 5557
+
+CMD ["/usr/sbin/init"]
