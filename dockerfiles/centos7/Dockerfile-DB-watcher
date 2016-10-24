@@ -1,0 +1,24 @@
+# DCI DB WATCHER
+#
+# VERSION               0.0.1
+
+
+FROM centos:7
+
+ENV PGPASSFILE /tmp/.pgpass
+ENV PGHOST db
+ENV PGDATABASE dci_control_server
+ENV PGUSER dci
+
+RUN yum update -y
+RUN yum install -y postgresql postgresql_autodoc graphviz
+RUN yum clean all
+
+RUN echo "*:*:$PGDATABASE:dci:password" > ${PGPASSFILE}
+RUN chmod 600 ${PGPASSFILE}
+
+
+WORKDIR /mnt/
+
+CMD postgresql_autodoc -t dot && dot $PGDATABASE.dot -Tpng > dci.png && \
+    rm $PGDATABASE.dot

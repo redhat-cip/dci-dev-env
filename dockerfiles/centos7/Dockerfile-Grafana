@@ -1,0 +1,30 @@
+# DCI Grafana
+#
+# VERSION               0.0.1
+
+
+FROM centos:7
+
+RUN echo -e "[grafana]\n\
+name=grafana\n\
+baseurl=https://packagecloud.io/grafana/stable/el/7/\$basearch\n\
+enabled=1\n\
+gpgcheck=1\n\
+gpgkey=https://packagecloud.io/gpg.key https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana\n\
+sslverify=1\n\
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt" > /etc/yum.repos.d/grafana.repo
+
+RUN yum install -y epel-release
+RUN yum update -y
+RUN yum install -y grafana crudini
+RUN yum clean all
+
+RUN crudini --set /etc/grafana/grafana.ini 'auth.anonymous' enabled true && \
+    crudini --set /etc/grafana/grafana.ini 'users' allow_sign_up false
+
+USER grafana
+WORKDIR /usr/share/grafana
+
+EXPOSE 3000
+CMD ["sh", "-c", "/usr/sbin/grafana-server --config /etc/grafana/grafana.ini \
+     cfg:default.paths.logs=/var/log/grafana cfg:default.paths.data=/var/lib/grafana"]

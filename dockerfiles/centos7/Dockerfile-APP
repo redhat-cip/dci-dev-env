@@ -1,0 +1,38 @@
+# DCI APP
+#
+# VERSION               0.0.1
+
+
+FROM centos:7
+
+RUN echo -e "[google-chrome]\n\
+name=google-chrome - x86_64\n\
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64\n\
+enabled=1\n\
+gpgcheck=1\n\
+showdupesfromrepos=1\n\
+gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub\n" > \
+    /etc/yum.repos.d/google-chrome.repo
+
+
+RUN yum install -y epel-release
+RUN yum update -y
+RUN yum install -y nodejs npm tar bzip2 make freetype fontconfig unzip \
+    google-chrome-stable libexif git
+
+WORKDIR /tmp
+RUN curl -O http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip
+RUN unzip chromedriver_linux64.zip
+RUN cp chromedriver /usr/local/bin
+RUN dbus-uuidgen > /var/lib/dbus/machine-id
+
+ADD dci-ui/package.json /tmp/
+RUN npm install
+RUN npm install -g gulp
+RUN mkdir -p /opt/dci-ui && cp -a /tmp/node_modules /opt/dci-ui
+
+WORKDIR /opt/dci-ui
+ADD . /opt/dci-ui
+
+CMD ["gulp", "serve:dev"]
+EXPOSE 8000 35729
