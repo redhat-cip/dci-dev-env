@@ -68,6 +68,9 @@ app:
         - "35729:35729"
     volumes:
         - ./dci-ui:/opt/dci-ui
+        # Mount Docker's volume copy into the container to make node_modules
+        # visible.
+        - /opt/dci-ui/node_modules
         - /tmp/.X11-unix:/tmp/.X11-unix
     links:
         - api
