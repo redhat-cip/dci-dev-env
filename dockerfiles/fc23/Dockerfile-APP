@@ -25,8 +25,14 @@ RUN unzip chromedriver_linux64.zip
 RUN cp chromedriver /usr/local/bin
 RUN dbus-uuidgen > /var/lib/dbus/machine-id
 
-RUN npm install -g gulp npm-cache
+RUN mkdir -p /opt/dci-ui
 WORKDIR /opt/dci-ui
 
-CMD ["gulp", "serve"]
+ADD dci-ui/package.json /opt/dci-ui/
+RUN npm install -g gulp &&\
+    npm install &&\
+    npm cache clean
+
 EXPOSE 8000 35729
+
+CMD ["gulp", "serve:dev"]
