@@ -32,6 +32,16 @@ Now the environment is up and running, you can attach containers in order to
 run parts of the applications. For further information see
 `the containers section <#containers>`_.
 
+Generate Docker-compose file with custom project paths
+------------------------------------------------------
+
+* add your specific project paths in a yaml file as in the sample ./utils/dci_project_paths.yml.sample
+* generate the Docker-compose file with
+
+  * ./utils/dci-gen.py ./dci.jinja2 ./utils/dci_project_paths.yml.sample
+
+* now the Docker-compose file is generated at ./dci.jinja2.yml so that you can use it in place of dci.yml
+
 Containers
 ----------
 

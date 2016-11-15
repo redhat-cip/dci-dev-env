@@ -1,0 +1,90 @@
+db:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-DB
+    ports:
+        - "5432:5432"
+dbwatcher:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-DB-watcher
+    links:
+      - db
+    volumes:
+      - .:/mnt/
+es:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-ES
+    ports:
+        - "9200:9200"
+        - "9300:9300"
+influxdb:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-InfluxDB
+    ports:
+        - "8083:8083"
+        - "8086:8086"
+grafana:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-Grafana
+    ports:
+        - "3000:3000"
+api:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-API
+    volumes:
+        - {{dci_cs_path}}:/opt/dci-control-server
+        - ./settings:/tmp/settings
+    links:
+        - db
+        - es
+        - influxdb
+        - grafana
+    ports:
+        - "5000:5000"
+    command: python /opt/dci-control-server/scripts/runtestserver.py
+tox:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-TOX
+    volumes:
+        - {{dci_cs_path}}:/opt/dci/
+        - {{dciclient_path}}:/opt/dci-client/
+        - ./settings:/tmp/settings
+    links:
+        - db
+        - es
+        - influxdb
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+doc:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-DOC
+    volumes:
+       - {{dci_doc_path}}:/opt/dci-doc/
+app:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-APP
+    ports:
+        - "8000:8000"
+        - "35729:35729"
+    volumes:
+        - {{dci_ui_path}}:/opt/dci-ui
+        # Mount Docker's volume copy into the container to make node_modules
+        # visible.
+        - /opt/dci-ui/node_modules
+        - /tmp/.X11-unix:/tmp/.X11-unix
+    links:
+        - api
+    environment:
+        - DISPLAY
+client:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-CLIENT
+    privileged: true
+    links:
+        - api
+    volumes:
+        - {{dciclient_path}}:/opt/python-dciclient/
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: /sbin/init
+    stdin_open: true
+    tty: true
