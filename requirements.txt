@@ -1,2 +1,3 @@
 git-review
 docker-compose>=1.3
+jinja2
