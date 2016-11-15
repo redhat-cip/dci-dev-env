@@ -1,0 +1,9 @@
+---
+dci_cs_path:
+  ./dci-control-server
+dciclient_path:
+  ./python-dcilient
+dci_doc_path:
+  ./dci-doc
+dci_ui_path:
+  ./dci-ui
