@@ -42,3 +42,13 @@ GRAFANA_HOST = grafana_url.hostname
 GRAFANA_PORT = grafana_url.port
 
 FILES_UPLOAD_FOLDER = '/var/lib/dci-control-server/files'
+
+# Stores configuration, to store files and components
+# STORE
+STORE_ENGINE = 'Swift'
+STORE_USERNAME = 'test'
+STORE_PASSWORD = 'test'
+STORE_TENANT_NAME = 'test'
+swift_url = six.moves.urllib_parse.urlparse(os.environ.get('SWIFT_PORT'))
+STORE_AUTH_URL = 'http://%s:5000/v2.0' % swift_url.hostname
+STORE_CONTAINER = 'test'
