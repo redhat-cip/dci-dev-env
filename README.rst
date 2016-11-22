@@ -12,10 +12,10 @@ For running dci in docker compose follow those steps:
 * clone this repository
 * clone all the dci related project into this repository:
 
-  * http://softwarefactory-project.io/r/p/dci-control-server.git
-  * http://softwarefactory-project.io/r/p/python-dciclient.git
-  * http://softwarefactory-project.io/r/p/dci-ui.git
-  * http://softwarefactory-project.io/r/p/dci-doc.git
+  * https://softwarefactory-project.io/r/p/dci-control-server.git
+  * https://softwarefactory-project.io/r/p/python-dciclient.git
+  * https://softwarefactory-project.io/r/p/dci-ui.git
+  * https://softwarefactory-project.io/r/p/dci-doc.git
 
 * install docker-compose and git-review if you want to contribute,
   the correct versions are described in `requirements.txt <requirements.txt>`_

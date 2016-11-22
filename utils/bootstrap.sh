@@ -6,7 +6,7 @@ if [ ! -f dci.yml ]; then
     exit 1
 fi
 
-git clone http://softwarefactory-project.io/r/dci-control-server
-git clone http://softwarefactory-project.io/r/python-dciclient
-git clone http://softwarefactory-project.io/r/dci-ui
-git clone --recurse-submodules http://softwarefactory-project.io/r/dci-doc
+git clone https://softwarefactory-project.io/r/dci-control-server
+git clone https://softwarefactory-project.io/r/python-dciclient
+git clone https://softwarefactory-project.io/r/dci-ui
+git clone --recurse-submodules https://softwarefactory-project.io/r/dci-doc
