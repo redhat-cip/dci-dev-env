@@ -9,4 +9,5 @@ fi
 git clone http://softwarefactory-project.io/r/dci-control-server
 git clone http://softwarefactory-project.io/r/python-dciclient
 git clone http://softwarefactory-project.io/r/dci-ui
+git clone http://softwarefactory-project.io/r/p/dci-agent.git
 git clone --recurse-submodules http://softwarefactory-project.io/r/dci-doc

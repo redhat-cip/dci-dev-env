@@ -88,3 +88,15 @@ client:
     command: /sbin/init
     stdin_open: true
     tty: true
+agent:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-AGENT
+    privileged: true
+    links:
+        - api
+    volumes:
+        - ./dci-agent:/opt/dci-agent/
+        - ./settings:/tmp/settings
+    command: /bin/bash
+    stdin_open: true
+    tty: true
