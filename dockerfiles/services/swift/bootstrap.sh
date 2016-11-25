@@ -29,6 +29,7 @@ chown -R swift:swift /srv/node
 
 # Create all User / Service / Endpoints
 AUTH="--os-url=http://localhost:35357/v2.0/ --os-token=root"
+IP=`ifconfig | grep -A1 eth0 | grep inet | awk '{print $2}'`
 openstack role create admin $AUTH
 openstack role create SwiftOperator $AUTH
 openstack project create service $AUTH
@@ -40,7 +41,7 @@ openstack role add --project service --user swift admin $AUTH
 openstack role add --project service --user admin admin $AUTH
 openstack role add --project test --user test SwiftOperator $AUTH
 openstack service create --name swift --description "OpenStack Object Storage" object-store $AUTH
-openstack endpoint create --region RegionOne object-store --publicurl http://0.0.0.0:8080/v1/AUTH_%\(tenant_id\)s --internalurl http://0.0.0.0:8080/v1/AUTH_%\(tenant_id\)s --adminurl http://0.0.0.0:8080/v1 $AUTH
+openstack endpoint create --region RegionOne object-store --publicurl http://$IP:8080/v1/AUTH_%\(tenant_id\)s --internalurl http://$IP:8080/v1/AUTH_%\(tenant_id\)s --adminurl http://$IP:8080/v1 $AUTH
 
 
 systemctl enable openstack-swift-account openstack-swift-container openstack-swift-object openstack-swift-proxy memcached
