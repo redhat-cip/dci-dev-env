@@ -1,13 +1,10 @@
-# DCI DB
-#
-# VERSION               0.0.1
-
-
 FROM centos:7
 
-RUN yum update -y
-RUN yum install -y postgresql-server postgresql-contrib postgresql
-RUN yum clean all
+LABEL name="DCI DB" version="0.0.1"
+MAINTAINER DCI Team <dci@redhat.com>
+
+RUN yum install -y postgresql-server postgresql-contrib postgresql && \
+    yum clean all
 
 ENV PGDATA /var/lib/pgsql/data
 ENV PASSWORD "dci"

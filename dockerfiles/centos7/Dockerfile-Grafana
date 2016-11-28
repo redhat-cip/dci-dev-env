@@ -1,9 +1,7 @@
-# DCI Grafana
-#
-# VERSION               0.0.1
-
-
 FROM centos:7
+
+LABEL name="DCI Grafana" version="0.0.1"
+MAINTAINER DCI Team <dci@redhat.com>
 
 RUN echo -e "[grafana]\n\
 name=grafana\n\
@@ -14,10 +12,8 @@ gpgkey=https://packagecloud.io/gpg.key https://grafanarel.s3.amazonaws.com/RPM-G
 sslverify=1\n\
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt" > /etc/yum.repos.d/grafana.repo
 
-RUN yum install -y epel-release
-RUN yum update -y
-RUN yum install -y grafana crudini
-RUN yum clean all
+RUN yum install -y epel-release && yum clean all
+RUN yum install -y grafana crudini && yum clean all
 
 RUN crudini --set /etc/grafana/grafana.ini 'auth.anonymous' enabled true && \
     crudini --set /etc/grafana/grafana.ini 'users' allow_sign_up false

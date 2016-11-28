@@ -1,16 +1,13 @@
-# DCI DB
-#
-# VERSION               0.0.1
-
-
 FROM centos:7
 
-RUN yum install -y epel-release
-RUN yum update -y
+LABEL name="DCI TOX" version="0.0.1"
+MAINTAINER DCI Team <dci@redhat.com>
+
+RUN yum install -y epel-release && yum clean all
 RUN yum install -y gcc libpqxx-devel libffi-devel \
     python-devel python-tox git python3-devel redhat-rpm-config \
-    python-lxml libxslt-devel python-pip python34-setuptools
-RUN yum clean all
+    python-lxml libxslt-devel python-pip python34-setuptools && \
+    yum clean all
 
 RUN easy_install-3.4 -U pip
 
