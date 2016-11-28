@@ -1,13 +1,10 @@
-# DCI InfluxDB
-#
-# VERSION               0.0.1
-
-
 FROM centos:7
 
-RUN yum update -y
-RUN yum install -y https://s3.amazonaws.com/influxdb/influxdb-0.11.0-1.x86_64.rpm
-RUN yum clean all
+LABEL name="DCI InfluxDB" version="0.0.1"
+MAINTAINER DCI Team <distributed-ci@redhat.com>
+
+RUN yum install -y https://s3.amazonaws.com/influxdb/influxdb-0.11.0-1.x86_64.rpm && \
+    yum clean all
 
 USER influxdb
 
