@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a890539_ec027eb3",
+        "filename": "dockerfiles/centos7/Dockerfile-WORKER",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T08:49:43Z",
+      "side": 1,
+      "message": "Should adopt pattern used in this review https://softwarefactory-project.io/r/#/c/5606/",
+      "revId": "afb38679f2e5c382aed54a19a8859fc173c4d88d",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_0c00aaa9",
+        "filename": "dockerfiles/fc24/Dockerfile-WORKER",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T08:49:43Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "afb38679f2e5c382aed54a19a8859fc173c4d88d",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
