@@ -1,9 +1,7 @@
-# DCI DCICLIENT
-#
-# VERSION               0.0.1
-
-
 FROM centos:7
+
+LABEL name="DCI CLIENT" version="0.0.1"
+MAINTAINER DCI Team <distributed-ci@redhat.com>
 
 ENV container docker
 
@@ -20,16 +18,15 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-
 RUN yum -y install openssh-server; yum clean all; systemctl enable sshd.service
 RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
 
 EXPOSE 22
 
-RUN yum install -y epel-release
-RUN yum update -y
-RUN yum install -y gcc git libpqxx-devel libffi-devel python-devel python-pip
-RUN yum install -y http://packages.distributed-ci.io/dci-release.el7.noarch.rpm
+RUN yum install -y epel-release && yum clean all
+RUN yum install -y gcc git libpqxx-devel libffi-devel python-devel python-pip \
+    http://packages.distributed-ci.io/dci-release.el7.noarch.rpm && \
+    yum clean all
 
 ADD python-dciclient/requirements.txt /tmp/
 RUN pip install -r /tmp/requirements.txt

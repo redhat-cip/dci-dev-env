@@ -1,5 +1,8 @@
 FROM centos:7
 
+LABEL name="DCI ES" version="0.0.1"
+MAINTAINER DCI Team <distributed-ci@redhat.com>
+
 ENV ES_HOME /home/elasticsearch
 
 RUN rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
@@ -9,8 +12,8 @@ baseurl=http://packages.elastic.co/elasticsearch/2.x/centos\n\
 gpgcheck=1\n\
 gpgkey=http://packages.elastic.co/GPG-KEY-elasticsearch\n\
 enabled=1" > /etc/yum.repos.d/elasticsearch.repo
-RUN yum update -y
-RUN yum install -y elasticsearch-2.3.3 java-1.8.0-openjdk hostname
+RUN yum install -y elasticsearch-2.3.3 java-1.8.0-openjdk hostname && \
+    yum clean all
 
 RUN mkdir -p ${ES_HOME}/config ${ES_HOME}/logs ${ES_HOME}/data
 

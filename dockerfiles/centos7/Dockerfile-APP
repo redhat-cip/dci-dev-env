@@ -1,9 +1,7 @@
-# DCI APP
-#
-# VERSION               0.0.1
-
-
 FROM centos:7
+
+LABEL name="DCI APP" version="0.0.1"
+MAINTAINER DCI Team <distributed-ci@redhat.com>
 
 RUN echo -e "[google-chrome]\n\
 name=google-chrome - x86_64\n\
@@ -15,10 +13,10 @@ gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub\n" > \
     /etc/yum.repos.d/google-chrome.repo
 
 
-RUN yum install -y epel-release
-RUN yum update -y
+RUN yum install -y epel-release && yum clean all
 RUN yum install -y nodejs npm tar bzip2 make freetype fontconfig unzip \
-    google-chrome-stable libexif git
+    google-chrome-stable libexif git && \
+    yum clean all
 
 WORKDIR /tmp
 RUN curl -O http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip
