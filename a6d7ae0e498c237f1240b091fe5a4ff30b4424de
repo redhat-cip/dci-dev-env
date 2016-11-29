@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a890539_6cf3ee0a",
+        "filename": "dockerfiles/centos7/Dockerfile-API",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T07:57:19Z",
+      "side": 1,
+      "message": "I am not sure we have the dci@redhat.com address but the distributed-ci@redhat.com one.",
+      "revId": "a6d7ae0e498c237f1240b091fe5a4ff30b4424de",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_8cf81ae7",
+        "filename": "dockerfiles/centos7/Dockerfile-APP",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T07:57:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a6d7ae0e498c237f1240b091fe5a4ff30b4424de",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_acdcf675",
+        "filename": "dockerfiles/centos7/Dockerfile-CLIENT",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T07:57:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a6d7ae0e498c237f1240b091fe5a4ff30b4424de",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_ccd94285",
+        "filename": "dockerfiles/centos7/Dockerfile-DB",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T07:57:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a6d7ae0e498c237f1240b091fe5a4ff30b4424de",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_ece6fe43",
+        "filename": "dockerfiles/centos7/Dockerfile-DB-watcher",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T07:57:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a6d7ae0e498c237f1240b091fe5a4ff30b4424de",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_0ce42a3a",
+        "filename": "dockerfiles/centos7/Dockerfile-DOC",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T07:57:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a6d7ae0e498c237f1240b091fe5a4ff30b4424de",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_2cd00653",
+        "filename": "dockerfiles/centos7/Dockerfile-ES",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T07:57:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a6d7ae0e498c237f1240b091fe5a4ff30b4424de",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_4cd55242",
+        "filename": "dockerfiles/centos7/Dockerfile-Grafana",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T07:57:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a6d7ae0e498c237f1240b091fe5a4ff30b4424de",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_6cca0ea3",
+        "filename": "dockerfiles/centos7/Dockerfile-InfluxDB",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T07:57:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a6d7ae0e498c237f1240b091fe5a4ff30b4424de",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_8ccf3ab0",
+        "filename": "dockerfiles/centos7/Dockerfile-TOX",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T07:57:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a6d7ae0e498c237f1240b091fe5a4ff30b4424de",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_acc31689",
+        "filename": "dockerfiles/services/Dockerfile-SWIFT",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-11-29T07:57:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a6d7ae0e498c237f1240b091fe5a4ff30b4424de",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
