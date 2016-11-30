@@ -16,17 +16,6 @@ es:
     ports:
         - "9200:9200"
         - "9300:9300"
-influxdb:
-    build: .
-    dockerfile: dockerfiles/${OSVer}/Dockerfile-InfluxDB
-    ports:
-        - "8083:8083"
-        - "8086:8086"
-grafana:
-    build: .
-    dockerfile: dockerfiles/${OSVer}/Dockerfile-Grafana
-    ports:
-        - "3000:3000"
 api:
     build: .
     dockerfile: dockerfiles/${OSVer}/Dockerfile-API
@@ -36,8 +25,6 @@ api:
     links:
         - db
         - es
-        - influxdb
-        - grafana
     ports:
         - "5000:5000"
     command: python /opt/dci-control-server/scripts/runtestserver.py
@@ -51,7 +38,6 @@ tox:
     links:
         - db
         - es
-        - influxdb
     command: /bin/bash
     stdin_open: true
     tty: true
