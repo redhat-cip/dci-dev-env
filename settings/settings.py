@@ -31,16 +31,6 @@ es_url = six.moves.urllib_parse.urlparse(os.environ.get('ES_PORT'))
 ES_HOST = es_url.hostname
 ES_PORT = es_url.port
 
-influxdb_url = six.moves.urllib_parse.urlparse(
-    os.environ.get('INFLUXDB_PORT_8086_TCP')
-)
-INFLUXDB_HOST = influxdb_url.hostname
-INFLUXDB_PORT = influxdb_url.port
-
-grafana_url = six.moves.urllib_parse.urlparse(os.environ.get('GRAFANA_PORT'))
-GRAFANA_HOST = grafana_url.hostname
-GRAFANA_PORT = grafana_url.port
-
 FILES_UPLOAD_FOLDER = '/var/lib/dci-control-server/files'
 
 # Stores configuration, to store files and components
