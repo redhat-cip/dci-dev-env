@@ -2,8 +2,6 @@ api:
     links:
         - db
         - es
-        - influxdb
-        - grafana
         - swift
 swift:
     build: .
