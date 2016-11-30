@@ -1,17 +1,15 @@
 FROM centos:7
 
-LABEL name="DCI DOC" version="0.0.1"
+LABEL name="DCI DOC" version="0.0.2"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
-RUN yum install -y epel-release && yum clean all
-RUN yum install -y make git gcc redhat-rpm-config python-devel python-pip && \
+RUN yum -y --setopt=tsflags=nodocs install epel-release \
+    https://packages.distributed-ci.io/dci-release.el7.noarch.rpm \
+    https://repos.fedorapeople.org/repos/openstack/openstack-mitaka/rdo-release-mitaka-6.noarch.rpm && \
     yum clean all
+RUN yum -y --setopt=tsflags=nodocs install python-dciclient sphinx && yum clean all
 
-WORKDIR /tmp
-
-ADD dci-doc/requirements.txt requirements.txt
 ADD dci-doc/python-dciclient python-dciclient
-RUN pip install -r ./requirements.txt
 
 WORKDIR /opt/dci-doc
 
