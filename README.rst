@@ -139,7 +139,6 @@ This container allows one to run the python-dciclient within it.
 
 This container is special in several ways compares to the others:
 
-  * It runs CentOS 7 and not Fedora 23
   * It runs systemd
   * It runs an sshd daemon (root/root)
 
