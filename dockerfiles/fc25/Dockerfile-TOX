@@ -1,0 +1,25 @@
+# DCI DB
+#
+# VERSION               0.0.1
+
+
+FROM fedora:25
+
+RUN dnf update -y && \
+    dnf install -y gcc libpqxx-devel libffi-devel \
+    python-devel python-tox git python3-devel redhat-rpm-config \
+    python-lxml libxslt-devel && \
+    dnf clean all
+
+RUN easy_install -U pip
+RUN dnf install -y python3-pip
+
+ENV LANG "en_US.UTF-8"
+ENV DISABLE_DB_START 1
+ENV DISABLE_ES_START 1
+ENV DISABLE_INFLUXDB_START 1
+
+ENV TOX_TESTENV_PASSENV "DB_PORT ES_PORT INFLUXDB_PORT_8086_TCP"
+ENV DCI_SETTINGS_FILE /tmp/settings/settings_test.py
+
+WORKDIR /opt

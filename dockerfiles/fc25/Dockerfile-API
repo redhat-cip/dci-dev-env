@@ -1,0 +1,20 @@
+# DCI DB
+#
+# VERSION               0.0.1
+
+
+FROM fedora:25
+
+RUN dnf update -y && \
+    dnf install -y gcc libpqxx-devel libffi-devel python-devel gcc-c++ \
+    redhat-rpm-config python-lxml libxslt-devel  python-swiftclient && \
+    dnf clean all
+
+ADD dci-control-server/requirements.txt /tmp/
+RUN pip install -r /tmp/requirements.txt
+
+WORKDIR /opt/dci-control-server
+ENV PYTHONPATH /opt/dci-control-server
+ENV DCI_SETTINGS_FILE /tmp/settings/settings.py
+
+EXPOSE 5000

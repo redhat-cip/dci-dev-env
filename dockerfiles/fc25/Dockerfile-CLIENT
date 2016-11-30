@@ -1,0 +1,37 @@
+# DCI DCICLIENT
+#
+# VERSION               0.0.1
+
+
+FROM fedora:25
+
+ENV container docker
+
+RUN dnf -y --allowerasing install systemd systemd-libs openssh-server redhat-rpm-config openssl-devel
+RUN dnf -y update; dnf clean all; \
+(cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/anaconda.target.wants/*;
+
+VOLUME [ "/sys/fs/cgroup" ]
+
+
+RUN dnf -y install openssh-server; yum clean all; systemctl enable sshd.service
+RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
+
+EXPOSE 22
+
+RUN dnf install -y gcc git libpqxx-devel libffi-devel python-devel  && \
+    dnf install -y http://packages.distributed-ci.io/dci-release.el7.noarch.rpm python-pip
+
+ADD python-dciclient/requirements.txt /tmp/
+RUN pip install -r /tmp/requirements.txt
+
+VOLUME ["/usr/lib/python"]
+
+CMD ["/sbin/init"]
