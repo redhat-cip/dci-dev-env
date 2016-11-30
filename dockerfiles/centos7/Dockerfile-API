@@ -1,15 +1,14 @@
 FROM centos:7
 
-LABEL name="DCI API" version="0.0.1"
+LABEL name="DCI API" version="0.0.2"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
-RUN yum install -y epel-release && yum clean all
-RUN yum install -y gcc gcc-c++ libpqxx-devel libffi-devel libxslt-devel \
-    python-devel python-lxml python-pip redhat-rpm-config && \
+RUN yum -y --setopt=tsflags=nodocs install epel-release \
+    https://packages.distributed-ci.io/dci-release.el7.noarch.rpm \
+    https://repos.fedorapeople.org/repos/openstack/openstack-mitaka/rdo-release-mitaka-6.noarch.rpm && \
     yum clean all
-
-ADD dci-control-server/requirements.txt /tmp/
-RUN pip install -r /tmp/requirements.txt
+RUN yum -y --setopt=tsflags=nodocs install dci-api && \
+    yum clean all
 
 WORKDIR /opt/dci-control-server
 ENV PYTHONPATH /opt/dci-control-server
