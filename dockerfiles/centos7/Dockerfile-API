@@ -16,3 +16,5 @@ ENV PYTHONPATH /opt/dci-control-server
 ENV DCI_SETTINGS_FILE /tmp/settings/settings.py
 
 EXPOSE 5000
+
+CMD ["python", "/opt/dci-control-server/scripts/runtestserver.py"]
