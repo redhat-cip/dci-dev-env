@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a890539_5ae256a0",
+        "filename": "dockerfiles/centos7/Dockerfile-WORKER",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 115
+      },
+      "writtenOn": "2016-12-13T21:18:10Z",
+      "side": 1,
+      "message": "We should use the systemd approache that have been merged last week.",
+      "revId": "ed8f6305b4de5b5a6c10516efcbb133cbb01e091",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
