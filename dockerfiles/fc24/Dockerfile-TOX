@@ -23,3 +23,5 @@ ENV TOX_TESTENV_PASSENV "DB_PORT ES_PORT"
 ENV DCI_SETTINGS_FILE /tmp/settings/settings_test.py
 
 WORKDIR /opt
+
+CMD ["/bin/bash"]

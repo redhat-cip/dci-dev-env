@@ -27,7 +27,6 @@ api:
         - es
     ports:
         - "5000:5000"
-    command: python /opt/dci-control-server/scripts/runtestserver.py
 tox:
     build: .
     dockerfile: dockerfiles/${OSVer}/Dockerfile-TOX
@@ -38,7 +37,6 @@ tox:
     links:
         - db
         - es
-    command: /bin/bash
     stdin_open: true
     tty: true
 doc:
@@ -71,6 +69,5 @@ client:
     volumes:
         - ./python-dciclient:/opt/python-dciclient/
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    command: /sbin/init
     stdin_open: true
     tty: true
