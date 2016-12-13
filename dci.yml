@@ -25,6 +25,7 @@ api:
     links:
         - db
         - es
+        - worker
     ports:
         - "5000:5000"
 tox:
@@ -68,6 +69,16 @@ client:
         - api
     volumes:
         - ./python-dciclient:/opt/python-dciclient/
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    stdin_open: true
+    tty: true
+worker:
+    build: .
+    dockerfile: dockerfiles/${OSVer}/Dockerfile-WORKER
+    privileged: true
+    volumes:
+        - ./dci-control-server:/opt/dci-control-server
+        - ./settings:/tmp/settings
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
     stdin_open: true
     tty: true
