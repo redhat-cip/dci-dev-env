@@ -1,0 +1,18 @@
+FROM fedora:25
+
+LABEL name="DCI API" version="0.0.2"
+MAINTAINER DCI Team <distributed-ci@redhat.com>
+
+RUN dnf -y --setopt=tsflags=nodocs install \
+    https://packages.distributed-ci.io/dci-release.fc25.noarch.rpm && \
+    dnf clean all
+RUN dnf -y --setopt=tsflags=nodocs install dci-api && \
+    dnf clean all
+
+WORKDIR /opt/dci-control-server
+ENV PYTHONPATH /opt/dci-control-server
+ENV DCI_SETTINGS_FILE /tmp/settings/settings.py
+
+EXPOSE 5000
+
+CMD ["python", "/opt/dci-control-server/scripts/runtestserver.py"]

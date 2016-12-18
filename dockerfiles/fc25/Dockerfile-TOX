@@ -1,0 +1,21 @@
+FROM fedora:25
+
+LABEL name="DCI TOX" version="0.0.1"
+MAINTAINER DCI Team <distributed-ci@redhat.com>
+
+RUN dnf install -y gcc libpqxx-devel libffi-devel openssl-devel \
+    python-devel python-tox git python3-devel redhat-rpm-config python3-tox \
+    python-lxml libxslt-devel python-pip python3-setuptools python3-pip && \
+    dnf clean all
+
+ENV LANG "en_US.UTF-8"
+ENV DISABLE_DB_START 1
+ENV DISABLE_ES_START 1
+ENV DISABLE_INFLUXDB_START 1
+
+ENV TOX_TESTENV_PASSENV "DB_PORT ES_PORT"
+ENV DCI_SETTINGS_FILE /tmp/settings/settings_test.py
+
+WORKDIR /opt
+
+CMD ["/bin/bash"]
