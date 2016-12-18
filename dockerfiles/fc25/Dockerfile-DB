@@ -1,11 +1,10 @@
-# DCI DB
-#
-# VERSION               0.0.1
+FROM fedora:25
 
+LABEL name="DCI DB" version="0.0.1"
+MAINTAINER DCI Team <distributed-ci@redhat.com>
 
-FROM fedora:24
-
-RUN dnf update -y && dnf install -y postgresql-server postgresql-contrib postgresql && dnf clean all
+RUN dnf install -y postgresql-server postgresql-contrib postgresql && \
+    dnf clean all
 
 ENV PGDATA /var/lib/pgsql/data
 ENV PASSWORD "dci"

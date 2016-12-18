@@ -1,0 +1,19 @@
+FROM fedora:25
+
+LABEL name="DCI DOC" version="0.0.2"
+MAINTAINER DCI Team <distributed-ci@redhat.com>
+
+RUN dnf -y --setopt=tsflags=nodocs install \
+    https://packages.distributed-ci.io/dci-release.fc23.noarch.rpm && \
+    dnf clean all
+RUN dnf -y --setopt=tsflags=nodocs install \
+    make python2-dciclient \
+    python-sphinxcontrib-httpdomain python-sphinx_rtd_theme python-sphinx && \
+    dnf clean all
+
+ADD dci-doc/python-dciclient python-dciclient
+
+WORKDIR /opt/dci-doc
+
+# By default build the html version of the docs.
+CMD ["make", "html"]
