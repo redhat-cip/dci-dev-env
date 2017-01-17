@@ -22,10 +22,11 @@ For running dci in docker compose follow those steps:
   you can install those requirements by simply typing:
   ``pip install -U -r requirements.txt``
 * you have two way to launch the environment, the automated and the manual
-  * for the automated just launch ``docker-compose -f dci.yml -f dci-db_init.yml up``
+
+  * for the automated just launch ``docker-compose -f dci.yml -f dci-db_init.yml -f dci-swift.yml up``
     And after the first boot of the env you can stay
-    with ``docker-compose -f dci.yml up`` to keep your database
-  * to get the manual way use : ``docker-compose -f dci.yml -f dci-manual.yml up``
+    with ``docker-compose -f dci.yml -f dci-swift.yml up`` to keep your database
+  * to get the manual way use : ``docker-compose -f dci.yml -f dci-manual.yml -f dci-swift.yml up``
     it will let you attach the api and the webapp
 
 Now the environment is up and running, you can attach containers in order to
@@ -35,7 +36,7 @@ run parts of the applications. For further information see
 Containers
 ----------
 
-There is five container for running the application
+Here is the list of containers for running the application:
 
 * **dci_db**: contains the postgresql database, it is started by default and
   serve the database on localhost port 5432.
