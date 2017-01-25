@@ -5,9 +5,10 @@ MAINTAINER DCI Team <distributed-ci@redhat.com>
 
 RUN yum install -y epel-release && yum clean all
 RUN yum install -y gcc libpqxx-devel libffi-devel \
-    python-devel python-tox git python3-devel redhat-rpm-config \
+    python-devel git python3-devel redhat-rpm-config \
     python-lxml libxslt-devel python-pip python34-setuptools && \
-    yum clean all
+    yum clean all && \
+    pip install tox
 
 RUN easy_install-3.4 -U pip
 
