@@ -4,9 +4,10 @@ LABEL name="DCI TOX" version="0.0.1"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
 RUN dnf install -y gcc libpqxx-devel libffi-devel openssl-devel \
-    python-devel python-tox git python3-devel redhat-rpm-config python3-tox \
+    python-devel git python3-devel redhat-rpm-config \
     python-lxml libxslt-devel python-pip python3-setuptools python3-pip && \
     dnf clean all
+RUN pip install tox
 
 ENV LANG "en_US.UTF-8"
 ENV DISABLE_DB_START 1
