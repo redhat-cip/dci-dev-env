@@ -20,7 +20,7 @@ VOLUME [ "/sys/fs/cgroup" ]
 RUN yum -y install openssh-server; yum clean all; systemctl enable sshd.service
 RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
 
-RUN yum install -y https://www.rdoproject.org/repos/rdo-release.rpm && \
+RUN yum install -y centos-release-openstack-mitaka && \
     yum clean all
 RUN yum install -y openstack-swift openstack-swift-proxy memcached \
     openstack-swift-object openstack-swift-container openstack-swift-account \
