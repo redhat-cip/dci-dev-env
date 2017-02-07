@@ -1,21 +1,13 @@
 FROM fedora:25
 
-LABEL name="DCI DB WATCHER" version="0.0.1"
+LABEL name="DCI DB WATCHER" version="0.0.2"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
-ENV PGPASSFILE /tmp/.pgpass
-ENV PGHOST db
-ENV PGDATABASE dci_control_server
-ENV PGUSER dci
-
-RUN dnf install -y postgresql postgresql_autodoc graphviz && \
+RUN dnf install -y postgresql_autodoc graphviz && \
     dnf clean all
-
-RUN echo "*:*:$PGDATABASE:dci:password" > ${PGPASSFILE}
-RUN chmod 600 ${PGPASSFILE}
-
 
 WORKDIR /mnt/
 
-CMD postgresql_autodoc -t dot && dot $PGDATABASE.dot -Tpng > dci.png && \
-    rm $PGDATABASE.dot
+CMD postgresql_autodoc -u dci -d dci --password=dci -h $DB_PORT_5432_TCP_ADDR -t dot && \
+    dot dci.dot -Tpng > dci.png && \
+    rm -f dci.dot
