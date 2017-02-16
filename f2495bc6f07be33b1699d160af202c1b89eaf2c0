@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a75e904_30d06553",
+        "filename": "utils/load_prod_dump.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2017-02-16T21:03:16Z",
+      "side": 1,
+      "message": "Why not, I also ensure swift and pg_restore are installed.",
+      "parentUuid": "7a75e904_50796192",
+      "revId": "f2495bc6f07be33b1699d160af202c1b89eaf2c0",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a75e904_1048c95a",
         "filename": "utils/load_prod_dump.sh",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "7a75e904_10e4493a",
+        "filename": "utils/load_prod_dump.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2017-02-16T21:03:16Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "7a75e904_1048c95a",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "f2495bc6f07be33b1699d160af202c1b89eaf2c0",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a75e904_3074e59b",
         "filename": "utils/load_prod_dump.sh",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2017-02-16T19:33:25Z",
       "side": 1,
       "message": "s/rm/rm -f/",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "f2495bc6f07be33b1699d160af202c1b89eaf2c0",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a75e904_70f3bd0a",
+        "filename": "utils/load_prod_dump.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2017-02-16T21:03:16Z",
+      "side": 1,
+      "message": "The .bashrc is not sourced when we run a script and so the rm alias is not defined.",
+      "parentUuid": "7a75e904_3074e59b",
       "range": {
         "startLine": 11,
         "startChar": 0,
