@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a75e904_50796192",
+        "filename": "utils/load_prod_dump.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2017-02-16T19:33:25Z",
+      "side": 1,
+      "message": "You should add some openstack variables testing here ($OS_*)",
+      "revId": "f2495bc6f07be33b1699d160af202c1b89eaf2c0",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a75e904_1048c95a",
+        "filename": "utils/load_prod_dump.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2017-02-16T19:33:25Z",
+      "side": 1,
+      "message": "To avoid tp stop/start the api we can just shutdown the current sql session :\n\npsql -U dci -d dci -h 127.0.0.1 -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname\u003d\u0027dci\u0027 AND application_name\u003c\u003e\u0027psql\u0027\"",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "f2495bc6f07be33b1699d160af202c1b89eaf2c0",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a75e904_3074e59b",
+        "filename": "utils/load_prod_dump.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2017-02-16T19:33:25Z",
+      "side": 1,
+      "message": "s/rm/rm -f/",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "f2495bc6f07be33b1699d160af202c1b89eaf2c0",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
