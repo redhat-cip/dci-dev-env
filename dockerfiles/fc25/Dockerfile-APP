@@ -14,7 +14,7 @@ gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub\n" > \
 
 
 RUN dnf install -y nodejs npm tar bzip2 make freetype fontconfig unzip \
-    google-chrome-stable libexif git && \
+    google-chrome-stable libexif git gcc-c++ && \
     dnf clean all
 
 WORKDIR /tmp
