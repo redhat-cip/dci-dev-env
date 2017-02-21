@@ -1,18 +1,21 @@
-api:
-    links:
-        - db
-        - es
-        - swift
-swift:
-    build: .
-    dockerfile: dockerfiles/services/Dockerfile-SWIFT
+version: '2'
+services:
+  api:
+    depends_on:
+      - swift
+    environment:
+      - SWIFT_PORT=tcp://swift:8000
+  swift:
+    build:
+      context: .
+      dockerfile: dockerfiles/services/Dockerfile-SWIFT
+    command: /sbin/init
     privileged: true
     ports:
-        - "5001:5000"
-        - "8080:8080"
-        - "35357:35357"
-    volumes:
-        - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    command: /sbin/init
+      - "5001:5000"
+      - "8080:8080"
+      - "35357:35357"
     stdin_open: true
     tty: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
