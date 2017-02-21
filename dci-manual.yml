@@ -1,8 +1,10 @@
-app:
+version: '2'
+services:
+  app:
     command: /bin/bash
     stdin_open: true
     tty: true
-api:
+  api:
     command: /bin/bash
     stdin_open: true
     tty: true

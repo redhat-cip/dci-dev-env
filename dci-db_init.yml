@@ -1,3 +1,5 @@
-api:
+version: '2'
+services:
+  api:
     command: bash -c "python /opt/dci-control-server/scripts/db_provisioning.py -y \
                       && python /opt/dci-control-server/scripts/runtestserver.py"

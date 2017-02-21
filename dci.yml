@@ -1,85 +1,103 @@
-db:
-    build: .
-    dockerfile: dockerfiles/${OSVer}/Dockerfile-DB
+version: '2'
+services:
+  db:
+    build:
+      context: .
+      dockerfile: dockerfiles/${OSVer}/Dockerfile-DB
     ports:
-        - "5432:5432"
-dbwatcher:
-    build: .
-    dockerfile: dockerfiles/${OSVer}/Dockerfile-DB-watcher
-    links:
+      - "5432:5432"
+  dbwatcher:
+    build:
+      context: .
+      dockerfile: dockerfiles/${OSVer}/Dockerfile-DB-watcher
+    depends_on:
       - api
       - db
+    environment:
+      - DB_PORT_5432_TCP_ADDR=db
     volumes:
       - .:/mnt/
-es:
-    build: .
-    dockerfile: dockerfiles/${OSVer}/Dockerfile-ES
+  es:
+    build:
+      context: .
+      dockerfile: dockerfiles/${OSVer}/Dockerfile-ES
     ports:
-        - "9200:9200"
-        - "9300:9300"
-api:
-    build: .
-    dockerfile: dockerfiles/${OSVer}/Dockerfile-API
-    volumes:
-        - ./dci-control-server:/opt/dci-control-server
-        - ./settings:/tmp/settings
-    links:
-        - db
-        - es
-        - worker
-    ports:
-        - "5000:5000"
-tox:
-    build: .
-    dockerfile: dockerfiles/${OSVer}/Dockerfile-TOX
-    volumes:
-        - ./dci-control-server:/opt/dci/
-        - ./python-dciclient:/opt/dci-client/
-        - ./settings:/tmp/settings
-    links:
-        - db
-        - es
-    stdin_open: true
-    tty: true
-doc:
-    build: .
-    dockerfile: dockerfiles/${OSVer}/Dockerfile-DOC
-    volumes:
-       - ./dci-doc:/opt/dci-doc/
-app:
-    build: .
-    dockerfile: dockerfiles/${OSVer}/Dockerfile-APP
-    ports:
-        - "8000:8000"
-        - "35729:35729"
-    volumes:
-        - ./dci-ui:/opt/dci-ui
-        # Mount Docker's volume copy into the container to make node_modules
-        # visible.
-        - /opt/dci-ui/node_modules
-        - /tmp/.X11-unix:/tmp/.X11-unix
-    links:
-        - api
+      - "9200:9200"
+      - "9300:9300"
+  api:
+    build:
+      context: .
+      dockerfile: dockerfiles/${OSVer}/Dockerfile-API
+    depends_on:
+      - db
+      - es
+      - worker
     environment:
-        - DISPLAY
-client:
-    build: .
-    dockerfile: dockerfiles/${OSVer}/Dockerfile-CLIENT
-    privileged: true
-    links:
-        - api
+      - DB_PORT=tcp://db:5432
+      - ES_PORT=tcp://es:9200
+      - WORKER_PORT=tcp://worker:5557
+    ports:
+      - "5000:5000"
     volumes:
-        - ./python-dciclient:/opt/python-dciclient/
-        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./dci-control-server:/opt/dci-control-server
+      - ./settings:/tmp/settings
+  tox:
+    build:
+      context: .
+      dockerfile: dockerfiles/${OSVer}/Dockerfile-TOX
+    depends_on:
+      - db
+      - es
     stdin_open: true
     tty: true
-worker:
-    build: .
-    dockerfile: dockerfiles/${OSVer}/Dockerfile-WORKER
-    privileged: true
     volumes:
-        - ./dci-control-server:/opt/dci-control-server
-        - ./settings:/tmp/settings
-        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./dci-control-server:/opt/dci/
+      - ./python-dciclient:/opt/dci-client/
+      - ./settings:/tmp/settings
+  doc:
+    build:
+      context: .
+      dockerfile: dockerfiles/${OSVer}/Dockerfile-DOC
+    volumes:
+      - ./dci-doc:/opt/dci-doc/
+  app:
+    build:
+      context: .
+      dockerfile: dockerfiles/${OSVer}/Dockerfile-APP
+    depends_on:
+      - api
+    environment:
+      - DISPLAY
+    ports:
+      - "8000:8000"
+      - "35729:35729"
+    volumes:
+      - ./dci-ui:/opt/dci-ui
+      # Mount Docker's volume copy into the container to make node_modules
+      # visible.
+      - /opt/dci-ui/node_modules
+      - /tmp/.X11-unix:/tmp/.X11-unix
+  client:
+    build:
+      context: .
+      dockerfile: dockerfiles/${OSVer}/Dockerfile-CLIENT
+    depends_on:
+      - api
+    privileged: true
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./python-dciclient:/opt/python-dciclient/
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  worker:
+    build:
+      context: .
+      dockerfile: dockerfiles/${OSVer}/Dockerfile-WORKER
+    privileged: true
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./dci-control-server:/opt/dci-control-server
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     stdin_open: true
     tty: true
