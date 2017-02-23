@@ -6,6 +6,7 @@ MAINTAINER DCI Team <distributed-ci@redhat.com>
 ENV container docker
 
 RUN dnf -y --setopt=tsflags=nodocs install \
+    https://repos.fedorapeople.org/repos/openstack/openstack-ocata/rdo-release-ocata-2.noarch.rpm \
     https://packages.distributed-ci.io/dci-release.fc25.noarch.rpm && \
     dnf clean all
 

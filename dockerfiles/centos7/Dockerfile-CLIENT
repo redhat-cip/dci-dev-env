@@ -23,7 +23,7 @@ EXPOSE 22
 
 RUN yum -y --setopt=tsflags=nodocs install epel-release \
     https://packages.distributed-ci.io/dci-release.el7.noarch.rpm \
-    centos-release-openstack-mitaka && \
+    centos-release-openstack-ocata && \
     yum clean all
 RUN yum -y --setopt=tsflags=nodocs install python2-dciclient && \
     yum clean all
