@@ -5,7 +5,7 @@ MAINTAINER DCI Team <distributed-ci@redhat.com>
 
 RUN yum -y --setopt=tsflags=nodocs install epel-release \
     https://packages.distributed-ci.io/dci-release.el7.noarch.rpm \
-    centos-release-openstack-mitaka && \
+    centos-release-openstack-ocata && \
     yum -y --setopt=tsflags=nodocs install dci-api && \
     yum clean all
 

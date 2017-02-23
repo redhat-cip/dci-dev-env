@@ -18,7 +18,7 @@ VOLUME [ "/sys/fs/cgroup" ]
 
 RUN yum -y --setopt=tsflags=nodocs install openssh-server epel-release \
     https://packages.distributed-ci.io/dci-release.el7.noarch.rpm \
-    centos-release-openstack-mitaka && \
+    centos-release-openstack-ocata && \
     yum -y --setopt=tsflags=nodocs install python2-dciclient && \
     yum clean all
 

@@ -17,6 +17,7 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 VOLUME [ "/sys/fs/cgroup" ]
 
 RUN dnf -y --setopt=tsflags=nodocs install openssh-server \
+    https://repos.fedorapeople.org/repos/openstack/openstack-ocata/rdo-release-ocata-2.noarch.rpm \
     https://packages.distributed-ci.io/dci-release.fc25.noarch.rpm && \
     dnf -y --setopt=tsflags=nodocs install python2-dciclient && \
     dnf clean all
