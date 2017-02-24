@@ -4,13 +4,11 @@ LABEL name="DCI TOX" version="0.0.1"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
 RUN yum install -y epel-release && yum clean all
-RUN yum install -y gcc libpqxx-devel libffi-devel \
-    python-devel git python3-devel redhat-rpm-config \
-    python-lxml libxslt-devel python-pip python34-setuptools && \
+RUN yum install -y gcc libpqxx-devel libffi-devel openssl-devel \
+    python-devel git python34-devel redhat-rpm-config postgresql-server \
+    python-lxml libxslt-devel python-pip python34-pip && \
     yum clean all
 RUN pip install tox
-
-RUN easy_install-3.4 -U pip
 
 ENV LANG "en_US.UTF-8"
 ENV DISABLE_DB_START 1
