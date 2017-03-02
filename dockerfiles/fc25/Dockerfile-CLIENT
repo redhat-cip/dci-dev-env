@@ -16,15 +16,15 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-RUN dnf -y install openssh-server; dnf clean all; systemctl enable sshd.service
+RUN dnf -y --setopt=tsflags=nodocs install openssh-server \
+    https://packages.distributed-ci.io/dci-release.fc25.noarch.rpm && \
+    dnf -y --setopt=tsflags=nodocs install python2-dciclient && \
+    dnf clean all
+
 RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
 
-EXPOSE 22
+RUN systemctl enable sshd
 
-RUN dnf -y --setopt=tsflags=nodocs install \
-    https://packages.distributed-ci.io/dci-release.fc25.noarch.rpm && \
-    dnf clean all
-RUN dnf -y --setopt=tsflags=nodocs install python2-dciclient && \
-    dnf clean all
+EXPOSE 22
 
 CMD ["/usr/sbin/init"]

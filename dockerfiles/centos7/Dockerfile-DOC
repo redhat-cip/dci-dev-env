@@ -6,8 +6,7 @@ MAINTAINER DCI Team <distributed-ci@redhat.com>
 RUN yum -y --setopt=tsflags=nodocs install epel-release \
     https://packages.distributed-ci.io/dci-release.el7.noarch.rpm \
     centos-release-openstack-mitaka && \
-    yum clean all
-RUN yum -y --setopt=tsflags=nodocs install make python2-dciclient \
+    yum -y --setopt=tsflags=nodocs install make python2-dciclient \
     python-sphinxcontrib-httpdomain python-sphinx_rtd_theme python-sphinx && \
     yum clean all
 

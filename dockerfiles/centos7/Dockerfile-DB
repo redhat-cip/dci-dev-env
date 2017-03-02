@@ -3,8 +3,8 @@ FROM centos:7
 LABEL name="DCI DB" version="0.0.2"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
-RUN yum install -y centos-release-scl && yum clean all
-RUN yum install -y rh-postgresql94-postgresql \
+RUN yum install -y centos-release-scl && \
+    yum install -y rh-postgresql94-postgresql \
     rh-postgresql94-postgresql-server && \
     yum clean all
 

@@ -7,6 +7,7 @@ ENV container docker
 
 RUN dnf -y --setopt=tsflags=nodocs install \
     https://packages.distributed-ci.io/dci-release.fc25.noarch.rpm && \
+    dnf -y --setopt=tsflags=nodocs install postfix dci-api openssh-server && \
     dnf clean all
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
@@ -20,11 +21,9 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-RUN dnf -y --setopt=tsflags=nodocs install openssh-server; dnf clean all; systemctl enable sshd.service
 RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
 
-RUN dnf -y --setopt=tsflags=nodocs install postfix dci-api
-RUN systemctl enable postfix dci-worker
+RUN systemctl enable sshd postfix dci-worker
 
 EXPOSE 22 5557
 

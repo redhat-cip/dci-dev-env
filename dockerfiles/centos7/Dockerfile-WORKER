@@ -8,6 +8,7 @@ ENV container docker
 RUN yum -y --setopt=tsflags=nodocs install epel-release \
     https://packages.distributed-ci.io/dci-release.el7.noarch.rpm \
     centos-release-openstack-mitaka && \
+    yum -y --setopt=tsflags=nodocs install postfix dci-api openssh-server && \
     yum clean all
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
@@ -21,11 +22,9 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-RUN yum -y --setopt=tsflags=nodocs install openssh-server; yum clean all; systemctl enable sshd.service
 RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
 
-RUN yum -y --setopt=tsflags=nodocs install postfix dci-api
-RUN systemctl enable postfix dci-worker
+RUN systemctl enable postfix dci-worker sshd
 
 EXPOSE 22 5557
 

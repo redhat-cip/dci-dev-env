@@ -4,8 +4,7 @@ LABEL name="DCI DB WATCHER" version="0.0.2"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
 RUN yum install -y epel-release && \
-    yum clean all
-RUN yum install -y graphviz \
+    yum install -y graphviz \
     https://kojipkgs.fedoraproject.org//packages/postgresql_autodoc/1.41/6.fc24/noarch/postgresql_autodoc-1.41-6.fc24.noarch.rpm && \
     yum clean all
 

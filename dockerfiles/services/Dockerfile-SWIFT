@@ -16,16 +16,14 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-
-RUN yum -y install openssh-server; yum clean all; systemctl enable sshd.service
-RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
-
 RUN yum install -y centos-release-openstack-mitaka && \
-    yum clean all
-RUN yum install -y openstack-swift openstack-swift-proxy memcached \
+    yum install -y openstack-swift openstack-swift-proxy memcached \
     openstack-swift-object openstack-swift-container openstack-swift-account \
     openstack-keystone mariadb-server httpd mod_wsgi python-swiftclient \
-    python-openstackclient && yum clean all
+    python-openstackclient openssh-server && \
+    yum clean all
+
+RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
 
 ADD dockerfiles/services/swift/bootstrap.sh /sbin/bootstrap.sh
 ADD dockerfiles/services/swift/systemd-bootstrap /etc/systemd/system/systemd-bootstrap.service
@@ -38,7 +36,7 @@ ADD dockerfiles/services/swift/keystone.conf /etc/keystone/
 
 RUN chmod +x /sbin/bootstrap.sh
 
-RUN systemctl enable systemd-bootstrap.service
+RUN systemctl enable sshd systemd-bootstrap
 
 EXPOSE 5000 8080 35357
 
