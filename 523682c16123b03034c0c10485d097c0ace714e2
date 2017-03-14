@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_0e5eefe9",
+        "filename": "utils/update_dev_env.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2017-03-14T17:39:32Z",
+      "side": 1,
+      "message": "set -eux",
+      "revId": "523682c16123b03034c0c10485d097c0ace714e2",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_ee5193d9",
+        "filename": "utils/update_dev_env.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2017-03-14T17:39:32Z",
+      "side": 1,
+      "message": "Could you add that here:\n[ -d $submodule ] || git clone http://github.com/redhat-cip/${submodule}",
+      "revId": "523682c16123b03034c0c10485d097c0ace714e2",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
