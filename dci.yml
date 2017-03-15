@@ -48,6 +48,9 @@ services:
     depends_on:
       - db
       - es
+    environment:
+      - DB_PORT=tcp://db:5432
+      - ES_PORT=tcp://es:9200
     stdin_open: true
     tty: true
     volumes:
