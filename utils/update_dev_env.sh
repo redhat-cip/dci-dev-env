@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
-set -eux
-
 if [ ! -f dci.yml ]; then
     echo "You seems to be in the wrong directory"
     echo "Execute this script from the root of dci-dev-env with ./utils/update_dev_env.sh"
     exit 1
 fi
+
+read -p "This script will reset hard all your repositories, rebuild containers, clean docker volumes. Are you sure you want to continue? (y/N)" -n 1 -r
+echo
+
+set -eux
 
 function clean_repository {
     git pull origin master
@@ -14,8 +17,6 @@ function clean_repository {
     git reset --hard origin/master
 }
 
-read -p "This script will reset hard all your repositories, rebuild containers, clean docker volumes. Are you sure you want to continue? (y/N)" -n 1 -r
-echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
