@@ -12,7 +12,7 @@ echo
 set -eux
 
 function clean_repository {
-    git pull origin master
+    git fetch origin master
     git checkout master
     git reset --hard origin/master
 }
