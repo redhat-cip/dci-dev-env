@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_c20bc329",
+        "filename": "utils/load_prod_dump.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2017-03-21T20:47:30Z",
+      "side": 1,
+      "message": "To increase clarity, you should save $1 in a variable.",
+      "revId": "c993f04d0e8e2e50ae93634441f155963ee8294f",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
