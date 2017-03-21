@@ -8,6 +8,8 @@ mysqladmin create keystone
 mysql -e "GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY 'keystone';"
 mysql -e "GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' IDENTIFIED BY 'keystone';"
 
+touch /var/log/keystone/keystone.log
+chown keystone:keystone /var/log/keystone/keystone.log
 keystone-manage db_sync
 
 systemctl enable httpd
