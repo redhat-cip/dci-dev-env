@@ -1,0 +1,9 @@
+Code-Review+2: Dimitri Savineau <dsavinea@redhat.com>
+Code-Review+2: Cédric Lecomte <ced.lecomte@gmail.com>
+Workflow+1: Cédric Lecomte <ced.lecomte@gmail.com>
+Verified+2: Jenkins CI <jenkins@softwarefactory-project.io>
+Submitted-by: Jenkins CI <jenkins@softwarefactory-project.io>
+Submitted-at: Sat, 01 Apr 2017 02:44:08 +0000
+Reviewed-on: https://softwarefactory-project.io/r/6667
+Project: dci-dev-env
+Branch: refs/heads/master
