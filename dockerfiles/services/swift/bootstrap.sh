@@ -46,6 +46,8 @@ openstack role add --project test --user test SwiftOperator $AUTH
 openstack service create --name swift --description "OpenStack Object Storage" object-store $AUTH
 openstack endpoint create --region RegionOne object-store --publicurl http://$IP:8080/v1/AUTH_%\(tenant_id\)s --internalurl http://$IP:8080/v1/AUTH_%\(tenant_id\)s --adminurl http://$IP:8080/v1 $AUTH
 
+# Remove ipv6 binding
+sed -i -e "s/,::1//" /etc/sysconfig/memcached
 
 systemctl enable openstack-swift-account openstack-swift-container openstack-swift-object openstack-swift-proxy memcached
 systemctl start openstack-swift-account openstack-swift-container openstack-swift-object openstack-swift-proxy memcached
