@@ -11,6 +11,7 @@ mysql -e "GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' IDENTIFIE
 touch /var/log/keystone/keystone.log
 chown keystone:keystone /var/log/keystone/keystone.log
 keystone-manage db_sync
+keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
 
 systemctl enable httpd
 systemctl start httpd
