@@ -19,4 +19,7 @@ ENV DCI_SETTINGS_FILE /tmp/settings/settings_test.py
 
 WORKDIR /opt
 
+COPY entrypoints/tox.sh /entrypoint-tox.sh
+ENTRYPOINT ["/entrypoint-tox.sh"]
+
 CMD ["/bin/bash"]
