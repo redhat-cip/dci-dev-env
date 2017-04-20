@@ -19,4 +19,8 @@ ENV DCI_SETTINGS_FILE /tmp/settings/settings_test.py
 
 WORKDIR /opt
 
+RUN sed -i \
+    's#git+http://softwarefactory-project.io/r/dci-control-server#-e /opt/dci#g' \
+    dci-client/test-requirements.txt
+
 CMD ["/bin/bash"]
