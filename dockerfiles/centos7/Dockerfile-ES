@@ -12,7 +12,7 @@ baseurl=http://packages.elastic.co/elasticsearch/2.x/centos\n\
 gpgcheck=1\n\
 gpgkey=http://packages.elastic.co/GPG-KEY-elasticsearch\n\
 enabled=1" > /etc/yum.repos.d/elasticsearch.repo
-RUN yum install -y elasticsearch-2.3.3 java-1.8.0-openjdk hostname && \
+RUN yum install -y elasticsearch java-1.8.0-openjdk hostname && \
     yum clean all
 
 RUN mkdir -p ${ES_HOME}/config ${ES_HOME}/logs ${ES_HOME}/data
