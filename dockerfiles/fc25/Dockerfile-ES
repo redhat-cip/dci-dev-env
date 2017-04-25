@@ -3,16 +3,17 @@ FROM fedora:25
 LABEL name="DCI ES" version="0.0.1"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
-RUN dnf install -y elasticsearch jackson-databind apache-commons-codec hostname && \
+RUN rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+RUN echo -e "[elasticsearch-2.x]\n\
+name=Elasticsearch repository for 2.x packages\n\
+baseurl=http://packages.elastic.co/elasticsearch/2.x/centos\n\
+gpgcheck=1\n\
+gpgkey=http://packages.elastic.co/GPG-KEY-elasticsearch\n\
+enabled=1" > /etc/yum.repos.d/elasticsearch.repo
+RUN dnf install -y elasticsearch java-1.8.0-openjdk hostname && \
     dnf clean all
 
 RUN echo "network.host: 0.0.0.0" >> /etc/elasticsearch/elasticsearch.yml
-
-# Adding missing deps in Fedora 25
-RUN sed -i '70iBASE_JARS+=" apache-commons-codec jackson-databind"' /usr/libexec/elasticsearch
-
-# Fix regression https://bugzilla.redhat.com/show_bug.cgi?id=1351504
-RUN dnf -y install https://kojipkgs.fedoraproject.org//packages/hppc/0.6.1/3.fc23/noarch/hppc-0.6.1-3.fc23.noarch.rpm
 
 EXPOSE 9200 9300
 
