@@ -1,6 +1,6 @@
 FROM centos:7
 
-LABEL name="DCI WORKER" version="0.0.1"
+LABEL name="DCI WORKER" version="0.0.2"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
 ENV container docker
@@ -8,7 +8,8 @@ ENV container docker
 RUN yum -y --setopt=tsflags=nodocs install epel-release \
     https://packages.distributed-ci.io/dci-release.el7.noarch.rpm \
     centos-release-openstack-ocata && \
-    yum -y --setopt=tsflags=nodocs install postfix dci-api openssh-server && \
+    yum -y --setopt=tsflags=nodocs install postfix dci-api openssh-server \
+    python-dciclient cronie && \
     yum clean all
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
@@ -22,9 +23,12 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 VOLUME [ "/sys/fs/cgroup" ]
 
+RUN echo "* * * * * DCI_LOGIN=admin DCI_PASSWORD=admin DCI_CS_URL=http://api:5000 /opt/dci-control-server/bin/dci-esindex > /dev/null" > /var/spool/cron/root
+RUN echo -e "ES_HOST='es'\nES_PORT=9200" > /etc/dci-api/settings.py
+
 RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
 
-RUN systemctl enable postfix dci-worker sshd
+RUN systemctl enable postfix dci-worker sshd crond
 
 EXPOSE 22 5557
 
