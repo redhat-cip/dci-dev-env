@@ -6,17 +6,6 @@ services:
       dockerfile: dockerfiles/${OSVer}/Dockerfile-DB
     ports:
       - "5432:5432"
-  dbwatcher:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-DB-watcher
-    depends_on:
-      - api
-      - db
-    environment:
-      - DB_PORT_5432_TCP_ADDR=db
-    volumes:
-      - .:/mnt/
   es:
     build:
       context: .
@@ -32,10 +21,12 @@ services:
       - db
       - es
       - worker
+      - swift
     environment:
       - DB_PORT=tcp://db:5432
       - ES_PORT=tcp://es:9200
       - WORKER_PORT=tcp://worker:5557
+      - SWIFT_PORT=tcp://swift:8000
     ports:
       - "5000:5000"
     volumes:
@@ -57,12 +48,6 @@ services:
       - ./dci-control-server:/opt/dci/
       - ./python-dciclient:/opt/dci-client/
       - ./settings:/tmp/settings
-  doc:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-DOC
-    volumes:
-      - ./dci-doc:/opt/dci-doc/
   app:
     build:
       context: .
@@ -101,4 +86,18 @@ services:
     tty: true
     volumes:
       - ./dci-control-server:/opt/dci-control-server
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  swift:
+    build:
+      context: .
+      dockerfile: dockerfiles/services/Dockerfile-SWIFT
+    command: /sbin/init
+    privileged: true
+    ports:
+      - "5001:5000"
+      - "8080:8080"
+      - "35357:35357"
+    stdin_open: true
+    tty: true
+    volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
