@@ -1,0 +1,19 @@
+version: '2'
+services:
+  dbwatcher:
+    build:
+      context: .
+      dockerfile: dockerfiles/${OSVer}/Dockerfile-DB-watcher
+    depends_on:
+      - api
+      - db
+    environment:
+      - DB_PORT_5432_TCP_ADDR=db
+    volumes:
+      - .:/mnt/
+  doc:
+    build:
+      context: .
+      dockerfile: dockerfiles/${OSVer}/Dockerfile-DOC
+    volumes:
+      - ./dci-doc:/opt/dci-doc/
