@@ -1,8 +1,8 @@
-#!/bin/bash -e
+#!/bin/bash
 
 if [ ! -f dci.yml ]; then
     echo "You seems to be in the wrong directory"
-    echo "Execute this script from the root of dci-dev-env with ./utils/boostrap.sh"
+    echo "Execute this script from the root of dci-dev-env with ./utils/${0##*/}"
     exit 1
 fi
 
