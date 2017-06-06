@@ -1,11 +1,9 @@
-Distributed CI environment for development
-==========================================
+# Distributed CI environment for development
 
 This repository is used to store the configuration of docker
 compose in order to provide an environment for development.
 
-Getting started
----------------
+## Getting started
 
 For running dci in docker compose follow those steps:
 
@@ -14,7 +12,7 @@ For running dci in docker compose follow those steps:
  * install docker-compose and git-review if you want to contribute,
    you can install those requirements by simply typing:
    `pip install -U -r requirements.txt`
- * launch the environment `docker-compose -f dci.yml -f dci-db_init.yml -f dci-swift.yml`
+ * launch the environment `docker-compose -f dci.yml up -d`
 
 Now the environment is up and running, you can attach containers in order to
 run parts of the applications:
@@ -25,8 +23,7 @@ e.g.
 
     docker exec -it dcidevenv_api_1 bash
 
-Containers
-----------
+## Containers
 
 Here is the list of containers for running the application:
 
@@ -46,16 +43,14 @@ Here is the list of containers for running the application:
  * **dci_client**: contains the python-dciclient.
 
 
-API container
--------------
+### API container
 
 You can initialize or reinitialize the database by running db_provisioning script:
 
     docker exec -it dcidevenv_api_1 bash
     ./scripts/db_provisioning.py
 
-TOX container
--------------
+### TOX container
 
 This container is a helper for launching tests on the client and/or the api,
 just navigate to the correct project directory and run the tox command in order to launch the tests.
@@ -64,16 +59,7 @@ just navigate to the correct project directory and run the tox command in order 
     cd dci
     tox
 
-DBwatcher container
--------------------
-
-This container is ran, generates a schema of the db in png format, then stopped.
-If you want to generate the database schema again just run the container:
-
-    docker-compose -f dci.yml run dbwatcher
-
-CLIENT container
-----------------
+### CLIENT container
 
 This container allows one to run the python-dciclient within it.
 
@@ -102,3 +88,19 @@ export DCI_CS_URL=http://$API_CONTAINER_IP:5000
 Note: The $API_CONTAINER_IP can be obtained by running
 
     docker inspect --format '{{ .NetworkSettings.IPAddress }}' <container-id>
+
+## Extra containers
+
+### Doc container
+
+This container generates dci documentation.
+If you want to generate the dci documentation run the container:
+
+    docker-compose -f dci.yml -f dci-extra.yml run doc
+
+### DBwatcher container
+
+This container generates a schema of the db.
+If you want to generate the database schema run the container:
+
+    docker-compose -f dci.yml -f dci-extra.yml run dbwatcher
