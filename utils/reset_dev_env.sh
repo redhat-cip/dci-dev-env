@@ -40,7 +40,7 @@ do
 	clean_repository $submodule &
 done
 
-dc="docker-compose -f dci.yml -f dci-db_init.yml -f dci-swift.yml"
+dc="docker-compose -f dci.yml"
 ${dc} pull
 ${dc} build
 ${dc} down -v
