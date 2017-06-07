@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_325863fa",
+        "filename": "dockerfiles/centos7/Dockerfile-API",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2017-06-07T16:56:55Z",
+      "side": 1,
+      "message": "That doesn\u0027t work on my setup. Only the api is running but there\u0027s no entries in the DB coming from the db_provisionning script",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 66
+      },
+      "revId": "3a5b806abd3440022eeab9fd127c66052cc37d3e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
