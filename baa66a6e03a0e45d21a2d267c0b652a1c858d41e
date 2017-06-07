@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_2f26c068",
+        "filename": "utils/check-status.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 28
+      },
+      "writtenOn": "2017-06-07T08:08:41Z",
+      "side": 1,
+      "message": "pushd",
+      "range": {
+        "startLine": 8,
+        "startChar": 4,
+        "endLine": 8,
+        "endChar": 6
+      },
+      "revId": "baa66a6e03a0e45d21a2d267c0b652a1c858d41e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_0f2bfc31",
+        "filename": "utils/check-status.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 28
+      },
+      "writtenOn": "2017-06-07T08:08:41Z",
+      "side": 1,
+      "message": "popd",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "baa66a6e03a0e45d21a2d267c0b652a1c858d41e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_4f0a24d4",
+        "filename": "utils/check-status.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 28
+      },
+      "writtenOn": "2017-06-07T08:08:41Z",
+      "side": 1,
+      "message": "tab instead of spaces ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "baa66a6e03a0e45d21a2d267c0b652a1c858d41e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_2f0fe0e2",
+        "filename": "utils/check-status.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 28
+      },
+      "writtenOn": "2017-06-07T08:08:41Z",
+      "side": 1,
+      "message": "3 spaces only ?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 3
+      },
+      "revId": "baa66a6e03a0e45d21a2d267c0b652a1c858d41e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_6f2cc84a",
+        "filename": "utils/reset_dev_env.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 28
+      },
+      "writtenOn": "2017-06-07T08:08:41Z",
+      "side": 1,
+      "message": "pushd",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "baa66a6e03a0e45d21a2d267c0b652a1c858d41e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_4f3104a2",
+        "filename": "utils/reset_dev_env.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 28
+      },
+      "writtenOn": "2017-06-07T08:08:41Z",
+      "side": 1,
+      "message": "popd",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "baa66a6e03a0e45d21a2d267c0b652a1c858d41e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_0f141cf3",
+        "filename": "utils/reset_dev_env.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 28
+      },
+      "writtenOn": "2017-06-07T08:08:41Z",
+      "side": 1,
+      "message": "tab instead of spaces ?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "baa66a6e03a0e45d21a2d267c0b652a1c858d41e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
