@@ -22,6 +22,30 @@
       "revId": "3a5b806abd3440022eeab9fd127c66052cc37d3e",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_0d81c44a",
+        "filename": "dockerfiles/centos7/Dockerfile-API",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 405
+      },
+      "writtenOn": "2017-06-08T05:49:03Z",
+      "side": 1,
+      "message": "This is the expected behaviour,\nI added the minimal (-m) option in the db_provionning.py script.\n\nDo you want me to keep the old behaviour?",
+      "parentUuid": "baa041b7_325863fa",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 66
+      },
+      "revId": "3a5b806abd3440022eeab9fd127c66052cc37d3e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
