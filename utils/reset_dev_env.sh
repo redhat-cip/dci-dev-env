@@ -34,13 +34,13 @@ function clean_repository {
     popd
 }
 
-submodules="dci-control-server dci-doc dci-ui python-dciclient"
-for submodule in ${submodules}
+projects="dci-control-server dci-doc dci-ui python-dciclient"
+for project in ${projects}
 do
     clean_repository $submodule &
 done
 
-dc="docker-compose -f dci.yml -f dci-db_init.yml -f dci-swift.yml"
+dc="docker-compose -f dci.yml"
 ${dc} pull
 ${dc} build
 ${dc} down -v
