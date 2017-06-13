@@ -4,7 +4,7 @@ YELLOW='\e[0;33m'
 NOCOLOR='\033[0m'
 
 
-function check {
+function health_checkup {
     pushd $1
     git fetch origin
     if output=$(git status --porcelain) && [[ -n "$output" ]]; then
@@ -16,10 +16,10 @@ function check {
 
 echo "health checkup"
 
-submodules="dci-control-server dci-doc dci-ui python-dciclient"
-for submodule in ${submodules}
+projects="dci-control-server dci-doc dci-ui python-dciclient"
+for project in "${projects}"
 do
-    check $submodule &
+    health_checkup $project &
 done
 
 FAIL=0
