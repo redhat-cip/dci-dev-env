@@ -37,7 +37,7 @@ function clean_repository {
 projects="dci-control-server dci-doc dci-ui python-dciclient"
 for project in ${projects}
 do
-    clean_repository $submodule &
+    clean_repository $project &
 done
 
 dc="docker-compose -f dci.yml"
