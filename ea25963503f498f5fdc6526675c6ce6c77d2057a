@@ -1,0 +1,8 @@
+Code-Review+2: Dimitri Savineau <dsavinea@redhat.com>
+Workflow+1: Guillaume Vincent <gvincent@redhat.com>
+Verified+2: Jenkins CI <jenkins@softwarefactory-project.io>
+Submitted-by: Jenkins CI <jenkins@softwarefactory-project.io>
+Submitted-at: Thu, 15 Jun 2017 05:31:15 +0000
+Reviewed-on: https://softwarefactory-project.io/r/8514
+Project: dci-dev-env
+Branch: refs/heads/master
