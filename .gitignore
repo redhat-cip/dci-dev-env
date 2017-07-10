@@ -2,6 +2,7 @@
 dci-ci-jenkins-slave
 dci-control-server
 dci-infra
+dci-packaging
 python-dciclient
 dci-ui
 dci-doc
