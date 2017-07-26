@@ -1,0 +1,13 @@
+FROM fedora:26
+
+LABEL name="DCI DB WATCHER" version="0.0.2"
+MAINTAINER DCI Team <distributed-ci@redhat.com>
+
+RUN dnf install -y postgresql_autodoc graphviz && \
+    dnf clean all
+
+WORKDIR /mnt/
+
+CMD postgresql_autodoc -u dci -d dci --password=dci -h $DB_PORT_5432_TCP_ADDR -t dot && \
+    dot dci.dot -Tpng > dci.png && \
+    rm -f dci.dot
