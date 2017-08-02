@@ -3,6 +3,8 @@
 This repository is used to store the configuration of docker
 compose in order to provide an environment for development.
 
+TEST
+
 ## Getting started
 
 For running dci in docker compose follow those steps:
