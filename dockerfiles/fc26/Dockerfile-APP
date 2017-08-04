@@ -1,6 +1,6 @@
 FROM fedora:26
 
-LABEL name="DCI APP" version="0.0.1"
+LABEL name="DCI APP" version="0.0.2"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
 RUN echo -e "[google-chrome]\n\
@@ -12,25 +12,15 @@ showdupesfromrepos=1\n\
 gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub\n" > \
     /etc/yum.repos.d/google-chrome.repo
 
-
-RUN dnf install -y nodejs npm tar bzip2 make freetype fontconfig unzip \
-    google-chrome-stable libexif git gcc-c++ && \
+RUN dnf install -y nodejs npm google-chrome-stable liberation-mono-fonts && \
     dnf clean all
-
-WORKDIR /tmp
-RUN curl -O http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip
-RUN unzip chromedriver_linux64.zip
-RUN cp chromedriver /usr/local/bin
-RUN dbus-uuidgen > /var/lib/dbus/machine-id
 
 RUN mkdir -p /opt/dci-ui
 WORKDIR /opt/dci-ui
 
 ADD dci-ui/package.json /opt/dci-ui/
-RUN npm install -g gulp &&\
-    npm install &&\
-    npm cache clean
+RUN npm install
 
-EXPOSE 8000 35729
+EXPOSE 8000
 
-CMD ["gulp", "serve:dev"]
+CMD ["npm", "run", "dev"]
