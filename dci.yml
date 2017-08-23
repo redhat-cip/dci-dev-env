@@ -22,6 +22,7 @@ services:
       - es
       - worker
       - swift
+      - keycloak
     environment:
       - DB_PORT=tcp://db:5432
       - ES_PORT=tcp://es:9200
@@ -101,3 +102,12 @@ services:
     tty: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  keycloak:
+    build:
+      context: .
+      dockerfile: dockerfiles/services/Dockerfile-KEYCLOAK
+      args:
+        ADMIN: dci
+        PASSWORD: dci
+    ports:
+      - "8180:8180"
