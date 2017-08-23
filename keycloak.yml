@@ -1,0 +1,8 @@
+version: '2'
+services:
+  keycloak:
+    build:
+      context: .
+      dockerfile: dockerfiles/services/Dockerfile-KEYCLOAK
+    ports:
+      - "8180:8180"
