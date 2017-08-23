@@ -16,6 +16,7 @@ ENV DCI_SETTINGS_FILE /tmp/settings/settings.py
 
 EXPOSE 5000
 
+COPY utils/keycloak-provision.py /opt/keycloak-provision.py
 COPY entrypoints/api.sh /entrypoint-api.sh
 ENTRYPOINT ["/entrypoint-api.sh"]
 
