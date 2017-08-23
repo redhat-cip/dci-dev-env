@@ -19,4 +19,4 @@ EXPOSE 5000
 COPY entrypoints/api.sh /entrypoint-api.sh
 ENTRYPOINT ["/entrypoint-api.sh"]
 
-CMD ["python", "/opt/dci-control-server/scripts/runtestserver.py"]
+CMD ["python", "/opt/dci-control-server/bin/dci-runtestserver"]
