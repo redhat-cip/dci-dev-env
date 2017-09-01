@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dac4157f_fccf85b1",
+        "filename": "dci.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2017-09-01T10:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dac4157f_19036b11",
+      "revId": "bc7dfc96ff7ee3b1b225c91de9b7c0cef699b22d",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dac4157f_99165b54",
         "filename": "dockerfiles/services/Dockerfile-KEYCLOAK",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "dac4157f_dcd4c148",
+        "filename": "dockerfiles/services/Dockerfile-KEYCLOAK",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2017-09-01T10:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dac4157f_99165b54",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "bc7dfc96ff7ee3b1b225c91de9b7c0cef699b22d",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dac4157f_d91cd379",
         "filename": "dockerfiles/services/Dockerfile-KEYCLOAK",
         "patchSetId": 3
@@ -53,6 +95,24 @@
       "writtenOn": "2017-09-01T08:05:49Z",
       "side": 1,
       "message": "Why not:\n\n-Djboss.http.port\u003d8180\n\n?",
+      "revId": "bc7dfc96ff7ee3b1b225c91de9b7c0cef699b22d",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dac4157f_bcc90daf",
+        "filename": "dockerfiles/services/Dockerfile-KEYCLOAK",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2017-09-01T10:22:10Z",
+      "side": 1,
+      "message": "because it\u0027s not supported",
+      "parentUuid": "dac4157f_d91cd379",
       "revId": "bc7dfc96ff7ee3b1b225c91de9b7c0cef699b22d",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
