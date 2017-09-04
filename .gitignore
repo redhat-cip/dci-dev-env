@@ -4,6 +4,7 @@ dci-control-server
 dci-infra
 dci-packaging
 dci-ansible
+dci-specs
 python-dciclient
 dci-ui
 dci-doc
