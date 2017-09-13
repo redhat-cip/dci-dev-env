@@ -49,7 +49,7 @@ Here is the list of containers for running the application:
 You can initialize or reinitialize the database by running db_provisioning script:
 
     docker exec -it dcidevenv_api_1 bash
-    ./scripts/db_provisioning.py
+    ./bin/dci-dbprovisioning
 
 ### TOX container
 
