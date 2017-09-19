@@ -8,6 +8,7 @@ RUN yum -y --setopt=tsflags=nodocs install epel-release \
     centos-release-openstack-ocata && \
     yum-config-manager --save --setopt=centos-openstack-ocata.exclude=python-zmq,zeromq && \
     yum -y --setopt=tsflags=nodocs install dci-api && \
+    yum -y install python-jwt && \
     yum clean all
 
 WORKDIR /opt/dci-control-server

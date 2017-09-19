@@ -22,17 +22,17 @@ import time
 
 client_data = {
     "clientId": "dci-cs",
-    "rootUrl": "http://localhost:5000/rh-partner",
-    "adminUrl": "http://localhost:5000/rh-partner",
+    "rootUrl": "http://localhost:8000/rh-partner",
+    "adminUrl": "http://localhost:8000/rh-partner",
     "surrogateAuthRequired": False,
     "enabled": True,
     "clientAuthenticatorType": "client-secret",
     "secret": "**********",
     "redirectUris": [
-        "http://localhost:5000/rh-partner/*"
+        "http://localhost:8000/rh-partner/*"
     ],
     "webOrigins": [
-        "http://localhost:5000"
+        "http://localhost:8000"
     ],
     "notBefore": 0,
     "bearerOnly": False,
@@ -60,27 +60,12 @@ client_data = {
     "nodeReRegistrationTimeout": -1,
     "protocolMappers": [
         {
-            "name": "family name",
-            "protocol": "openid-connect",
-            "protocolMapper": "oidc-usermodel-property-mapper",
-            "consentRequired": True,
-            "consentText": "${familyName}",
-            "config": {
-                "userinfo.token.claim": "True",
-                "user.attribute": "lastName",
-                "id.token.claim": "True",
-                "access.token.claim": "True",
-                "claim.name": "family_name",
-                "jsonType.label": "String"
-            }
-        },
-        {
             "name": "role list",
             "protocol": "saml",
             "protocolMapper": "saml-role-list-mapper",
             "consentRequired": False,
             "config": {
-                "single": "False",
+                "single": "false",
                 "attribute.nameformat": "Basic",
                 "attribute.name": "Role"
             }
@@ -89,40 +74,14 @@ client_data = {
             "name": "username",
             "protocol": "openid-connect",
             "protocolMapper": "oidc-usermodel-property-mapper",
-            "consentRequired": True,
+            "consentRequired": False,
             "consentText": "${username}",
             "config": {
-                "userinfo.token.claim": "True",
+                "userinfo.token.claim": "true",
                 "user.attribute": "username",
-                "id.token.claim": "True",
-                "access.token.claim": "True",
-                "claim.name": "preferred_username",
-                "jsonType.label": "String"
-            }
-        },
-        {
-            "name": "full name",
-            "protocol": "openid-connect",
-            "protocolMapper": "oidc-full-name-mapper",
-            "consentRequired": True,
-            "consentText": "${fullName}",
-            "config": {
-                "id.token.claim": "True",
-                "access.token.claim": "True"
-            }
-        },
-        {
-            "name": "email",
-            "protocol": "openid-connect",
-            "protocolMapper": "oidc-usermodel-property-mapper",
-            "consentRequired": True,
-            "consentText": "${email}",
-            "config": {
-                "userinfo.token.claim": "True",
-                "user.attribute": "email",
-                "id.token.claim": "True",
-                "access.token.claim": "True",
-                "claim.name": "email",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "username",
                 "jsonType.label": "String"
             }
         },
@@ -133,13 +92,61 @@ client_data = {
             "consentRequired": True,
             "consentText": "${givenName}",
             "config": {
-                "userinfo.token.claim": "True",
+                "userinfo.token.claim": "true",
                 "user.attribute": "firstName",
-                "id.token.claim": "True",
-                "access.token.claim": "True",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
                 "claim.name": "given_name",
                 "jsonType.label": "String"
             }
+        },
+        {
+            "name": "family name",
+            "protocol": "openid-connect",
+            "protocolMapper": "oidc-usermodel-property-mapper",
+            "consentRequired": True,
+            "consentText": "${familyName}",
+            "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "lastName",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "family_name",
+                "jsonType.label": "String"
+            }
+        },
+        {
+            "name": "full name",
+            "protocol": "openid-connect",
+            "protocolMapper": "oidc-full-name-mapper",
+            "consentRequired": True,
+            "consentText": "${fullName}",
+            "config": {
+                "id.token.claim": "true",
+                "access.token.claim": "true"
+            }
+        },
+        {
+            "name": "email",
+            "protocol": "openid-connect",
+            "protocolMapper": "oidc-usermodel-property-mapper",
+            "consentRequired": True,
+            "consentText": "${email}",
+            "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "email",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "email",
+                "jsonType.label": "String"
+            }
+        },
+        {
+            "name": "docker-v2-allow-all-mapper",
+            "protocol": "docker-v2",
+            "protocolMapper": "docker-v2-allow-all-mapper",
+            "consentRequired": False,
+            "config": {}
         }
     ],
     "useTemplateConfig": False,
@@ -154,7 +161,7 @@ def get_access_token():
             'username': 'admin',
             'password': 'admin',
             'grant_type': 'password'}
-    for i in range(30):
+    while True:
         try:
             r = requests.post('http://keycloak:8180/auth/realms/master/protocol/openid-connect/token',
                               data=data)
@@ -163,10 +170,6 @@ def get_access_token():
                 return r.json()['access_token']
         except Exception:
             pass
-        time.sleep(1)
-    raise Exception('Error while requesting access token:\nstatus code %s\n'
-                    'error: %s' % (r.status_code, r.content))
-
 
 def create_client(access_token):
     """Create the dci-cs client in the master realm."""
