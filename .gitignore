@@ -5,6 +5,7 @@ dci-infra
 dci-packaging
 dci-ansible
 dci-specs
+dci-feeder-osp
 python-dciclient
 dci-ui
 dci-doc
