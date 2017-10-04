@@ -8,7 +8,7 @@ compose in order to provide an environment for development.
 For running dci in docker compose follow those steps:
 
  * clone this repository
- * bootstrap dci-dev-env, run `./utils/boostrap.sh`
+ * bootstrap dci-dev-env, run `./utils/bootstrap.sh`
  * install docker-compose and git-review if you want to contribute,
    you can install those requirements by simply typing:
    `pip install -U -r requirements.txt`
