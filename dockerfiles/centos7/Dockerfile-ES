@@ -24,6 +24,9 @@ RUN chown -R elasticsearch:elasticsearch ${ES_HOME}
 USER elasticsearch
 
 RUN echo "network.host: 0.0.0.0" > ${ES_HOME}/config/elasticsearch.yml
+RUN echo "processors: 1" >> ${ES_HOME}/config/elasticsearch.yml
+RUN echo "bootstrap.memory_lock: true" >> ${ES_HOME}/config/elasticsearch.yml
+ENV ES_HEAP_SIZE=768m
 
 EXPOSE 9200 9300
 
