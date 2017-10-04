@@ -33,6 +33,7 @@ services:
     volumes:
       - ./dci-control-server:/opt/dci-control-server
       - ./settings:/tmp/settings
+    restart: always
   tox:
     build:
       context: .
