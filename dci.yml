@@ -31,7 +31,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./dci-control-server:/opt/dci-control-server
+      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server
       - ./settings:/tmp/settings
   tox:
     build:
@@ -46,8 +46,8 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./dci-control-server:/opt/dci/
-      - ./python-dciclient:/opt/dci-client/
+      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci/
+      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/dci-client/
       - ./settings:/tmp/settings
   app:
     build:
@@ -61,7 +61,7 @@ services:
       - "8000:8000"
       - "35729:35729"
     volumes:
-      - ./dci-ui:/opt/dci-ui
+      - ${DCI_GIT_REPO_DIR}/dci-ui:/opt/dci-ui
       # Mount Docker's volume copy into the container to make node_modules
       # visible.
       - /opt/dci-ui/node_modules
@@ -76,7 +76,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./python-dciclient:/opt/python-dciclient/
+      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient/
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   worker:
     build:
@@ -86,7 +86,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./dci-control-server:/opt/dci-control-server
+      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   swift:
     build:
