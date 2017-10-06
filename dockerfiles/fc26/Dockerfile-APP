@@ -12,15 +12,14 @@ showdupesfromrepos=1\n\
 gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub\n" > \
     /etc/yum.repos.d/google-chrome.repo
 
-RUN dnf install -y nodejs npm google-chrome-stable liberation-mono-fonts && \
+RUN curl -o /etc/yum.repos.d/yarn.repo https://dl.yarnpkg.com/rpm/yarn.repo
+
+RUN dnf install -y nodejs npm google-chrome-stable liberation-mono-fonts yarn && \
     dnf clean all
 
 RUN mkdir -p /opt/dci-ui
 WORKDIR /opt/dci-ui
 
-ADD dci-ui/package.json /opt/dci-ui/
-RUN npm install
-
 EXPOSE 8000
 
-CMD ["npm", "run", "dev"]
+CMD ["bash", "-c", "yarn install && npm run dev"]

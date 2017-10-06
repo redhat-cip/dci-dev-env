@@ -18,16 +18,16 @@ baseurl=http://packages.distributed-ci.io/repos/extras/el/7/x86_64/\n\
 enabled=1\n\
 gpgcheck=0\n" > /etc/yum.repos.d/dci-extras.repo
 
+
+RUN curl -o /etc/yum.repos.d/yarn.repo https://dl.yarnpkg.com/rpm/yarn.repo
+
 RUN yum install -y epel-release && \
-    yum install -y http-parser nodejs npm google-chrome-stable liberation-mono-fonts && \
+    yum install -y http-parser nodejs npm google-chrome-stable liberation-mono-fonts yarn && \
     yum clean all
 
 RUN mkdir -p /opt/dci-ui
 WORKDIR /opt/dci-ui
 
-ADD dci-ui/package.json /opt/dci-ui/
-RUN npm install
-
 EXPOSE 8000
 
-CMD ["npm", "run", "dev"]
+CMD ["bash", "-c", "yarn install && npm run dev"]
