@@ -22,14 +22,14 @@ import time
 
 client_data = {
     "clientId": "dci-cs",
-    "rootUrl": "http://localhost:8000/rh-partner",
-    "adminUrl": "http://localhost:8000/rh-partner",
+    "rootUrl": "",
+    "adminUrl": "",
     "surrogateAuthRequired": False,
     "enabled": True,
     "clientAuthenticatorType": "client-secret",
     "secret": "**********",
     "redirectUris": [
-        "http://localhost:8000/rh-partner/*"
+        "http://localhost:8000/*"
     ],
     "webOrigins": [
         "http://localhost:8000"
@@ -170,6 +170,7 @@ def get_access_token():
                 return r.json()['access_token']
         except Exception:
             pass
+
 
 def create_client(access_token):
     """Create the dci-cs client in the master realm."""
