@@ -46,3 +46,5 @@ STORE_FILES_CONTAINER = 'test_files'
 STORE_COMPONENTS_CONTAINER = 'test_components'
 
 ZMQ_CONN = os.environ.get('WORKER_PORT')
+
+SSO_PUBLIC_KEY = os.getenv('SSO_PUBLIC_KEY')
