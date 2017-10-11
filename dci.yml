@@ -55,17 +55,10 @@ services:
       dockerfile: dockerfiles/${OSVer}/Dockerfile-APP
     depends_on:
       - api
-    environment:
-      - DISPLAY
     ports:
       - "8000:8000"
-      - "35729:35729"
     volumes:
       - ${DCI_GIT_REPO_DIR}/dci-ui:/opt/dci-ui
-      # Mount Docker's volume copy into the container to make node_modules
-      # visible.
-      - /opt/dci-ui/node_modules
-      - /tmp/.X11-unix:/tmp/.X11-unix
   client:
     build:
       context: .
