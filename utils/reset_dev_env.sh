@@ -34,14 +34,17 @@ function clean_repository {
     popd
 }
 
-projects="dci-control-server dci-doc dci-ui python-dciclient"
+dc="docker-compose -f dci.yml"
+${dc} down -v
+
+projects="dci-control-server dci-ui python-dciclient"
 for project in ${projects}
 do
     clean_repository $project &
 done
 
-dc="docker-compose -f dci.yml"
+wait
+
 ${dc} pull
 ${dc} build
-${dc} down -v
 ${dc} up -d

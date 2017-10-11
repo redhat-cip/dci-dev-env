@@ -16,7 +16,7 @@ function health_checkup {
 
 echo "health checkup"
 
-projects="dci-control-server dci-doc dci-ui python-dciclient"
+projects="dci-control-server dci-ui python-dciclient"
 for project in ${projects}
 do
     health_checkup $project &
