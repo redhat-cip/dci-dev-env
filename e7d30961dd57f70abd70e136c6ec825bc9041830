@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9abe1de1_9d1d1112",
+        "filename": "dci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2017-10-12T19:06:50Z",
+      "side": 1,
+      "message": "This is over-complicated IMO because we have write the node_modules directory during the image creation. Can we try another strategy here. If we do:\n\n  npm install -g\n\nThe npm module will be installed system-side. We will be closer to what we do with Python for instance and we avoid the node_modules directory.",
+      "revId": "e7d30961dd57f70abd70e136c6ec825bc9041830",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
