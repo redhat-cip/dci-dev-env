@@ -59,6 +59,7 @@ services:
       - "8000:8000"
     volumes:
       - ${DCI_GIT_REPO_DIR}/dci-ui:/opt/dci-ui
+      - /opt/dci-ui/node_modules
   client:
     build:
       context: .
