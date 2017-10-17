@@ -21,7 +21,7 @@ import requests
 import time
 
 client_data = {
-    "clientId": "dci-cs",
+    "clientId": "dci",
     "rootUrl": "",
     "adminUrl": "",
     "surrogateAuthRequired": False,
@@ -173,15 +173,15 @@ def get_access_token():
 
 
 def create_client(access_token):
-    """Create the dci-cs client in the master realm."""
+    """Create the dci client in the master realm."""
     r = requests.post('http://keycloak:8180/auth/admin/realms/dci-test/clients',
                       data=json.dumps(client_data),
                       headers={'Authorization': 'bearer %s' % access_token,
                                'Content-Type': 'application/json'})
     if r.status_code in (201, 409):
-        print('Keycloak client dci-cs created successfully.')
+        print('Keycloak client dci created successfully.')
     else:
-        raise Exception('Error while creating client dci-cs:\nstatus code %s\n'
+        raise Exception('Error while creating Keycloak client dci:\nstatus code %s\n'
                         'error: %s' % (r.status_code, r.content))
 
 
