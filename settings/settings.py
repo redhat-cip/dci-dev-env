@@ -45,6 +45,6 @@ STORE_CONTAINER = 'test_components'
 STORE_FILES_CONTAINER = 'test_files'
 STORE_COMPONENTS_CONTAINER = 'test_components'
 
-ZMQ_CONN = os.environ.get('WORKER_PORT')
+ZMQ_CONN = "tcp://127.0.0.1:5557"
 
 SSO_PUBLIC_KEY = os.getenv('SSO_PUBLIC_KEY')
