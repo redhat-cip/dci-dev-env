@@ -7,6 +7,7 @@ dci-ansible
 dci-specs
 dci-feeder-osp
 python-dciclient
+python-dciauth
 dci-ui
 dci-doc
 dci.png

@@ -20,13 +20,11 @@ services:
     depends_on:
       - db
       - es
-      - worker
       - swift
       - keycloak
     environment:
       - DB_PORT=tcp://db:5432
       - ES_PORT=tcp://es:9200
-      - WORKER_PORT=tcp://worker:5557
       - SWIFT_PORT=tcp://swift:8000
     ports:
       - "5000:5000"
@@ -71,16 +69,6 @@ services:
     tty: true
     volumes:
       - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient/
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  worker:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-WORKER
-    privileged: true
-    stdin_open: true
-    tty: true
-    volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   swift:
     build:
