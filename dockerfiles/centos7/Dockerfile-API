@@ -3,6 +3,10 @@ FROM centos:7
 LABEL name="DCI API" version="0.0.2"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
+RUN yum install -y centos-release-scl && \
+    yum install -y rh-postgresql94-postgresql \
+    yum clean all
+
 RUN yum -y --setopt=tsflags=nodocs install epel-release \
     https://packages.distributed-ci.io/dci-release.el7.noarch.rpm \
     centos-release-openstack-ocata && \

@@ -26,11 +26,13 @@ services:
       - DB_PORT=tcp://db:5432
       - ES_PORT=tcp://es:9200
       - SWIFT_PORT=tcp://swift:8000
+      - DUMP_FILE=${DUMP_FILE}
     ports:
       - "5000:5000"
     volumes:
       - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server
       - ./settings:/tmp/settings
+      - ./database-dumps:/tmp/database-dumps
   tox:
     build:
       context: .
