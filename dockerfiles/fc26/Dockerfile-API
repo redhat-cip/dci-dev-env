@@ -7,6 +7,7 @@ RUN dnf -y --setopt=tsflags=nodocs install \
     https://repos.fedorapeople.org/repos/openstack/openstack-ocata/rdo-release-ocata-2.noarch.rpm \
     https://packages.distributed-ci.io/dci-release.fc26.noarch.rpm && \
     dnf -y --setopt=tsflags=nodocs install dci-api && \
+    dnf -y install httpd mod_wsgi && \
     dnf clean all
 
 WORKDIR /opt/dci-control-server
@@ -16,7 +17,8 @@ ENV DCI_SETTINGS_FILE /tmp/settings/settings.py
 EXPOSE 5000
 
 COPY utils/keycloak-provision.py /opt/keycloak-provision.py
+COPY utils/dci_api_vhost.conf /etc/httpd/conf.d/dci_api.conf
 COPY entrypoints/api.sh /entrypoint-api.sh
 ENTRYPOINT ["/entrypoint-api.sh"]
 
-CMD ["python", "/opt/dci-control-server/bin/dci-runtestserver"]
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
