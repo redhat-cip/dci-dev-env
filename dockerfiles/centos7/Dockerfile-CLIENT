@@ -19,7 +19,7 @@ VOLUME [ "/sys/fs/cgroup" ]
 RUN yum -y --setopt=tsflags=nodocs install openssh-server epel-release \
     https://packages.distributed-ci.io/dci-release.el7.noarch.rpm \
     centos-release-openstack-ocata && \
-    yum -y --setopt=tsflags=nodocs install python2-dciclient && \
+    yum -y --setopt=tsflags=nodocs install python2-dciclient python2-dciauth && \
     yum clean all
 
 RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
