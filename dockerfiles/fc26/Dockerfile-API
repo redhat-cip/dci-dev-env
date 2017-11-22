@@ -6,7 +6,7 @@ MAINTAINER DCI Team <distributed-ci@redhat.com>
 RUN dnf -y --setopt=tsflags=nodocs install \
     https://repos.fedorapeople.org/repos/openstack/openstack-ocata/rdo-release-ocata-2.noarch.rpm \
     https://packages.distributed-ci.io/dci-release.fc26.noarch.rpm && \
-    dnf -y --setopt=tsflags=nodocs install dci-api && \
+    dnf -y --setopt=tsflags=nodocs install dci-api python2-dciauth && \
     dnf clean all
 
 WORKDIR /opt/dci-control-server
