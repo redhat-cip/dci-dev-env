@@ -11,5 +11,6 @@ fi
 
 [ -d dci-control-server ] || git clone https://softwarefactory-project.io/r/dci-control-server
 [ -d python-dciclient ] || git clone https://softwarefactory-project.io/r/python-dciclient
+[ -d python-dciauth ] || git clone https://softwarefactory-project.io/r/python-dciauth
 [ -d dci-ui ] || git clone https://softwarefactory-project.io/r/dci-ui
 [ -d dci-doc ] || git clone --recurse-submodules https://softwarefactory-project.io/r/dci-doc
