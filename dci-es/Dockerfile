@@ -1,6 +1,6 @@
 FROM centos:7
 
-LABEL name="DCI ES" version="0.0.1"
+LABEL name="DCI ES"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
 ENV ES_HOME /home/elasticsearch

@@ -1,17 +1,19 @@
-FROM fedora:26
+FROM centos:7
 
-LABEL name="DCI DB" version="0.0.1"
+LABEL name="DCI DB"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
-RUN dnf install -y postgresql-server postgresql-contrib postgresql && \
-    dnf clean all
+RUN yum install -y centos-release-scl && \
+    yum install -y rh-postgresql94-postgresql \
+    rh-postgresql94-postgresql-server && \
+    yum clean all
 
-ENV PGDATA /var/lib/pgsql/data
+ENV PGDATA /var/opt/rh/rh-postgresql94/lib/pgsql/data
 ENV PASSWORD "dci"
 
 USER postgres
 
-RUN initdb
+RUN . /opt/rh/rh-postgresql94/enable && initdb
 
 # Adjust PostgreSQL configuration to allow connection from all remotes
 RUN sed -ri \
@@ -25,10 +27,10 @@ RUN sed -i \
     "$PGDATA/pg_hba.conf"
 
 
-RUN /usr/bin/pg_ctl -w -t 300 start &&\
+RUN . /opt/rh/rh-postgresql94/enable && pg_ctl -w -t 300 start &&\
     psql -c "CREATE USER dci WITH SUPERUSER PASSWORD '${PASSWORD}';" &&\
     createdb -O dci dci
 
 VOLUME ["$PGDATA"]
 EXPOSE 5432
-CMD ["postgres"]
+CMD ["/opt/rh/rh-postgresql94/root/usr/bin/postgres"]
