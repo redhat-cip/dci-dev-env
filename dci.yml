@@ -1,56 +1,21 @@
 version: '2'
 services:
   db:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-DB
+    build: ${DCI_GIT_REPO_DIR}/dci-db
     ports:
       - "5432:5432"
-  es:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-ES
-    ports:
-      - "9200:9200"
-      - "9300:9300"
   api:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-API
+    build: ${DCI_GIT_REPO_DIR}/dci-control-server
     depends_on:
       - db
-      - es
       - swift
-      - keycloak
     environment:
-      - DB_PORT=tcp://db:5432
-      - ES_PORT=tcp://es:9200
-      - SWIFT_PORT=tcp://swift:8000
+      - DB_HOST=db
+      - SWIFT_HOST=swift
     ports:
       - "5000:5000"
-    volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server
-      - ./settings:/tmp/settings
-  tox:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-TOX
-    depends_on:
-      - db
-      - es
-    environment:
-      - DB_PORT=tcp://db:5432
-      - ES_PORT=tcp://es:9200
-    stdin_open: true
-    tty: true
-    volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci/
-      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/dci-client/
-      - ./settings:/tmp/settings
-  app:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-APP
+  ui:
+    build: ${DCI_GIT_REPO_DIR}/dci-ui
     depends_on:
       - api
     ports:
@@ -58,18 +23,6 @@ services:
     volumes:
       - ${DCI_GIT_REPO_DIR}/dci-ui:/opt/dci-ui
       - /opt/dci-ui/node_modules
-  client:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-CLIENT
-    depends_on:
-      - api
-    privileged: true
-    stdin_open: true
-    tty: true
-    volumes:
-      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient/
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
   swift:
     build:
       context: .
@@ -84,12 +37,4 @@ services:
     tty: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  keycloak:
-    build:
-      context: .
-      dockerfile: dockerfiles/services/Dockerfile-KEYCLOAK
-    environment:
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=admin
-    ports:
-      - "8180:8180"
+
