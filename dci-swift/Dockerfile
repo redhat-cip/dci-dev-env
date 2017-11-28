@@ -1,6 +1,6 @@
 FROM centos:7
 
-LABEL name="DCI SWIFT" version="0.0.1"
+LABEL name="DCI SWIFT"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
 ENV container docker
@@ -25,14 +25,14 @@ RUN yum install -y centos-release-openstack-ocata && \
 
 RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
 
-ADD dockerfiles/services/swift/bootstrap.sh /sbin/bootstrap.sh
-ADD dockerfiles/services/swift/systemd-bootstrap /etc/systemd/system/systemd-bootstrap.service
-ADD dockerfiles/services/swift/wsgi-keystone.conf /etc/httpd/conf.d/
-ADD dockerfiles/services/swift/account-server.conf /etc/swift/
-ADD dockerfiles/services/swift/object-server.conf /etc/swift/
-ADD dockerfiles/services/swift/container-server.conf /etc/swift/
-ADD dockerfiles/services/swift/proxy-server.conf /etc/swift/
-ADD dockerfiles/services/swift/keystone.conf /etc/keystone/
+ADD conf/bootstrap.sh /sbin/bootstrap.sh
+ADD conf/systemd-bootstrap /etc/systemd/system/systemd-bootstrap.service
+ADD conf/wsgi-keystone.conf /etc/httpd/conf.d/
+ADD conf/account-server.conf /etc/swift/
+ADD conf/object-server.conf /etc/swift/
+ADD conf/container-server.conf /etc/swift/
+ADD conf/proxy-server.conf /etc/swift/
+ADD conf/keystone.conf /etc/keystone/
 
 RUN chmod +x /sbin/bootstrap.sh
 

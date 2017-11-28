@@ -1,19 +1,30 @@
 version: '2'
 services:
-  dbwatcher:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-DB-watcher
+  keycloak:
+    build: ${DCI_GIT_REPO_DIR}/dci-keycloak
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+    ports:
+      - "8180:8180"
+  es:
+    build: ${DCI_GIT_REPO_DIR}/dci-es
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+  client:
+    build: ${DCI_GIT_REPO_DIR}/python-dciclient
     depends_on:
       - api
-      - db
-    environment:
-      - DB_PORT_5432_TCP_ADDR=db
+    privileged: true
+    stdin_open: true
+    tty: true
     volumes:
-      - .:/mnt/
+      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient
   doc:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-DOC
+    build: ${DCI_GIT_REPO_DIR}/dci-doc
+    ports:
+      - "4000:4000"
     volumes:
-      - ./dci-doc:/opt/dci-doc/
+      - ${DCI_GIT_REPO_DIR}/dci-doc:/opt/dci-doc
+      - /opt/dci-doc/node_modules
