@@ -1,22 +1,16 @@
 version: '2'
 services:
   db:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-DB
+    build: dci-db
     ports:
       - "5432:5432"
   es:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-ES
+    build: dci-es
     ports:
       - "9200:9200"
       - "9300:9300"
   api:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-API
+    build: ${DCI_GIT_REPO_DIR}/dci-control-server
     depends_on:
       - db
       - es
@@ -32,9 +26,7 @@ services:
       - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server
       - ./settings:/tmp/settings
   tox:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-TOX
+    build: ${DCI_GIT_REPO_DIR}/dci-tox
     depends_on:
       - db
       - es
@@ -47,10 +39,8 @@ services:
       - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci/
       - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/dci-client/
       - ./settings:/tmp/settings
-  app:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-APP
+  ui:
+    build: ${DCI_GIT_REPO_DIR}/dci-ui
     depends_on:
       - api
     ports:
@@ -59,21 +49,17 @@ services:
       - ${DCI_GIT_REPO_DIR}/dci-ui:/opt/dci-ui
       - /opt/dci-ui/node_modules
   client:
-    build:
-      context: .
-      dockerfile: dockerfiles/${OSVer}/Dockerfile-CLIENT
+    build: ${DCI_GIT_REPO_DIR}/python-dciclient
     depends_on:
       - api
     privileged: true
     stdin_open: true
     tty: true
     volumes:
-      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient/
+      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   swift:
-    build:
-      context: .
-      dockerfile: dockerfiles/services/Dockerfile-SWIFT
+    build: ${DCI_GIT_REPO_DIR}/dci-swift
     command: /sbin/init
     privileged: true
     ports:
@@ -85,9 +71,7 @@ services:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   keycloak:
-    build:
-      context: .
-      dockerfile: dockerfiles/services/Dockerfile-KEYCLOAK
+    build: ${DCI_GIT_REPO_DIR}/dci-keycloak
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
