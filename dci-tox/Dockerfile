@@ -1,12 +1,13 @@
-FROM fedora:26
+FROM centos:7
 
 LABEL name="DCI TOX" version="0.0.1"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
-RUN dnf install -y gcc libpqxx-devel libffi-devel openssl-devel \
-    python-devel git python3-devel redhat-rpm-config \
-    python-lxml libxslt-devel python-pip python3-setuptools python3-pip && \
-    dnf clean all
+RUN yum install -y epel-release && \
+    yum install -y gcc libpqxx-devel libffi-devel openssl-devel \
+    python-devel git python34-devel redhat-rpm-config \
+    python-lxml libxslt-devel python-pip python34-pip && \
+    yum clean all
 RUN pip install tox
 
 ENV LANG "en_US.UTF-8"
@@ -19,7 +20,7 @@ ENV DCI_SETTINGS_FILE /tmp/settings/settings_test.py
 
 WORKDIR /opt
 
-COPY entrypoints/tox.sh /entrypoint-tox.sh
-ENTRYPOINT ["/entrypoint-tox.sh"]
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["/bin/bash"]
