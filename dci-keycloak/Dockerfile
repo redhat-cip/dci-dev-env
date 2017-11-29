@@ -17,7 +17,7 @@ RUN curl -L ${KEYCLOAK_DL_URL} | tar -xz --strip 1
 
 EXPOSE 8180
 
-COPY entrypoints/keycloak.sh /docker-entrypoint.sh
-ENTRYPOINT ["/docker-entrypoint.sh" ]
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["-b", "0.0.0.0", "-Djboss.socket.binding.port-offset=100"]
