@@ -17,14 +17,13 @@ services:
       - swift
       - keycloak
     environment:
-      - DB_PORT=tcp://db:5432
-      - ES_PORT=tcp://es:9200
-      - SWIFT_PORT=tcp://swift:8000
+      - DB_HOST=db
+      - SWIFT_HOST=swift
+      - ES_HOST=es
     ports:
       - "5000:5000"
     volumes:
       - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server
-      - ./settings:/tmp/settings
   tox:
     build: ${DCI_GIT_REPO_DIR}/dci-tox
     depends_on:
