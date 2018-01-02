@@ -26,7 +26,7 @@ services:
       - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server
       - ./settings:/tmp/settings
   tox:
-    build: ${DCI_GIT_REPO_DIR}/dci-tox
+    build: dci-tox
     depends_on:
       - db
       - es
@@ -59,7 +59,7 @@ services:
       - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   swift:
-    build: ${DCI_GIT_REPO_DIR}/dci-swift
+    build: dci-swift
     command: /sbin/init
     privileged: true
     ports:
@@ -71,7 +71,7 @@ services:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   keycloak:
-    build: ${DCI_GIT_REPO_DIR}/dci-keycloak
+    build: dci-keycloak
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
