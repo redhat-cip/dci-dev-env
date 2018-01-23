@@ -1,5 +1,7 @@
 # Distributed CI environment for development
 
+DO NOT MERGE
+
 This repository is used to store the configuration of docker
 compose in order to provide an environment for development.
 
