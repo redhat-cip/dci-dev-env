@@ -8,6 +8,9 @@ RUN yum install -y centos-release-scl && \
     rh-postgresql94-postgresql-server && \
     yum clean all
 
+RUN ln -s /opt/rh/rh-postgresql94/root/lib64/libpq.so.rh-postgresql94-5 /usr/lib64/libpq.so.rh-postgresql94-5 && \
+    ln -s /opt/rh/rh-postgresql94/root/lib64/libpq.so.rh-postgresql94-5 /usr/lib/libpq.so.rh-postgresql94-5
+
 ENV PGDATA /var/opt/rh/rh-postgresql94/lib/pgsql/data
 ENV PASSWORD "dci"
 
