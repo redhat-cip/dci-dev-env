@@ -19,7 +19,7 @@ services:
     environment:
       - DB_PORT=tcp://db:5432
       - ES_PORT=tcp://es:9200
-      - SWIFT_PORT=tcp://swift:8000
+      - SWIFT_PORT=tcp://swift:8080
     ports:
       - "5000:5000"
     volumes:
