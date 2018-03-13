@@ -4,6 +4,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 ORANGE='\033[0;33m'
 NOCOLOR='\033[0m'
+PROJECTS="dci-control-server dci-ui dci-doc python-dciclient"
 
 if [ ! -f dci.yml ]; then
     echo -e "${RED}You seems to be in the wrong directory"
@@ -30,10 +31,18 @@ function check_uncommitted_changes {
     fi
     popd &> /dev/null
 }
+
+git fetch --all
+for PROJECT in ${PROJECTS}; do
+    (
+        cd $PROJECT
+        git fetch --all
+    )
+done
+
 printf "╔════════════════════╤══════════════════════╗\n"
 check_uncommitted_changes
 printf "╟────────────────────┼──────────────────────╢\n"
-PROJECTS="dci-control-server dci-ui dci-doc python-dciclient"
 for PROJECT in ${PROJECTS}
 do
     check_uncommitted_changes ${PROJECT}
