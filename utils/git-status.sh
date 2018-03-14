@@ -30,14 +30,28 @@ function check_uncommitted_changes {
     fi
     popd &> /dev/null
 }
+
+
+function git_remote_update {
+    {
+        pushd ${1:-"."}
+        git remote update
+        popd
+    } &> /dev/null
+}
+
+projects="dci-control-server dci-ui dci-doc python-dciclient python-dciauth"
+for project in ${projects}
+do
+    git_remote_update ${project} &
+done
+wait
+
 printf "╔════════════════════╤══════════════════════╗\n"
 check_uncommitted_changes
-printf "╟────────────────────┼──────────────────────╢\n"
-PROJECTS="dci-control-server dci-ui dci-doc python-dciclient"
-for PROJECT in ${PROJECTS}
+for project in ${projects}
 do
-    check_uncommitted_changes ${PROJECT}
     printf "╟────────────────────┼──────────────────────╢\n"
+    check_uncommitted_changes ${project}
 done
-check_uncommitted_changes "python-dciauth"
 printf "╚════════════════════╧══════════════════════╝\n"
