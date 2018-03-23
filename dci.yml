@@ -4,21 +4,14 @@ services:
     build: dci-db
     ports:
       - "5432:5432"
-  es:
-    build: dci-es
-    ports:
-      - "9200:9200"
-      - "9300:9300"
   api:
     build: ${DCI_GIT_REPO_DIR}/dci-control-server
     depends_on:
       - db
-      - es
       - swift
       - keycloak
     environment:
       - DB_PORT=tcp://db:5432
-      - ES_PORT=tcp://es:9200
       - SWIFT_PORT=tcp://swift:8080
     ports:
       - "5000:5000"
@@ -30,10 +23,8 @@ services:
     build: dci-tox
     depends_on:
       - db
-      - es
     environment:
       - DB_PORT=tcp://db:5432
-      - ES_PORT=tcp://es:9200
     stdin_open: true
     tty: true
     volumes:
