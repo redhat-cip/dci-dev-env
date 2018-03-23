@@ -26,10 +26,7 @@ SQLALCHEMY_DATABASE_URI = (
 )
 
 SQLALCHEMY_ECHO = False
-es_url = six.moves.urllib_parse.urlparse(os.environ.get('ES_PORT'))
 
-ES_HOST = es_url.hostname
-ES_PORT = es_url.port
 
 FILES_UPLOAD_FOLDER = '/var/lib/dci-control-server/files'
 
