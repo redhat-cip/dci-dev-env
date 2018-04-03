@@ -16,7 +16,7 @@ ENV PASSWORD "dci"
 
 USER postgres
 
-RUN . /opt/rh/rh-postgresql94/enable && initdb
+RUN . /opt/rh/rh-postgresql94/enable && initdb -E UTF8
 
 # Adjust PostgreSQL configuration to allow connection from all remotes
 RUN sed -ri \
