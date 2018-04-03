@@ -31,6 +31,7 @@ RUN sed -i \
 
 
 RUN . /opt/rh/rh-postgresql94/enable && pg_ctl -w -t 300 start &&\
+    psql -c "UPDATE pg_database SET encoding = pg_char_to_encoding('UTF8') WHERE datname = 'template1';" &&\
     psql -c "CREATE USER dci WITH SUPERUSER PASSWORD '${PASSWORD}';" &&\
     createdb -O dci dci
 
