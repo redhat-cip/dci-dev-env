@@ -29,8 +29,6 @@ Here is the list of containers for running the application:
 
  * **dci_db**: contains the postgresql database, it is started by default and
    serve the database on localhost port 5432.
- * **dci_es**: contains the elasticsearch database, it is started by default and
-   serve on localhost port 9200 and 9300.
  * **dci_api**: contains the api of the application, it must be started manually
    The API is served on localhost port 5000.
  * **dci_app**: contains the web app of dci, it must be started manually
