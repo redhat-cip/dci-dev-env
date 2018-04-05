@@ -3,6 +3,8 @@ FROM centos:7
 LABEL name="DCI DB" version="0.0.2"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
+ENV LANG en_US.utf8
+
 RUN yum install -y centos-release-scl && \
     yum install -y rh-postgresql94-postgresql \
     rh-postgresql94-postgresql-server && \
@@ -16,7 +18,7 @@ ENV PASSWORD "dci"
 
 USER postgres
 
-RUN . /opt/rh/rh-postgresql94/enable && initdb -E UTF8
+RUN . /opt/rh/rh-postgresql94/enable && initdb
 
 # Adjust PostgreSQL configuration to allow connection from all remotes
 RUN sed -ri \
