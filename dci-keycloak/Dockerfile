@@ -3,6 +3,8 @@ FROM centos:7
 LABEL name="DCI KEYCLOAK" version="0.0.1"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
+ENV LANG en_US.UTF-8
+
 RUN yum -y install java-1.8.0-openjdk && \
     yum clean all
 

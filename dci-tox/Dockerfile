@@ -3,6 +3,8 @@ FROM centos:7
 LABEL name="DCI TOX" version="0.0.1"
 MAINTAINER DCI Team <distributed-ci@redhat.com>
 
+ENV LANG en_US.UTF-8
+
 RUN yum install -y epel-release && \
     yum install -y gcc libpqxx-devel libffi-devel openssl-devel \
     python-devel git python34-devel redhat-rpm-config \
@@ -10,7 +12,6 @@ RUN yum install -y epel-release && \
     yum clean all
 RUN pip install tox
 
-ENV LANG "en_US.UTF-8"
 ENV DISABLE_DB_START 1
 ENV DISABLE_ES_START 1
 ENV DISABLE_INFLUXDB_START 1
