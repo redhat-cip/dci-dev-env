@@ -36,13 +36,13 @@ IP=`ifconfig | grep -A1 eth0 | grep inet | awk '{print $2}'`
 openstack role create admin $AUTH
 openstack role create SwiftOperator $AUTH
 openstack project create service $AUTH
-openstack project create test $AUTH
+openstack project create dci $AUTH
 openstack user create admin --project service $AUTH
 openstack user create swift --project service --password swift $AUTH
-openstack user create test --project test --password test $AUTH
+openstack user create dci --project dci --password dci $AUTH
 openstack role add --project service --user swift admin $AUTH
 openstack role add --project service --user admin admin $AUTH
-openstack role add --project test --user test SwiftOperator $AUTH
+openstack role add --project dci --user dci SwiftOperator $AUTH
 openstack service create --name swift --description "OpenStack Object Storage" object-store $AUTH
 openstack endpoint create --region RegionOne object-store --publicurl http://$IP:8080/v1/AUTH_%\(tenant_id\)s --internalurl http://$IP:8080/v1/AUTH_%\(tenant_id\)s --adminurl http://$IP:8080/v1 $AUTH
 
