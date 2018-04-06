@@ -13,8 +13,6 @@ RUN yum install -y epel-release && \
 RUN pip install tox
 
 ENV DISABLE_DB_START 1
-ENV DISABLE_ES_START 1
-ENV DISABLE_INFLUXDB_START 1
 
 ENV TOX_TESTENV_PASSENV "DB_PORT ES_PORT"
 ENV DCI_SETTINGS_FILE /tmp/settings/settings_test.py
