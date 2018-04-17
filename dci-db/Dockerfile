@@ -6,8 +6,7 @@ MAINTAINER DCI Team <distributed-ci@redhat.com>
 ENV LANG en_US.utf8
 
 RUN yum install -y centos-release-scl && \
-    yum install -y rh-postgresql94-postgresql \
-    rh-postgresql94-postgresql-server && \
+    yum install -y rh-postgresql94 && \
     yum clean all
 
 RUN ln -s /opt/rh/rh-postgresql94/root/lib64/libpq.so.rh-postgresql94-5 /usr/lib64/libpq.so.rh-postgresql94-5 && \
