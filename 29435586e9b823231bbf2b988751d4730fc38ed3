@@ -1,0 +1,9 @@
+Code-Review+2: Guillaume Vincent <gvincent@redhat.com>
+Code-Review+2: Dimitri Savineau <dsavinea@redhat.com>
+Workflow+1: Dimitri Savineau <dsavinea@redhat.com>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Fri, 20 Apr 2018 14:59:38 +0000
+Reviewed-on: https://softwarefactory-project.io/r/11957
+Project: dci-dev-env
+Branch: refs/heads/master
