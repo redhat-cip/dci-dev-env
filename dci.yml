@@ -21,18 +21,6 @@ services:
     volumes:
       - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server
     restart: always
-  tox:
-    build: dci-tox
-    depends_on:
-      - db
-    environment:
-      - DB_PORT=tcp://db:5432
-    stdin_open: true
-    tty: true
-    volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci/
-      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/dci-client/
-      - ./settings:/tmp/settings
   ui:
     build: ${DCI_GIT_REPO_DIR}/dci-ui
     depends_on:
@@ -46,12 +34,14 @@ services:
     build: ${DCI_GIT_REPO_DIR}/python-dciclient
     depends_on:
       - api
+    environment:
+      - DB_HOST=db
     privileged: true
     stdin_open: true
     tty: true
     volumes:
       - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server
   swift:
     build: dci-swift
     command: /sbin/init
@@ -62,8 +52,6 @@ services:
       - "35357:35357"
     stdin_open: true
     tty: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
   keycloak:
     build: dci-keycloak
     environment:
