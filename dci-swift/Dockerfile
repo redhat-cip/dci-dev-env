@@ -1,7 +1,7 @@
 FROM centos:7
 
 LABEL name="DCI SWIFT" version="0.0.1"
-MAINTAINER DCI Team <distributed-ci@redhat.com>
+LABEL maintainer="DCI Team <distributed-ci@redhat.com>"
 
 ENV LANG en_US.UTF-8
 ENV container docker
