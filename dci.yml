@@ -14,8 +14,7 @@ services:
       - DEBUG=1
       - API_HOST=api
       - DB_HOST=db
-      - SWIFT_HOST=swift
-      - SWIFT_PORT=8080
+      - STORE_HOST=swift
     ports:
       - "5000:5000"
     volumes:
