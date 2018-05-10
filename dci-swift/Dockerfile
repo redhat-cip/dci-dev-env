@@ -1,6 +1,6 @@
 FROM centos:7
 
-LABEL name="DCI SWIFT" version="0.0.1"
+LABEL name="DCI SWIFT" version="0.0.2"
 LABEL maintainer="DCI Team <distributed-ci@redhat.com>"
 
 ENV LANG en_US.UTF-8
@@ -21,10 +21,8 @@ RUN yum install -y centos-release-openstack-ocata && \
     yum install -y openstack-swift openstack-swift-proxy memcached \
     openstack-swift-object openstack-swift-container openstack-swift-account \
     openstack-keystone mariadb-server httpd mod_wsgi python-swiftclient \
-    python-openstackclient openssh-server && \
+    python-openstackclient && \
     yum clean all
-
-RUN echo root:root | chpasswd && ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
 
 ADD conf/bootstrap.sh /sbin/bootstrap.sh
 ADD conf/systemd-bootstrap /etc/systemd/system/systemd-bootstrap.service
@@ -37,7 +35,7 @@ ADD conf/keystone.conf /etc/keystone/
 
 RUN chmod +x /sbin/bootstrap.sh
 
-RUN systemctl enable sshd systemd-bootstrap
+RUN systemctl enable systemd-bootstrap
 
 EXPOSE 5000 8080 35357
 
