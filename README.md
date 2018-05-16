@@ -37,6 +37,7 @@ Here is the list of containers for running the application:
    for running the application but is a helper in order to run tests
    on the client and the API.
  * **dci_doc**: helper for building the documentation of the project.
+ * **dci_feeder**: contains the dci-feeder-api.
  * **dci_client**: contains the python-dciclient.
  * **dcidevenv_keycloak**: keycloak server for SSO.
 
@@ -136,3 +137,17 @@ This container generates dci documentation.
 If you want to generate the dci documentation run the container:
 
     docker-compose -f dci.yml -f dci-extra.yml run doc
+
+
+## Internal containers
+
+### Feeder container
+
+This container deploys dci-feeder-api.
+If you want to generate the dci-feeder-api run the container:
+
+    docker-compose -f dci.yml -f dci-internal.yml up
+
+The API will then be available on http://0.0.0.0:5003
+
+**Note**: Because the project is internal, it needs first to be cloned manually.
