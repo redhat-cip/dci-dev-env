@@ -7,3 +7,19 @@ services:
     volumes:
       - ${DCI_GIT_REPO_DIR}/dci-doc:/opt/dci-doc
       - /opt/dci-doc/node_modules
+  feeder:
+    build: ${DCI_GIT_REPO_DIR}/dci-feeder-api
+    ports:
+      - "5003:5003"
+    volumes:
+      - ${DCI_GIT_REPO_DIR}/dci-feeder-api:/opt/dci-feeder-api
+    depends_on:
+      - api
+    environment:
+      - DCI_CS_URL=api
+      - DCI_CS_URL_PROTOCOL=http
+      - DCI_CS_URL_PORT=5000
+      - LOG_DIR=/tmp
+      - CACHE_DIR=/var/cache
+    stdin_open: true
+    tty: true
