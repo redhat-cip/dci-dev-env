@@ -1,0 +1,19 @@
+version: '2'
+services:
+  feeder:
+    build: ${DCI_GIT_REPO_DIR}/dci-feeder-api
+    ports:
+      - "5003:5003"
+    volumes:
+      - ${DCI_GIT_REPO_DIR}/dci-feeder-api:/opt/dci-feeder-api
+    depends_on:
+      - api
+    environment:
+      - LOG_DIR=/tmp
+      - CACHE_DIR=/var/cache
+      - FLASK_DEBUG=1
+      - DCI_LOGIN=admin
+      - DCI_PASSWORD=admin
+      - DCI_CS_URL=http://api:5000/
+    stdin_open: true
+    tty: true
