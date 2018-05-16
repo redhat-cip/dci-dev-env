@@ -37,7 +37,6 @@ Here is the list of containers for running the application:
    for running the application but is a helper in order to run tests
    on the client and the API.
  * **dci_doc**: helper for building the documentation of the project.
- * **dci_dbwatcher**: helper for interacting with the database.
  * **dci_client**: contains the python-dciclient.
  * **dcidevenv_keycloak**: keycloak server for SSO.
 
@@ -137,10 +136,3 @@ This container generates dci documentation.
 If you want to generate the dci documentation run the container:
 
     docker-compose -f dci.yml -f dci-extra.yml run doc
-
-### DBwatcher container
-
-This container generates a schema of the db.
-If you want to generate the database schema run the container:
-
-    docker-compose -f dci.yml -f dci-extra.yml run dbwatcher
