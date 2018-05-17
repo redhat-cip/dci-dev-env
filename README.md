@@ -33,9 +33,6 @@ Here is the list of containers for running the application:
    The API is served on localhost port 5000.
  * **dci_app**: contains the web app of dci, it must be started manually
    The web application is served on localhost port 8000.
- * **dci_tox**: contains all the needed module for testing, it is not needed
-   for running the application but is a helper in order to run tests
-   on the client and the API.
  * **dci_doc**: helper for building the documentation of the project.
  * **dci_dbwatcher**: helper for interacting with the database.
  * **dci_client**: contains the python-dciclient.
@@ -48,15 +45,6 @@ You can initialize or reinitialize the database by running db_provisioning scrip
 
     docker exec -it dcidevenv_api_1 bash
     ./bin/dci-dbprovisioning
-
-### TOX container
-
-This container is a helper for launching tests on the client and/or the api,
-just navigate to the correct project directory and run the tox command in order to launch the tests.
-
-    docker exec -it dcidevenv_tox_1 bash
-    cd dci
-    tox
 
 ### CLIENT container
 
