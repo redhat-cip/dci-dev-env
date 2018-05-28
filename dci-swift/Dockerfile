@@ -17,7 +17,7 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-RUN yum install -y centos-release centos-release-openstack-ocata && \
+RUN yum install -y centos-release centos-release-openstack-pike && \
     yum install -y openstack-swift openstack-swift-proxy memcached \
     openstack-swift-object openstack-swift-container openstack-swift-account \
     openstack-keystone mariadb-server httpd mod_wsgi python-swiftclient \
