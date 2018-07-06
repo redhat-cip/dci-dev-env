@@ -30,7 +30,7 @@ function clean_repository {
     popd
 }
 
-projects="dci-control-server dci-ui dci-doc python-dciclient python-dciauth"
+projects="dci-control-server dci-ui dci-doc python-dciclient python-dciauth dci-ansible"
 for project in ${projects}
 do
     clean_repository ${project} &

@@ -35,6 +35,7 @@ Here is the list of containers for running the application:
    The web application is served on localhost port 8000.
  * **dci_doc**: helper for building the documentation of the project.
  * **dci_client**: contains the python-dciclient.
+ * **dci_ansible**: contains the dci-ansible code.
  * **dcidevenv_keycloak**: keycloak server for SSO.
 
 

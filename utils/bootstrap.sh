@@ -14,3 +14,4 @@ fi
 [ -d python-dciauth ] || git clone https://softwarefactory-project.io/r/python-dciauth
 [ -d dci-ui ] || git clone https://softwarefactory-project.io/r/dci-ui
 [ -d dci-doc ] || git clone --recurse-submodules https://softwarefactory-project.io/r/dci-doc
+[ -d dci-ansible ] || git clone https://softwarefactory-project.io/r/dci-ansible

@@ -40,7 +40,7 @@ function git_remote_update {
     } &> /dev/null
 }
 
-projects="dci-control-server dci-ui dci-doc python-dciclient python-dciauth"
+projects="dci-control-server dci-ui dci-doc python-dciclient python-dciauth dci-ansible"
 for project in ${projects}
 do
     git_remote_update ${project} &
