@@ -125,3 +125,4 @@ This container generates dci documentation.
 If you want to generate the dci documentation run the container:
 
     docker-compose -f dci.yml -f dci-extra.yml run doc
+
