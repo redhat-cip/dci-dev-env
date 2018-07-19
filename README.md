@@ -33,6 +33,7 @@ Here is the list of containers for running the application:
    The API is served on localhost port 5000.
  * **dci_app**: contains the web app of dci, it must be started manually
    The web application is served on localhost port 8000.
+   Please use `localhost` and not `127.0.0.1` because `keycloak` valid domain is set to `localhost`.
  * **dci_doc**: helper for building the documentation of the project.
  * **dci_client**: contains the python-dciclient.
  * **dci_ansible**: contains the dci-ansible code.
