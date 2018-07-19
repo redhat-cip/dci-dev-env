@@ -1,7 +1,11 @@
 version: '2'
 services:
   db:
-    build: dci-db
+    image: centos/postgresql-94-centos7
+    environment:
+      - POSTGRESQL_USER=dci
+      - POSTGRESQL_PASSWORD=dci
+      - POSTGRESQL_DATABASE=dci
     ports:
       - "5432:5432"
   api:
