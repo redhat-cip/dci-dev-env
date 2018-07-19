@@ -36,7 +36,8 @@ Here is the list of containers for running the application:
  * **dci_doc**: helper for building the documentation of the project.
  * **dci_client**: contains the python-dciclient.
  * **dci_ansible**: contains the dci-ansible code.
- * **dcidevenv_keycloak**: keycloak server for SSO.
+ * **dci_keycloak**: keycloak server for SSO.
+   Please use `localhost` and not `127.0.0.1` because `keycloak` valid domain is set to `localhost`.
 
 
 ### API container
