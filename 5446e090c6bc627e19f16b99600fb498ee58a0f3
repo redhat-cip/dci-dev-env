@@ -16,6 +16,24 @@
       "revId": "5446e090c6bc627e19f16b99600fb498ee58a0f3",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "958d5b1d_a6d6169e",
+        "filename": "dci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2018-07-26T13:38:51Z",
+      "side": 1,
+      "message": "try the patchset n°2 ;)",
+      "parentUuid": "f84b6847_4332cf9d",
+      "revId": "5446e090c6bc627e19f16b99600fb498ee58a0f3",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
