@@ -62,13 +62,6 @@ services:
   swift:
     build: dci-swift
     command: /sbin/init
-    privileged: true
-    ports:
-      - "5001:5000"
-      - "8080:8080"
-      - "35357:35357"
-    stdin_open: true
-    tty: true
   keycloak:
     image: jboss/keycloak
     environment:
