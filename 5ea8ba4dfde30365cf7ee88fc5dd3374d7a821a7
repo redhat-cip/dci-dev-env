@@ -1,0 +1,9 @@
+Code-Review+2: Yanis Guenane <yguenane@gmail.com>
+Code-Review+2: Guillaume Vincent <gvincent@redhat.com>
+Workflow+1: Guillaume Vincent <gvincent@redhat.com>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Tue, 31 Jul 2018 10:22:49 +0000
+Reviewed-on: https://softwarefactory-project.io/r/13130
+Project: dci-dev-env
+Branch: refs/heads/master
