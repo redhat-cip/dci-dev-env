@@ -62,6 +62,9 @@ services:
   swift:
     build: dci-swift
     command: /sbin/init
+    privileged: true
+    stdin_open: true
+    tty: true
   keycloak:
     image: jboss/keycloak
     environment:
