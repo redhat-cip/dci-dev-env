@@ -6,6 +6,7 @@ services:
       - POSTGRESQL_USER=dci
       - POSTGRESQL_PASSWORD=dci
       - POSTGRESQL_DATABASE=dci
+      - POSTGRESQL_ADMIN_PASSWORD=dci
     ports:
       - "5432:5432"
   api:
