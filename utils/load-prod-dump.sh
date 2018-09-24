@@ -42,7 +42,8 @@ else
     fi
 fi
 
-echo 'Closing all the connections to the DB'
-psql --quiet -U dci -d dci -h 127.0.0.1 -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname='dci' AND application_name<>'psql'"
+docker exec -it dcidevenv_db_1 bash -c 'echo "fsync = off" >> /var/lib/pgsql/data/userdata/postgresql.conf'
+docker restart dcidevenv_db_1
+sleep 5
 echo 'Restoring the DB'
 pg_restore --clean -h 127.0.0.1 -U dci -d dci ${backup_file}
