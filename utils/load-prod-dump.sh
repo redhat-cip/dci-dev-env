@@ -19,7 +19,7 @@ fi
 
 if [ ! -z "${LOCAL_FILE}" ]; then
     echo "Using local backup file ${LOCAL_FILE}"
-    BACKUP=${LOCAL_FILE}
+    backup_file=${LOCAL_FILE}
 else
     if ! test -x $(type -p swift); then
         echo 'Please install the swift client.'
@@ -32,11 +32,17 @@ else
     fi
 
     echo 'Downloading the last backup'
-    BACKUP=/tmp/last$$.dump
-    swift download -o ${BACKUP} backup $(swift list backup -p current/current_|tail -n1)
+    current_backup=$(swift list backup -p current/current_|tail -n1)
+    backup_file=/tmp/dci-$(basename ${current_backup}).dump
+    if [ -f ${backup_file} ]; then
+	    echo "A backup already exists ${backup_file}. Skipping the download."
+    else
+        echo "Downloading backup ${current_backup} in ${backup_file}."
+        swift download -o ${backup_file} backup ${current_backup}
+    fi
 fi
 
 echo 'Closing all the connections to the DB'
 psql --quiet -U dci -d dci -h 127.0.0.1 -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname='dci' AND application_name<>'psql'"
 echo 'Restoring the DB'
-pg_restore --clean -h 127.0.0.1 -U dci -d dci ${BACKUP}
+pg_restore --clean -h 127.0.0.1 -U dci -d dci ${backup_file}
