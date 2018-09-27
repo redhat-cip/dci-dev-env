@@ -1,0 +1,8 @@
+Code-Review+2: Thomas Vassilian <tvassili@redhat.com>
+Workflow+1: Thomas Vassilian <tvassili@redhat.com>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Thu, 27 Sep 2018 18:49:42 +0000
+Reviewed-on: https://softwarefactory-project.io/r/13796
+Project: dci-dev-env
+Branch: refs/heads/master
