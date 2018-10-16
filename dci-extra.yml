@@ -5,5 +5,5 @@ services:
     ports:
       - "4000:4000"
     volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-doc:/opt/dci-doc
+      - ${DCI_GIT_REPO_DIR}/dci-doc:/opt/dci-doc:Z
       - /opt/dci-doc/node_modules

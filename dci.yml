@@ -24,7 +24,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server
+      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server:Z
     restart: always
   ui:
     build: ${DCI_GIT_REPO_DIR}/dci-ui
@@ -33,7 +33,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-ui:/opt/dci-ui
+      - ${DCI_GIT_REPO_DIR}/dci-ui:/opt/dci-ui:Z
       - /opt/dci-ui/node_modules
   client:
     build: ${DCI_GIT_REPO_DIR}/python-dciclient
@@ -45,8 +45,8 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient
-      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server
+      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient:Z
+      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server:Z
   ansible:
     build: ${DCI_GIT_REPO_DIR}/dci-ansible
     depends_on:
@@ -59,8 +59,8 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient
-      - ${DCI_GIT_REPO_DIR}/dci-ansible:/opt/dci-ansible
+      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient:Z
+      - ${DCI_GIT_REPO_DIR}/dci-ansible:/opt/dci-ansible:Z
   swift:
     build: dci-swift
     command: /sbin/init
