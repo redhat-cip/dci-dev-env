@@ -12,7 +12,7 @@ fi
 set -eux
 
 dc="docker-compose -f dci.yml"
-${dc} down -v
+${dc} down -v --rmi local
 ${dc} pull
 ${dc} build
 ${dc} up -d
