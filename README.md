@@ -21,7 +21,7 @@ run parts of the applications:
 
 e.g.
 
-    docker exec -it dcidevenv_api_1 bash
+    docker exec -it dci-dev-env_api_1 bash
 
 ## Containers
 
@@ -44,8 +44,7 @@ Here is the list of containers for running the application:
 
 You can initialize or reinitialize the database by running db_provisioning script:
 
-    docker exec -it dcidevenv_api_1 bash
-    ./bin/dci-dbprovisioning
+    docker exec -it dci-dev-env_api_1 ./bin/dci-dbprovisioning
 
 ### CLIENT container
 
@@ -117,6 +116,16 @@ This container allows to use SSO based authentication.
       http://localhost:8180/auth/realms/dci-test/protocol/openid-connect/token
 
       This will get a JWT and will be used to authenticated the client on the server api.
+
+## Ansible containers
+
+You can use the Ansible container to run tox:
+
+    docker exec -it dci-dev-env_ansible_1 tox
+
+and the functional tests:
+
+    docker exec -it dci-dev-env_ansible_1 bash -c 'cd tests; ./run_tests.sh'
 
 ## Extra containers
 
