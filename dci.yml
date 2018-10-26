@@ -55,6 +55,7 @@ services:
       - DCI_LOGIN=admin
       - DCI_PASSWORD=admin
       - DCI_CS_URL=http://api:5000/
+      - DB_HOST=db
     privileged: true
     stdin_open: true
     tty: true
