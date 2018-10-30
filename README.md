@@ -126,3 +126,13 @@ This container generates dci documentation.
 If you want to generate the dci documentation run the container:
 
     docker-compose -f dci.yml -f dci-extra.yml run doc
+
+## Utils
+
+### Fix versions in requirements.txt
+
+All versions in requirements.txt file should be fixed with the exact version of the associated RPM in Centos or RDO.
+To automatically fix versions in a requirements.txt file, just run the `fix_requirements_versions.py` script.
+
+    utils/fix_requirements_versions.py dci-control-server/requirements.txt
+
