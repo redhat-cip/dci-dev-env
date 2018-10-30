@@ -126,3 +126,20 @@ This container generates dci documentation.
 If you want to generate the dci documentation run the container:
 
     docker-compose -f dci.yml -f dci-extra.yml run doc
+
+## Utils
+
+### Fix versions in requirements.txt
+
+All versions in requirements.txt file should be fixed with the exact version of the associated RPM in Centos or RDO.
+To automatically fix versions in a requirements.txt file, just run the `fix_versions_in_requirements_txt.py` script.
+
+    ./utils/fix_versions_in_requirements_txt.py dci-control-server/requirements.txt
+
+you can pass multiple requirements.txt files
+
+    ./utils/fix_versions_in_requirements_txt.py dci-control-server/requirements.txt dci-control-server/test-requirements.txt
+
+if you want to ignore an update in your requirements.txt file, just add `# ignore` comment inline
+
+    pyopenssl  # ignore: openssl 1.0.2k doesn't exist on pypi
