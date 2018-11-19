@@ -68,6 +68,8 @@ services:
     privileged: true
     stdin_open: true
     tty: true
+    ports:
+      - "5001:5000"
   keycloak:
     image: jboss/keycloak
     environment:

@@ -33,6 +33,9 @@ ADD conf/container-server.conf /etc/swift/
 ADD conf/proxy-server.conf /etc/swift/
 ADD conf/keystone.conf /etc/keystone/
 
+RUN find /etc/swift/ -type f -exec chmod 644 {} \;
+RUN find /etc/keystone/ -type f -exec chmod 644 {} \;
+
 RUN chmod +x /sbin/bootstrap.sh
 
 RUN systemctl enable systemd-bootstrap
