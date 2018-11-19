@@ -117,7 +117,7 @@ This container allows to use SSO based authentication.
 
       This will get a JWT and will be used to authenticated the client on the server api.
 
-## Ansible containers
+## Ansible container
 
 You can use the Ansible container to run tox:
 
@@ -126,6 +126,15 @@ You can use the Ansible container to run tox:
 and the functional tests:
 
     docker exec -it dci-dev-env_ansible_1 bash -c 'cd tests; ./run_tests.sh'
+
+## Swift container
+
+Swift is exposed on the non-standard port 5001. If you want to interact with it, you can use
+your local `swift` client.
+
+    source dci-swift/openrc_dci.sh
+    swift upload fstab /etc/fstab
+    swift list
 
 ## Extra containers
 
