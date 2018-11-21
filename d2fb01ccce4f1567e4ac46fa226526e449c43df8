@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9a71dae6_86f6e6ad",
+        "filename": "dci-swift/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2018-11-21T15:29:52Z",
+      "side": 1,
+      "message": "Fedora 29 comes with a default umask that is different to what I use to have.\n\n0077 vs 0033, as a result, my files are not readable by the other users.\n\nI changed my umask back to 0033. I will update my patch to just keep the openrc + the doc.",
+      "parentUuid": "a673c614_0b78f728",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "d2fb01ccce4f1567e4ac46fa226526e449c43df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60442b76_db52411e",
         "filename": "dci-swift/openrc_dci.sh",
         "patchSetId": 1
