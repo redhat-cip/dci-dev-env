@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b04a9e7_9528011a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2018-11-21T15:13:30Z",
+      "side": 1,
+      "message": "What\u0027s the issue ? because I don\u0027t see an issue currently ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "d2fb01ccce4f1567e4ac46fa226526e449c43df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a673c614_0b78f728",
+        "filename": "dci-swift/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2018-11-21T15:13:30Z",
+      "side": 1,
+      "message": "what the purpose of those commands ?\nThe mode of the files are 640 with root:keystone or root:swift so why adding read permission to all ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "d2fb01ccce4f1567e4ac46fa226526e449c43df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60442b76_db52411e",
+        "filename": "dci-swift/openrc_dci.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2018-11-21T15:13:30Z",
+      "side": 1,
+      "message": "docker doesn\u0027t bind on localhost but 0.0.0.0",
+      "range": {
+        "startLine": 2,
+        "startChar": 26,
+        "endLine": 2,
+        "endChar": 35
+      },
+      "revId": "d2fb01ccce4f1567e4ac46fa226526e449c43df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
