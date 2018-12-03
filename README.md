@@ -31,8 +31,7 @@ Here is the list of containers for running the application:
    serve the database on localhost port 5432.
  * **dci_api**: contains the api of the application, it must be started manually
    The API is served on localhost port 5000.
- * **dci_app**: contains the web app of dci, it must be started manually
-   The web application is served on localhost port 8000.
+ * **dci_ui**: contains the web app of dci. The web application is served on localhost port 8000.
  * **dci_doc**: helper for building the documentation of the project.
  * **dci_client**: contains the python-dciclient.
  * **dci_ansible**: contains the dci-ansible code.
@@ -40,13 +39,13 @@ Here is the list of containers for running the application:
    Please use `localhost` and not `127.0.0.1` because `keycloak` valid domain is set to `localhost`.
 
 
-### API container
+### api container
 
 You can initialize or reinitialize the database by running db_provisioning script:
 
     docker exec -it dci-dev-env_api_1 ./bin/dci-dbprovisioning
 
-### CLIENT container
+### client container
 
 This container allows one to run the python-dciclient within it.
 
@@ -76,7 +75,7 @@ Note: The $API_CONTAINER_IP can be obtained by running
 
     docker inspect --format '{{ .NetworkSettings.IPAddress }}' <container-id>
 
-### KEYCLOAK container
+### Keycloak container
 
 This container allows to use SSO based authentication.
 
@@ -117,7 +116,7 @@ This container allows to use SSO based authentication.
 
       This will get a JWT and will be used to authenticated the client on the server api.
 
-## Ansible container
+### Ansible container
 
 You can use the Ansible container to run tox:
 
@@ -127,7 +126,7 @@ and the functional tests:
 
     docker exec -it dci-dev-env_ansible_1 bash -c 'cd tests; ./run_tests.sh'
 
-## Swift container
+### Swift container
 
 Swift is exposed on the non-standard port 5001. If you want to interact with it, you can use
 your local `swift` client.
