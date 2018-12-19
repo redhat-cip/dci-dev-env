@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1493ad1_91e3fec5",
+        "filename": "utils/fix_versions_in_requirements_txt.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2018-12-19T18:40:25Z",
+      "side": 1,
+      "message": "What about the requests module instead? We use it everywhere else?",
+      "revId": "9d37753a17069f8618c4bfc68a28d23130b13c6e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
