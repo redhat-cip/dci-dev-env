@@ -3,123 +3,119 @@
 This repository is used to store the configuration of docker
 compose in order to provide an environment for development.
 
-## Getting started
+## Installation
 
-For running dci in docker compose follow those steps:
+To run DCI in `docker-compose`, first clone this repository:
 
- * clone this repository
- * bootstrap dci-dev-env, run `./utils/bootstrap.sh`
- * install docker-compose and git-review if you want to contribute,
-   you can install those requirements by simply typing:
-   `pip install -U -r requirements.txt`
- * launch the environment `docker-compose -f dci.yml up -d`
+    git clone git@github.com:redhat-cip/dci-dev-env.git
 
-Now the environment is up and running, you can attach containers in order to
-run parts of the applications:
+Then, bootstrap `dci-dev-env`:
+
+    ./utils/bootstrap.sh
+
+## Usage
+
+Once install, you can launch the environment:
+
+    docker-compose -f dci.yml up -d
+
+Then, you can attach containers in order to run parts of the applications:
 
     docker exec -it <container-name> bash
 
-e.g.
-
-    docker exec -it dci-dev-env_api_1 bash
+For instance `docker exec -it dci-dev-env_api_1 bash`
 
 ## Containers
 
 Here is the list of containers for running the application:
 
- * **dci_db**: contains the postgresql database, it is started by default and
-   serve the database on localhost port 5432.
- * **dci_api**: contains the api of the application, it must be started manually
-   The API is served on localhost port 5000.
- * **dci_ui**: contains the web app of dci. The web application is served on localhost port 8000.
- * **dci_doc**: helper for building the documentation of the project.
- * **dci_client**: contains the python-dciclient.
- * **dci_ansible**: contains the dci-ansible code.
- * **dci_keycloak**: keycloak server for SSO.
-   Please use `localhost` and not `127.0.0.1` because `keycloak` valid domain is set to `localhost`.
- * **dci_swift**: swift server as storage backend for the api.
+* `dci_ansible`: contains the dci-ansible code ;
+* `dci_api`: contains the API of the application and serves it on localhost port `5000`, **must be started manually** ;
+* `dci_client`: contains the `dciclient` (Python binding) and `dcictl` (CLI) clients to DCI Control Server ;
+* `dci_db`: contains the postgresql database and serves it on localhost port `5432`, started by default ;
+* `dci_doc`: helper to build the project's documentation ;
+* `dci_keycloak`: keycloak server for `SSO`. :warning: Use `localhost` as `keycloak`'s domain as it's set to this value and not <s>`127.0.0.1`</s> ;
+* `dci_ui`: contains the web app of DCI and serves it on localhost port `8000`.
+* `dci_swift`: storage backend for the API using a Swift server.
 
+### API Container
 
-### api container
-
-You can initialize or reinitialize the database by running db_provisioning script:
+You can initialize or re-initialize the database from the API container by running:
 
     docker exec -it dci-dev-env_api_1 ./bin/dci-dbprovisioning
 
-### client container
+### Client Container
 
-This container allows one to run the python-dciclient within it.
+This container allows one to run the `python-dciclient` within it.
 
 This container is special in several ways compares to the others:
 
- * It runs systemd
- * It runs an sshd daemon (root/root)
+* It runs `systemd` ;
+* It runs an `sshd` daemon that belong to `root:root`.
 
-To initialize this container you need to perform some operations:
+#### Client Usage
 
- * Install the dciclient library, as well as the agents and feeders:
+To initialize this container you need to install the `dciclient` library, as well as the agents and feeders:
 
-    cd /opt/python-dciclient && pip install -e .
-    cd /opt/python-dciclient/agents && pip install -e .
-    cd /opt/python-dciclient/feeders && pip install -e .
+    cd /opt/python-dciclient && pip install --editable ./
+    cd /opt/python-dciclient/agents && pip install --editable ./
+    cd /opt/python-dciclient/feeders && pip install --editable ./
 
+Then, Create a _local.sh_ file with the following credentials and source it:
 
- * Create a local.sh file with the following credentials and source it:
+    API_CONTAINER_IP="$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' <CONTAINER_ID>)"
+    export DCI_LOGIN=admin
+    export DCI_PASSWORD=admin
+    export DCI_CS_URL=http://$API_CONTAINER_IP:5000
 
-```shell
-export DCI_LOGIN=admin
-export DCI_PASSWORD=admin
-export DCI_CS_URL=http://$API_CONTAINER_IP:5000
-```
+### Keycloak Container
 
-Note: The $API_CONTAINER_IP can be obtained by running
+This container allows to use `SSO` based authentication.
 
-    docker inspect --format '{{ .NetworkSettings.IPAddress }}' <container-id>
+#### Provisioning
 
-### keycloak container
+It's provisioned by default by the following:
 
-This container allows to use SSO based authentication.
+* The user admin: `username=admin`, `password=admin` ;
+* A realm `dci-test` ;
+* A client `dci-cs` ;
+* A lambda user within the `dci-test` realm: `username=dci`, `password=dci`
 
-* It's provisioned by default by the following:
+The client `dci-cs` is configured to allows _OIDC Implicit flow_ and _Direct Access_ protocols.
 
-    - The user admin: username=admin, password=admin
-    - A realm 'dci-test'.
-    - A client 'dci-cs'.
-    - A lambda user within the dci-test realm: username=dci, password=dci
+#### Use OIDC Implicit flow
 
-* The client dci-cs is configured to allows OIDC Implicit flow and Direct Access protocols.
+Generate a random value using an `UUID`, then we will use it for the `nonce` field in the following link:
 
-    - To use the implicit flow the browser should go to the following link:
-      http://localhost:8180/auth/realms/dci-test/protocol/openid-connect/auth?\
-      client_id=dci-cs&\
-      response_type=id_token&\
-      scope=openid&\
-      nonce=ab40edba-9187-11e7-a921-c85b7636c33f&\
-      redirect_uri=http://localhost:5000/rh-partner
+    http://localhost:8180/auth/realms/dci-test/protocol/openid-connect/auth?\
+    client_id=dci-cs&\
+    response_type=id_token&\
+    scope=openid&\
+    nonce=YOU_MUST_REPLACE_ME&\
+    redirect_uri=http://localhost:8000/login
 
-      The 'nonce' value must be randomly generated. This link will redirect the browser to
-      Keycloak SSO login page. Once the user is authenticated then Keycloak will redirect
-      to the URL indicated by the 'redirect_uri' parameter in the following way:
-      http://localhost:5000/rh-partner#\
-      id_token=eyJhs ... EPscxhRMuEdA&\
-      not-before-policy=0
+This link will redirect the browser to Keycloak `SSO` login page, once authenticated it will redirect to the `redirect_uri` value, _e.g._:
 
-      The id_token parameter correspond to the Json Web Token (jwt) generated by Keycloak
-      and will be used to authenticated the client on the server api.
+    http://localhost:8000/login?id_token=eyJhs...EPscxhRMuEdA
 
-    - To use the Direct Access protocol, for instance from the CLI:
+The `id_token` parameter correspond to the _JSON Web Token_ (`jwt`) generated by Keycloak and will be used to authenticated the client on the server.
 
-      $ curl -d "client_id=dci-cs"\
-      -d "username=dci" -d\
-      "password=dci"\
-      -d "grant_type=password"\
+#### Use Direct Access protocol
+
+From the CLI:
+
+    $ curl \
+      --data "client_id=dci-cs" \
+      --data "username=dci" \
+      --data "password=dci" \
+      --data "grant_type=password" \
       http://localhost:8180/auth/realms/dci-test/protocol/openid-connect/token
 
-      This will get a JWT and will be used to authenticated the client on the server api.
+This will get a `JWT` and will be used to authenticated the client on the server .
 
-### ansible container
+### Ansible Container
 
-You can use the Ansible container to run tox:
+You can use the Ansible container to run `tox`:
 
     docker exec -it dci-dev-env_ansible_1 tox
 
@@ -127,22 +123,30 @@ and the functional tests:
 
     docker exec -it dci-dev-env_ansible_1 bash -c 'cd tests; ./run_tests.sh'
 
-### swift container
+### Swift Container
 
-If you want to enable the swift storage for the api:
+If you want to enable the `swift` storage for the API:
+
     docker-compose -f dci.yml -f dci-swift.yml build
     docker-compose -f dci.yml -f dci-swift.yml up -d
 
-Swift is exposed on the non-standard port 5001. If you want to interact with it, you can use
+`Swift` is exposed on the **non-standard port `5001`**. If you want to interact with it, you can use
 your local `swift` client.
 
     source dci-swift/openrc_dci.sh
     swift upload fstab /etc/fstab
     swift list
 
-### doc container
+### Documentation Container
 
-This container generates dci documentation.
-If you want to generate the dci documentation run the container:
+This container generates DCI documentation.
+
+Use the following command to generate the doc:
 
     docker-compose -f dci.yml -f dci-extra.yml run doc
+
+### Contribute
+
+You will need to install `docker-compose` and `git-review`:
+
+    pip install -U -r requirements.txt
