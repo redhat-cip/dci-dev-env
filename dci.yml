@@ -14,13 +14,12 @@ services:
     build: ${DCI_GIT_REPO_DIR}/dci-control-server
     depends_on:
       - db
-      - swift
       - keycloak
     environment:
       - DEBUG=1
       - API_HOST=api
       - DB_HOST=db
-      - STORE_HOST=swift
+      - STORE_ENGINE=file
     ports:
       - "5000:5000"
     volumes:
@@ -62,14 +61,6 @@ services:
     volumes:
       - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient:Z
       - ${DCI_GIT_REPO_DIR}/dci-ansible:/opt/dci-ansible:Z
-  swift:
-    build: dci-swift
-    command: /sbin/init
-    privileged: true
-    stdin_open: true
-    tty: true
-    ports:
-      - "5001:5000"
   keycloak:
     image: jboss/keycloak
     environment:

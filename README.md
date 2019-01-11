@@ -37,6 +37,7 @@ Here is the list of containers for running the application:
  * **dci_ansible**: contains the dci-ansible code.
  * **dci_keycloak**: keycloak server for SSO.
    Please use `localhost` and not `127.0.0.1` because `keycloak` valid domain is set to `localhost`.
+ * **dci_swift**: swift server as storage backend for the api.
 
 
 ### api container
@@ -127,6 +128,10 @@ and the functional tests:
     docker exec -it dci-dev-env_ansible_1 bash -c 'cd tests; ./run_tests.sh'
 
 ### swift container
+
+If you want to enable the swift storage for the api:
+    docker-compose -f dci.yml -f dci-swift.yml build
+    docker-compose -f dci.yml -f dci-swift.yml up -d
 
 Swift is exposed on the non-standard port 5001. If you want to interact with it, you can use
 your local `swift` client.

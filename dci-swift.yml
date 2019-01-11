@@ -1,0 +1,16 @@
+version: '2'
+services:
+  api:
+    depends_on:
+      - swift
+    environment:
+      - STORE_ENGINE=swift
+      - STORE_HOST=swift
+  swift:
+    build: dci-swift
+    command: /sbin/init
+    privileged: true
+    stdin_open: true
+    tty: true
+    ports:
+      - "5001:5000"
