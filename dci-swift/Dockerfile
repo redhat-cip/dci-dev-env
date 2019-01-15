@@ -1,21 +1,9 @@
-FROM centos:7
+FROM centos/systemd:latest
 
-LABEL name="DCI SWIFT" version="0.0.2"
+LABEL name="DCI SWIFT" version="0.0.3"
 LABEL maintainer="DCI Team <distributed-ci@redhat.com>"
 
 ENV LANG en_US.UTF-8
-ENV container docker
-
-RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
-rm -f /lib/systemd/system/multi-user.target.wants/*;\
-rm -f /etc/systemd/system/*.wants/*;\
-rm -f /lib/systemd/system/local-fs.target.wants/*; \
-rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
-rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
-rm -f /lib/systemd/system/basic.target.wants/*;\
-rm -f /lib/systemd/system/anaconda.target.wants/*;
-
-VOLUME [ "/sys/fs/cgroup" ]
 
 RUN yum install -y centos-release centos-release-openstack-pike && \
     yum install -y openstack-swift openstack-swift-proxy memcached \
@@ -38,5 +26,3 @@ RUN chmod +x /sbin/bootstrap.sh
 RUN systemctl enable systemd-bootstrap
 
 EXPOSE 5000 8080 35357
-
-CMD ["/sbin/bootstrap.sh"]
