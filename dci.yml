@@ -62,7 +62,7 @@ services:
       - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient:Z
       - ${DCI_GIT_REPO_DIR}/dci-ansible:/opt/dci-ansible:Z
   keycloak:
-    image: jboss/keycloak
+    image: jboss/keycloak:4.8.3.Final
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
