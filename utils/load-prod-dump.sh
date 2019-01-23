@@ -26,7 +26,7 @@ else
         exit 1
     fi
 
-    if ! swift stat backup|grep -q text/plain; then
+    if ! swift stat backup|grep -q Last-Modified; then
         echo 'Please ensure swift can access the backup storage.'
         exit 1
     fi
