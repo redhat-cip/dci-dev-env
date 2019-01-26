@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e272fabe_dbc739dc",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 30
+      },
+      "writtenOn": "2019-01-26T21:57:33Z",
+      "side": 1,
+      "message": "I see use have several blocks where you use the \u003e line prefix. This looks a bit inconsistent with the rest of the document (IMO). Why do you do that?",
+      "revId": "e241a56b554e7ed5fba9e6e722c24b1571b8a3be",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
