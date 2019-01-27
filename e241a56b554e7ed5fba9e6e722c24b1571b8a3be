@@ -16,6 +16,24 @@
       "revId": "e241a56b554e7ed5fba9e6e722c24b1571b8a3be",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "567eedb9_e2ec62c3",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 553
+      },
+      "writtenOn": "2019-01-27T21:58:42Z",
+      "side": 1,
+      "message": "It\u0027s a way to style the _short description_ of each container\u0027s section, something you want to read the first time you discover the doc, but can easily skip on the following readings. Hence, the low saliency (grey-ish on Github).\nAdding a subsection seemed a bit too much as 2 occurrences out of 3 were a mere one-liner.",
+      "parentUuid": "e272fabe_dbc739dc",
+      "revId": "e241a56b554e7ed5fba9e6e722c24b1571b8a3be",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
