@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6260a8f9_10aa6019",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 405
+      },
+      "writtenOn": "2019-01-28T16:01:42Z",
+      "side": 1,
+      "message": "http://localhost:8000/login",
+      "range": {
+        "startLine": 95,
+        "startChar": 17,
+        "endLine": 95,
+        "endChar": 49
+      },
+      "revId": "ae1c9f261610d28703c30b4a7c41e3872bf3ebcf",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bbb179d_cce704f4",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 405
+      },
+      "writtenOn": "2019-01-28T16:01:42Z",
+      "side": 1,
+      "message": "http://localhost:8000/login?id_token\u003deyJhs...EPscxhRMuEdA",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 23
+      },
+      "revId": "ae1c9f261610d28703c30b4a7c41e3872bf3ebcf",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aae14316_d1676703",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 405
+      },
+      "writtenOn": "2019-01-28T16:01:42Z",
+      "side": 1,
+      "message": "reliqua?\nthere is no requirements.txt in dci-dev-env directory",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 38
+      },
+      "revId": "ae1c9f261610d28703c30b4a7c41e3872bf3ebcf",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
