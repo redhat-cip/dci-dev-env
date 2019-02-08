@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 services:
   db:
     image: centos/postgresql-94-centos7
@@ -10,11 +10,18 @@ services:
       - ${DCI_GIT_REPO_DIR}/dci-db:/opt/app-root/src
     ports:
       - "5432:5432"
+    healthcheck:
+      test: source /opt/rh/rh-postgresql94/enable && pg_isready -d dci -U dci -h db
+      interval: 15s
+      timeout: 5s
+      retries: 5
   api:
     build: ${DCI_GIT_REPO_DIR}/dci-control-server
     depends_on:
-      - db
-      - keycloak
+      db:
+        condition: service_healthy
+      keycloak:
+        condition: service_healthy
     environment:
       - DEBUG=1
       - API_HOST=api
@@ -25,10 +32,16 @@ services:
     volumes:
       - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server:Z
     restart: always
+    healthcheck:
+      test: curl -sf http://api:5000/api/v1
+      interval: 15s
+      timeout: 5s
+      retries: 5
   ui:
     build: ${DCI_GIT_REPO_DIR}/dci-ui
     depends_on:
-      - api
+      api:
+        condition: service_healthy
     ports:
       - "8000:8000"
     volumes:
@@ -37,7 +50,8 @@ services:
   client:
     build: ${DCI_GIT_REPO_DIR}/python-dciclient
     depends_on:
-      - api
+      api:
+        condition: service_started
     environment:
       - DB_HOST=db
     privileged: true
@@ -49,7 +63,8 @@ services:
   ansible:
     build: ${DCI_GIT_REPO_DIR}/dci-ansible
     depends_on:
-      - api
+      api:
+        condition: service_started
     environment:
       - DCI_LOGIN=admin
       - DCI_PASSWORD=admin
@@ -68,3 +83,8 @@ services:
       - KEYCLOAK_PASSWORD=admin
     ports:
       - "8180:8080"
+    healthcheck:
+      test: curl -sf http://keycloak:8080/auth
+      interval: 15s
+      timeout: 5s
+      retries: 5

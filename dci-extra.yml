@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 services:
   doc:
     build: ${DCI_GIT_REPO_DIR}/dci-doc

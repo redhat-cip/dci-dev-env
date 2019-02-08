@@ -1,8 +1,9 @@
-version: '2'
+version: '2.1'
 services:
   api:
     depends_on:
-      - swift
+      swift:
+        condition: service_healthy
     environment:
       - STORE_ENGINE=swift
       - STORE_HOST=swift
@@ -13,3 +14,8 @@ services:
     tty: true
     ports:
       - "5001:5000"
+    healthcheck:
+      test: curl -sI http://swift:8080
+      interval: 15s
+      timeout: 5s
+      retries: 5
