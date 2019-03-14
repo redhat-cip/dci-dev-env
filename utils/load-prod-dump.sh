@@ -33,7 +33,7 @@ else
 
     echo 'Downloading the last backup'
     BACKUP=/tmp/last$$.dump
-    swift download -o ${BACKUP} backup $(swift list backup -p current/current_|tail -n1)
+    swift download -o ${BACKUP} backup $(swift list backup --long | sort -k 2,3 | tail -n 1 | sed 's!.*application/x-sql !!')
 fi
 
 echo 'Closing all the connections to the DB'
