@@ -63,7 +63,7 @@ To initialize this container you need to install the `dciclient` library, as wel
 
 Then, Create a _local.sh_ file with the following credentials and source it:
 
-    API_CONTAINER_IP="$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' <CONTAINER_ID>)"
+    API_CONTAINER_IP="$(docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <CONTAINER_ID>)"
     export DCI_LOGIN=admin
     export DCI_PASSWORD=admin
     export DCI_CS_URL=http://$API_CONTAINER_IP:5000
