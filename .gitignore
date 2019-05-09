@@ -6,6 +6,8 @@ dci-packaging
 dci-ansible
 dci-specs
 dci-feeder-osp
+dci-rhel-agent
+dci-openstack-agent
 python-dciclient
 python-dciauth
 dci-ui
