@@ -8,6 +8,7 @@ dci-specs
 dci-feeder-osp
 dci-rhel-agent
 dci-openstack-agent
+dci-feeder-api
 python-dciclient
 python-dciauth
 dci-ui
