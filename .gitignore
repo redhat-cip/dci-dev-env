@@ -14,3 +14,4 @@ python-dciclient
 python-dciauth
 dci-ui
 dci-doc
+ansible-playbook-dci-beaker
