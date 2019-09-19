@@ -23,7 +23,6 @@ services:
       keycloak:
         condition: service_healthy
     environment:
-      - DEBUG=1
       - API_HOST=api
       - DB_HOST=db
       - STORE_ENGINE=file
