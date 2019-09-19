@@ -15,3 +15,7 @@ fi
 [ -d dci-ui ] || git clone https://softwarefactory-project.io/r/dci-ui
 [ -d dci-doc ] || git clone --recurse-submodules https://softwarefactory-project.io/r/dci-doc
 [ -d dci-ansible ] || git clone https://softwarefactory-project.io/r/dci-ansible
+[ -d dci-downloader ] || git clone https://softwarefactory-project.io/r/dci-downloader
+[ -d dci-openstack-agent ] || git clone https://softwarefactory-project.io/r/dci-openstack-agent
+[ -d dci-rhel-agent ] || git clone https://softwarefactory-project.io/r/dci-rhel-agent
+[ -d ansible-playbook-dci-beaker ] || git clone https://softwarefactory-project.io/r/ansible-playbook-dci-beaker
