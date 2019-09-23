@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   db:
-    image: centos/postgresql-94-centos7
+    image: centos/postgresql-96-centos7
     environment:
       - POSTGRESQL_USER=dci
       - POSTGRESQL_PASSWORD=dci
@@ -11,7 +11,7 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: source /opt/rh/rh-postgresql94/enable && pg_isready -d dci -U dci -h db
+      test: source /opt/rh/rh-postgresql96/enable && pg_isready -d dci -U dci -h db
       interval: 15s
       timeout: 5s
       retries: 5
