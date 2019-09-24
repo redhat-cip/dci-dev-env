@@ -13,7 +13,7 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - "5001:5000"
+      - "5001:5001"
     healthcheck:
       test: curl -sI http://swift:8080
       interval: 15s

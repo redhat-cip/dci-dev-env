@@ -5,7 +5,8 @@ LABEL maintainer="DCI Team <distributed-ci@redhat.com>"
 
 ENV LANG en_US.UTF-8
 
-RUN yum install -y centos-release centos-release-openstack-pike && \
+RUN yum install -y centos-release centos-release-openstack-rocky && \
+    yum clean all && \
     yum install -y openstack-swift openstack-swift-proxy memcached \
     openstack-swift-object openstack-swift-container openstack-swift-account \
     openstack-keystone mariadb-server httpd mod_wsgi python-swiftclient \
@@ -25,4 +26,4 @@ RUN chmod +x /sbin/bootstrap.sh
 
 RUN systemctl enable systemd-bootstrap
 
-EXPOSE 5000 8080 35357
+EXPOSE 5001 8080
