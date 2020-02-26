@@ -25,6 +25,22 @@ Then, you can attach containers in order to run parts of the applications:
 
 For instance `docker exec -it dci-dev-env_api_1 bash`
 
+
+## Usage with podman (Experimental)
+
+You can launch the environment:
+
+    make build
+    make download
+    make up
+
+Then, you can attach containers using `podman exec`
+
+To stop the deployment
+
+   make down
+
+
 ## Containers
 
 Here is the list of containers for running the application:
