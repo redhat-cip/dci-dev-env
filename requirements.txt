@@ -1,2 +1,4 @@
 git-review
 docker-compose>=1.6
+python-swiftclient
+python-keystoneclient
