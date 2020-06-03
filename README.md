@@ -17,7 +17,7 @@ Then, bootstrap `dci-dev-env`:
 
 Once install, you can launch the environment:
 
-    docker-compose -f dci.yml up -d
+    docker-compose up -d
 
 Then, you can attach containers in order to run parts of the applications:
 
@@ -143,8 +143,8 @@ and the functional tests:
 
 If you want to enable the `swift` storage for the API:
 
-    docker-compose -f dci.yml -f dci-swift.yml build
-    docker-compose -f dci.yml -f dci-swift.yml up -d
+    docker-compose -f dci-swift.yml build
+    docker-compose -f dci-swift.yml up -d
 
 `Swift` is exposed on the **non-standard port `5001`**. If you want to interact with it, you can use
 your local `swift` client.
@@ -159,7 +159,7 @@ This container generates DCI documentation.
 
 Use the following command to generate the doc:
 
-    docker-compose -f dci.yml -f dci-extra.yml run doc
+    docker-compose -f dci-extra.yml run doc
 
 ### Contribute
 
