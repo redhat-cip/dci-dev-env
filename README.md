@@ -28,18 +28,21 @@ For instance `docker exec -it dci-dev-env_api_1 bash`
 
 ## Usage with podman (Experimental)
 
-You can launch the environment:
+You can launch the API containers:
 
     make build
-    make download
+    make pull
     make up
 
-Then, you can attach containers using `podman exec`
+Then, you can attach containers using 
+
+    podman exec -it api bash
 
 To stop the deployment
 
    make down
 
+See Makefile for extra containers and documentation
 
 ## Containers
 
