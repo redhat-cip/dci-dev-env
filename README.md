@@ -17,13 +17,13 @@ Then, bootstrap `dci-dev-env`:
 
 Once install, you can launch the environment:
 
-    docker-compose -f dci.yml up -d
+    docker-compose up -d
 
 Then, you can attach containers in order to run parts of the applications:
 
-    docker exec -it <container-name> bash
+    docker-compose exec <container-name> bash
 
-For instance `docker exec -it dci-dev-env_api_1 bash`
+For instance `docker-compose exec api bash`
 
 
 ## Usage with podman (Experimental)
@@ -38,11 +38,7 @@ Then, you can attach containers using
 
     podman exec -it api bash
 
-To stop the deployment
-
-   make down
-
-See Makefile for extra containers and documentation
+See `Makefile` for extra containers and documentation
 
 ## Containers
 
@@ -61,7 +57,7 @@ Here is the list of containers for running the application:
 
 You can initialize or re-initialize the database from the API container by running:
 
-    docker exec -it dci-dev-env_api_1 ./bin/dci-dbprovisioning
+    docker-compose exec api ./bin/dci-dbprovisioning
 
 ### Client Container
 
@@ -136,18 +132,19 @@ This will get a `JWT` and will be used to authenticated the client on the server
 
 You can use the Ansible container to run `tox`:
 
-    docker exec -it dci-dev-env_ansible_1 tox
+    docker-compose exec ansible tox
 
 and the functional tests:
 
-    docker exec -it dci-dev-env_ansible_1 bash -c 'cd tests; ./run_tests.sh'
+    docker-compose exec ansible bash -c 'cd tests; ./run_tests.sh'
 
 ### Swift Container
 
 If you want to enable the `swift` storage for the API:
 
-    docker-compose -f dci.yml -f dci-swift.yml build
-    docker-compose -f dci.yml -f dci-swift.yml up -d
+    ln -s dci-swift.yml docker-compose.override.yml
+    docker-compose build
+    docker-compose up -d
 
 `Swift` is exposed on the **non-standard port `5001`**. If you want to interact with it, you can use
 your local `swift` client.
@@ -162,7 +159,7 @@ This container generates DCI documentation.
 
 Use the following command to generate the doc:
 
-    docker-compose -f dci.yml -f dci-extra.yml run doc
+    docker-compose -f dci-extra.yml run doc
 
 ### Contribute
 
