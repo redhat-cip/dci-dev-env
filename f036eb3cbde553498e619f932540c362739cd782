@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0cd29612_0652ecb9",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2020-06-29T13:10:31Z",
+      "side": 1,
+      "message": "I prefer not to do that to avoid erasing a file by error.",
+      "parentUuid": "85f8c8c5_3af86d0d",
+      "revId": "f036eb3cbde553498e619f932540c362739cd782",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "feac600b_f341b536",
         "filename": "README.md",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-06-29T09:21:27Z",
       "side": 1,
       "message": "extra space here",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 4
+      },
+      "revId": "f036eb3cbde553498e619f932540c362739cd782",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c9ae1b4_2e9931ac",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2020-06-29T13:10:31Z",
+      "side": 1,
+      "message": "ok removing.",
+      "parentUuid": "feac600b_f341b536",
       "range": {
         "startLine": 163,
         "startChar": 0,
