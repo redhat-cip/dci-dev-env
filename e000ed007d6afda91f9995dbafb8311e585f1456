@@ -16,6 +16,24 @@
       "revId": "e000ed007d6afda91f9995dbafb8311e585f1456",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "179187fd_6488984c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2020-06-30T09:00:02Z",
+      "side": 1,
+      "message": "\u003e nitpick: docker-compose\n\nwhy?",
+      "parentUuid": "9ad91121_43be5862",
+      "revId": "e000ed007d6afda91f9995dbafb8311e585f1456",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
