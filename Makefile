@@ -38,7 +38,7 @@ prune:
 	podman volume rm -f pgdata
 
 up:
-	podman pod create --name dci-dev-env -p 5000:5000 -p 8000:8000
+	podman pod create --name dci-dev-env -p 5000:5000 -p 8080:8080
 	podman run --name keycloak --pod dci-dev-env -dt \
 		-v $(CURDIR):/code \
 		-e KEYCLOAK_USER=$(KEYCLOAK_USER) -e KEYCLOAK_PASSWORD=$(KEYCLOAK_PASSWORD) \
