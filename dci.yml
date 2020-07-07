@@ -41,6 +41,7 @@ services:
     depends_on:
       api:
         condition: service_healthy
+    tty: true
     ports:
       - "8000:8000"
     volumes:
