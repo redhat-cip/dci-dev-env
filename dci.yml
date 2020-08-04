@@ -8,8 +8,8 @@ services:
       - POSTGRESQL_DATABASE=dci
     volumes:
       - ${DCI_GIT_REPO_DIR}/dci-db:/opt/app-root/src:Z
-    ports:
-      - "5432:5432"
+    expose:
+      - "5432"
     healthcheck:
       test: source /opt/rh/rh-postgresql96/enable && pg_isready -d dci -U dci -h db
       interval: 15s
