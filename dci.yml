@@ -7,7 +7,7 @@ services:
       - POSTGRESQL_PASSWORD=dci
       - POSTGRESQL_DATABASE=dci
     volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-db:/opt/app-root/src
+      - ${DCI_GIT_REPO_DIR}/dci-db:/opt/app-root/src:Z
     ports:
       - "5432:5432"
     healthcheck:
