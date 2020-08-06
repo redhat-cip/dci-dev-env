@@ -34,9 +34,15 @@ You can launch the API containers:
     make pull
     make up
 
-Then, you can attach containers using 
+Then, you can attach containers using
 
     podman exec -it api bash
+
+If you want to launch the whole stack, you can:
+
+    make build-all
+    make pull
+    make all
 
 See `Makefile` for extra containers and documentation
 
@@ -44,14 +50,14 @@ See `Makefile` for extra containers and documentation
 
 Here is the list of containers for running the application:
 
-* `dci_ansible`: contains the dci-ansible code ;
-* `dci_api`: contains the API of the application and serves it on localhost port `5000`, **must be started manually** ;
-* `dci_client`: contains the `dciclient` (Python binding) and `dcictl` (CLI) clients to DCI Control Server ;
-* `dci_db`: contains the postgresql database and serves it on localhost port `5432`, started by default ;
-* `dci_doc`: helper to build the project's documentation ;
-* `dci_keycloak`: keycloak server for `SSO`. :warning: Use `localhost` as `keycloak`'s domain as it's set to this value and not <s>`127.0.0.1`</s> ;
-* `dci_ui`: contains the web app of DCI and serves it on localhost port `8000`.
-* `dci_swift`: storage backend for the API using a Swift server.
+* `ansible`: contains the dci-ansible code ;
+* `api`: contains the API of the application and serves it on localhost port `5000`, **must be started manually** ;
+* `client`: contains the `dciclient` (Python binding) and `dcictl` (CLI) clients to DCI Control Server ;
+* `db`: contains the postgresql database and serves it on localhost port `5432`, started by default ;
+* `doc`: helper to build the project's documentation ;
+* `keycloak`: keycloak server for `SSO`. :warning: Use `localhost` as `keycloak`'s domain as it's set to this value and not <s>`127.0.0.1`</s> ;
+* `ui`: contains the web app of DCI and serves it on localhost port `8000`.
+* `swift`: storage backend for the API using a Swift server.
 
 ### API Container
 
