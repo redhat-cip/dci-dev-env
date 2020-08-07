@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b12a6c0_604b8a1d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2020-08-07T13:50:49Z",
+      "side": 1,
+      "message": "whitespaces to remove",
+      "revId": "e101be8055cdc50f92e3f849ce1781dd56f68e12",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0c1f641_e9f2668a",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2020-08-07T13:50:49Z",
+      "side": 1,
+      "message": "whitespaces to remove",
+      "revId": "e101be8055cdc50f92e3f849ce1781dd56f68e12",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
