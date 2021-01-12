@@ -28,23 +28,17 @@ For instance `docker-compose exec api bash`
 
 ## Usage with podman (Experimental)
 
-You can launch the API containers:
+You can launch the API containers using podman-compose:
 
-    make build
-    make pull
-    make up
+    podman-compose up -d
 
 Then, you can attach containers using
 
     podman exec -it api bash
 
-If you want to launch the whole stack, you can:
+If you want to launch a specific service:
 
-    make build-all
-    make pull
-    make all
-
-See `Makefile` for extra containers and documentation
+    podman-compose start api
 
 ## Containers
 
