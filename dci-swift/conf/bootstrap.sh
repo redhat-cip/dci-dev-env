@@ -32,7 +32,8 @@ swift-ring-builder /etc/swift/account.builder rebalance
 chown -R swift:swift /srv/node
 
 # Create all User / Service / Endpoints
-IP=`ifconfig | grep -A1 eth0 | grep inet | awk '{print $2}'`
+IP=swift
+SWIFT_PORT=8081
 
 keystone-manage bootstrap \
     --bootstrap-password admin \
@@ -68,9 +69,9 @@ openstack role add --project dci --user dci user
 openstack role add --project dci --user dci swiftoperator
 
 openstack service create --name swift --description "OpenStack Object Storage" object-store
-openstack endpoint create --region regionOne object-store public http://$IP:8080/v1/AUTH_%\(tenant_id\)s
-openstack endpoint create --region regionOne object-store internal http://$IP:8080/v1/AUTH_%\(tenant_id\)s
-openstack endpoint create --region regionOne object-store admin http://$IP:8080/v1
+openstack endpoint create --region regionOne object-store public http://$IP:${SWIFT_PORT}/v1/AUTH_%\(tenant_id\)s
+openstack endpoint create --region regionOne object-store internal http://$IP:${SWIFT_PORT}/v1/AUTH_%\(tenant_id\)s
+openstack endpoint create --region regionOne object-store admin http://$IP:${SWIFT_PORT}/v1
 
 # Remove ipv6 binding
 sed -i -e "s/,::1//" /etc/sysconfig/memcached

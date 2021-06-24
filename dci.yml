@@ -1,13 +1,13 @@
 version: '2.1'
 services:
   db:
-    image: centos/postgresql-96-centos7
+    image: docker.io/centos/postgresql-96-centos7
     environment:
       - POSTGRESQL_USER=dci
       - POSTGRESQL_PASSWORD=dci
       - POSTGRESQL_DATABASE=dci
     volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-db:/opt/app-root/src:Z
+      - ./dci-db:/opt/app-root/src:Z
     ports:
       - "5432:5432"
     healthcheck:
@@ -23,7 +23,7 @@ services:
       keycloak:
         condition: service_healthy
     environment:
-      - API_HOST=api
+      - API_HOST=0.0.0.0
       - DB_HOST=db
       - STORE_ENGINE=file
     ports:
@@ -77,7 +77,7 @@ services:
       - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient:Z
       - ${DCI_GIT_REPO_DIR}/dci-ansible:/opt/dci-ansible:Z
   keycloak:
-    image: jboss/keycloak
+    image: docker.io/jboss/keycloak
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin

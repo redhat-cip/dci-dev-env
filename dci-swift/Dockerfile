@@ -1,4 +1,4 @@
-FROM centos/systemd
+FROM docker.io/centos/systemd
 
 LABEL name="DCI SWIFT" version="0.0.3"
 LABEL maintainer="DCI Team <distributed-ci@redhat.com>"
@@ -21,9 +21,10 @@ ADD conf/object-server.conf /etc/swift/
 ADD conf/container-server.conf /etc/swift/
 ADD conf/proxy-server.conf /etc/swift/
 ADD conf/keystone.conf /etc/keystone/
+RUN sed -i '/Listen 80/d' /etc/httpd/conf/httpd.conf
 
 RUN chmod +x /sbin/bootstrap.sh
 
 RUN systemctl enable systemd-bootstrap
 
-EXPOSE 5001 8080
+EXPOSE 5001 8081
