@@ -1,0 +1,12 @@
+dci-control-server
+python-dciclient
+python-dciauth
+dci-ui
+dci-ansible
+dci-analytics
+dci-downloader
+dci-feeder-api
+dci-openstack-agent
+dci-rhel-agent
+dci-openshift-agent
+dci-openshift-app-agent

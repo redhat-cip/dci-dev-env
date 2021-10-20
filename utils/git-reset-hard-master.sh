@@ -30,8 +30,7 @@ function clean_repository {
     popd
 }
 
-projects="dci-control-server dci-ui dci-doc python-dciclient python-dciauth dci-ansible"
-for project in ${projects}
+cat utils/projects.lst | while read project
 do
     clean_repository ${project} &
 done
