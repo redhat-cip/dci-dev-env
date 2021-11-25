@@ -1,0 +1,9 @@
+version: "3"
+services:
+  doc:
+    build: ${DCI_GIT_REPO_DIR}/dci-doc
+    ports:
+      - "4000:4000"
+    volumes:
+      - ${DCI_GIT_REPO_DIR}/dci-doc:/opt/app-root/src:Z
+      - /opt/app-root/src/node_modules

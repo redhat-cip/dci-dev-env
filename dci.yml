@@ -1,4 +1,4 @@
-version: '2.1'
+version: "3"
 services:
   db:
     image: docker.io/centos/postgresql-96-centos7
@@ -18,14 +18,8 @@ services:
   api:
     build: ${DCI_GIT_REPO_DIR}/dci-control-server
     depends_on:
-      db:
-        condition: service_healthy
-      keycloak:
-        condition: service_healthy
-    environment:
-      - API_HOST=0.0.0.0
-      - DB_HOST=db
-      - STORE_ENGINE=file
+      - db
+    env_file: .env
     ports:
       - "5000:5000"
     volumes:
@@ -36,87 +30,14 @@ services:
       interval: 15s
       timeout: 5s
       retries: 5
-  ui:
-    build: ${DCI_GIT_REPO_DIR}/dci-ui
-    depends_on:
-      api:
-        condition: service_healthy
-    tty: true
-    ports:
-      - "8000:8000"
-    volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-ui:/opt/dci-ui:Z
-      - /opt/dci-ui/node_modules
   client:
     build: ${DCI_GIT_REPO_DIR}/python-dciclient
     depends_on:
-      api:
-        condition: service_started
-    environment:
-      - DB_HOST=db
+      - api
+    env_file: .env
     privileged: true
     stdin_open: true
     tty: true
     volumes:
       - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient:Z
       - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server:Z
-  ansible:
-    build: ${DCI_GIT_REPO_DIR}/dci-ansible
-    depends_on:
-      api:
-        condition: service_started
-    environment:
-      - DCI_LOGIN=admin
-      - DCI_PASSWORD=admin
-      - DCI_CS_URL=http://api:5000/
-      - DB_HOST=db
-    privileged: true
-    stdin_open: true
-    tty: true
-    volumes:
-      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient:Z
-      - ${DCI_GIT_REPO_DIR}/dci-ansible:/opt/dci-ansible:Z
-  keycloak:
-    image: docker.io/jboss/keycloak
-    environment:
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=admin
-    ports:
-      - "8180:8080"
-    healthcheck:
-      test: curl -sf http://keycloak:8080/auth
-      interval: 15s
-      timeout: 5s
-      retries: 5
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
-    environment:
-      - xpack.security.enabled=false
-      - "discovery.type=single-node"
-    ports:
-      - 9200:9200
-    healthcheck:
-      test: curl -sf elasticsearch:9200/_cat/health
-      interval: 15s
-      timeout: 5s
-      retries: 5
-  dci-analytics:
-    build: ${DCI_GIT_REPO_DIR}/dci-analytics
-    depends_on:
-      db:
-        condition: service_healthy
-      elasticsearch:
-        condition: service_healthy
-    environment:
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
-      - POSTGRESQL_HOST=db
-    ports:
-      - "2345:2345"
-    volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-analytics:/opt/dci-analytics:Z
-    restart: always
-    healthcheck:
-      test: curl -sf http://dci-analytics:2345
-      interval: 15s
-      timeout: 5s
-      retries: 5

@@ -1,0 +1,17 @@
+version: "3"
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - KEYCLOAK_IMPORT=/tmp/redhat-external-realm.json
+    volumes:
+      - ./dci-keycloak/redhat-external-realm.json:/tmp/redhat-external-realm.json:Z
+    ports:
+      - "8180:8080"
+    healthcheck:
+      test: curl -sf http://keycloak:8080/auth
+      interval: 15s
+      timeout: 5s
+      retries: 5

@@ -1,0 +1,27 @@
+version: "3"
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
+    environment:
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
+    ports:
+      - 9200:9200
+  dci-analytics:
+    build: ${DCI_GIT_REPO_DIR}/dci-analytics
+    depends_on:
+      - db
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - POSTGRESQL_HOST=db
+    ports:
+      - "2345:2345"
+    volumes:
+      - ${DCI_GIT_REPO_DIR}/dci-analytics:/opt/dci-analytics:Z
+    restart: always
+    healthcheck:
+      test: curl -sf http://dci-analytics:2345
+      interval: 15s
+      timeout: 5s
+      retries: 5

@@ -1,4 +1,4 @@
 git-review
-docker-compose>=1.6
+podman-compose
 python-swiftclient
 python-keystoneclient

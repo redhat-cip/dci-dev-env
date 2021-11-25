@@ -1,9 +1,0 @@
-version: '2.1'
-services:
-  doc:
-    build: ${DCI_GIT_REPO_DIR}/dci-doc
-    ports:
-      - "4000:4000"
-    volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-doc:/opt/dci-doc:Z
-      - /opt/dci-doc/node_modules

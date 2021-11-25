@@ -1,0 +1,24 @@
+version: "3"
+services:
+  ui:
+    build: ${DCI_GIT_REPO_DIR}/dci-ui
+    depends_on:
+      - api
+    environment:
+      - REACT_APP_BACKEND_HOST=http://localhost:5000
+      - REACT_APP_SSO_URL=${SSO_URL}
+      - REACT_APP_SSO_REALM=${SSO_REALM}
+      - REACT_APP_SSO_CLIENT_ID=${SSO_CLIENT_ID}
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: curl -sf http://ui:8000
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ${DCI_GIT_REPO_DIR}/dci-ui:/opt/app-root/src:Z
+      - /opt/app-root/src/node_modules

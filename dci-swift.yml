@@ -1,9 +1,8 @@
-version: '2.1'
+version: "3"
 services:
   api:
     depends_on:
-      swift:
-        condition: service_healthy
+      - swift
     environment:
       - STORE_ENGINE=swift
       - STORE_HOST=swift
