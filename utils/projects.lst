@@ -10,3 +10,5 @@ dci-openstack-agent
 dci-rhel-agent
 dci-openshift-agent
 dci-openshift-app-agent
+dci-pipeline
+dci-doc

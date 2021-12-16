@@ -17,6 +17,3 @@ cat utils/projects.lst | while read project
 do
     ([ -d "$project" ] || [ -l "$project" ]) || git clone ssh://${softwarefactory_username}@softwarefactory-project.io:29418/$project
 done
-
-# this one has recursive submodules
-([ -d dci-doc ] || [ -l dci-doc ]) || git clone --recurse-submodules ssh://${softwarefactory_username}@softwarefactory-project.io:29418/dci-doc
