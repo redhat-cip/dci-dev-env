@@ -23,7 +23,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server:Z
+      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server:z
     restart: always
     healthcheck:
       test: curl -sf http://api:5000/api/v1
@@ -39,5 +39,5 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient:Z
-      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server:Z
+      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient:z
+      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server:z

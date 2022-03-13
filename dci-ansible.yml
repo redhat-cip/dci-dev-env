@@ -13,5 +13,5 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient:Z
+      - ${DCI_GIT_REPO_DIR}/python-dciclient:/opt/python-dciclient:z
       - ${DCI_GIT_REPO_DIR}/dci-ansible:/opt/dci-ansible:Z
