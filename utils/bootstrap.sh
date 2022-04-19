@@ -9,9 +9,12 @@ if [ ! -f dci.yml ]; then
     exit 1
 fi
 
-echo What is your Software Factory username?
+softwarefactory_username=$(git config --global --get gitreview.username 2>/dev/null)
 
-read softwarefactory_username
+if [[ -z "${softwarefactory_username}" ]]; then
+    echo What is your Software Factory username?
+    read softwarefactory_username
+fi
 
 cat utils/projects.lst | while read project
 do
