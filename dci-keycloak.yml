@@ -1,7 +1,7 @@
 version: "3"
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak
+    image: quay.io/keycloak/keycloak:15.0.2
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
@@ -15,3 +15,4 @@ services:
       interval: 15s
       timeout: 5s
       retries: 5
+    command: -Djboss.bind.address.private=127.0.0.1 -Djboss.bind.address=0.0.0.0
