@@ -25,6 +25,7 @@ services:
     build: ${DCI_GIT_REPO_DIR}/dci-control-server
     depends_on:
       - db
+      - minio
     env_file: .env
     ports:
       - "5000:5000"
