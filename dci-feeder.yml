@@ -1,4 +1,6 @@
 version: "3"
+volumes:
+  feeder_worker_logs:
 services:
   docker_auth:
     image: docker.io/cesanta/docker_auth:1
@@ -43,15 +45,30 @@ services:
     depends_on:
       - docker_registry
       - docker_auth
+  redis:
+    image: quay.io/sclorg/redis-6-c8s
+  feeder_worker:
+    image: localhost/dci-dev-env_feeder:latest
+    env_file: ${DCI_GIT_REPO_DIR}/.env
+    command: rq worker --url redis://redis/ --path /opt/dci-feeder-api/ --results-ttl 86400 dcifeeder
+    volumes:
+      - ${DCI_GIT_REPO_DIR}/dci-feeder-api:/opt/dci-feeder-api:z,ro
+      - feeder_worker_logs:/var/log/dci-feeder-api/jobs
+    deploy:
+      mode: replicated
+      replicas: 2
   feeder:
     build: ${DCI_GIT_REPO_DIR}/dci-feeder-api
     ports:
       - "5003:5003"
     command: gunicorn wsgi:application --access-logfile - --error-logfile - --log-level debug --timeout 0 --bind 0.0.0.0:5003 --reload
     volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-feeder-api:/opt/dci-feeder-api:Z
+      - ${DCI_GIT_REPO_DIR}/dci-feeder-api:/opt/dci-feeder-api:z
+      - feeder_worker_logs:/var/log/dci-feeder-api/jobs
     env_file: ${DCI_GIT_REPO_DIR}/.env
     depends_on:
       - api
       - registry
       - minio
+      - redis
+      - feeder_worker
