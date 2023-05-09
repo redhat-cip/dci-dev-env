@@ -16,14 +16,19 @@ Then, bootstrap `dci-dev-env`:
 
 Once install, you can launch the environment:
 
-    podman-compose -t hostnet up -d
+    podman-compose up -d
 
 Then, you can attach containers in order to run parts of the applications:
 
     podman exec -it <container-name> bash
 
-For instance `podman exec -it api bash`
+For instance
 
+    podman exec -it api bash
+
+To see logs of a specific container, use podman logs command
+
+    podman-compose logs -f api
 
 ## Containers
 
