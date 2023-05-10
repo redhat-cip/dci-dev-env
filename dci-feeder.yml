@@ -50,7 +50,7 @@ services:
   feeder_worker:
     image: localhost/dci-dev-env_feeder:latest
     env_file: ${DCI_GIT_REPO_DIR}/.env
-    command: rq worker --url redis://redis/ --path /opt/dci-feeder-api/ --results-ttl 86400 dcifeeder
+    command: rq worker --url redis://redis/ --path /opt/dci-feeder-api/ --results-ttl 86400 dcifeeder dcifeeder_quick
     volumes:
       - ${DCI_GIT_REPO_DIR}/dci-feeder-api:/opt/dci-feeder-api:z,ro
       - feeder_worker_logs:/var/log/dci-feeder-api/jobs
