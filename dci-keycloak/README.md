@@ -9,7 +9,7 @@ It's provisioned by default by the following:
 - The user admin: `username=admin`, `password=admin` ;
 - A realm `redhat-external` ;
 - A client id `dci` ;
-- A lambda user within the `redhat-external` realm: `username=dci`, `password=dci`
+- A lambda user within the `redhat-external` realm: `username='dci@redhat.com'`, `password='dci@redhat.com'`
 
 The client id `dci` is configured to allows _OIDC Implicit flow_ and _Direct Access_ protocols.
 
@@ -17,7 +17,7 @@ The client id `dci` is configured to allows _OIDC Implicit flow_ and _Direct Acc
 
 Generate a random value using an `UUID`, then we will use it for the `nonce` field in the following link:
 
-    http://localhost:8180/auth/realms/dci-test/protocol/openid-connect/auth?\
+    http://localhost:8180/auth/realms/redhat-external/protocol/openid-connect/auth?\
     client_id=dci-cs&\
     response_type=id_token&\
     scope=openid&\
@@ -36,9 +36,9 @@ From the CLI:
 
     $ curl \
       --data "client_id=dci-cs" \
-      --data "username=dci" \
-      --data "password=dci" \
+      --data "username='dci@redhat.com'" \
+      --data "password='dci@redhat.com'" \
       --data "grant_type=password" \
-      http://localhost:8180/auth/realms/dci-test/protocol/openid-connect/token
+      http://localhost:8180/auth/realms/redhat-external/protocol/openid-connect/token
 
 This will get a `JWT` and will be used to authenticated the client on the server .

@@ -7,10 +7,10 @@
   "requiredCredentials": ["password"],
   "users": [
     {
-      "username": "dci",
+      "username": "dci@redhat.com",
       "enabled": true,
       "email": "dci@redhat.com",
-      "credentials": [{ "type": "password", "value": "dci" }],
+      "credentials": [{ "type": "password", "value": "dci@redhat.com" }],
       "realmRoles": ["user"],
       "clientRoles": {
         "account": ["manage-account"]
@@ -47,6 +47,21 @@
         "access.token.signed.response.alg": "RS256"
       },
       "protocolMappers": [
+        {
+          "id": "6d8dd27e-e959-4bf6-aaa0-a48b963dddfa",
+          "name": "username",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "userinfo.token.claim": "true",
+            "user.attribute": "username",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "username",
+            "jsonType.label": "String"
+          }
+        },
         {
           "id": "0e4d8c2e-0c23-4495-9c38-051cb7047678",
           "name": "dci",
