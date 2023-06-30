@@ -14,5 +14,5 @@ fi
 
 echo 'Download the lastest backup'
 BACKUP="$(aws s3 ls dci-db-backups-prod --recursive | sort | tail -n 1 | awk '{print $4}')"
-aws s3 cp s3://dci-db-backups-prod/$BACKUP /tmp/$BACKUP
-echo "Backup file /tmp/${BACKUP} downloaded"
+aws s3 cp s3://dci-db-backups-prod/$BACKUP dci-db/$BACKUP
+echo "Backup file dci-db/${BACKUP} downloaded"
