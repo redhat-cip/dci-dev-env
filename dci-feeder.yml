@@ -47,6 +47,21 @@ services:
       - docker_auth
   redis:
     image: quay.io/sclorg/redis-6-c8s
+  podman_worker:
+    build:
+      context: ${DCI_GIT_REPO_DIR}/dci-feeder-api
+      dockerfile: Dockerfile-podman
+    env_file: ${DCI_GIT_REPO_DIR}/.env
+    command: rq worker --url redis://redis/ --path /opt/dci-feeder-api/ --results-ttl 86400 dcifeeder_podman
+    privileged: true
+    security_opt:
+      - label=disable
+      - seccomp=unconfined
+    devices:
+      - /dev/fuse:rw
+    volumes:
+      - ${DCI_GIT_REPO_DIR}/dci-feeder-api:/opt/dci-feeder-api:z,ro
+      - feeder_worker_logs:/var/log/dci-feeder-api/jobs
   feeder_worker:
     image: localhost/dci-dev-env_feeder:latest
     env_file: ${DCI_GIT_REPO_DIR}/.env
@@ -72,3 +87,4 @@ services:
       - minio
       - redis
       - feeder_worker
+      - podman_worker
