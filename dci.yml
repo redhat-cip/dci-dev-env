@@ -30,13 +30,14 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server:z
+      - ${DCI_GIT_REPO_DIR}/dci-control-server:/usr/src/dci-control-server:z
     restart: always
     healthcheck:
       test: curl -sf http://api:5000/api/v1
       interval: 15s
       timeout: 5s
       retries: 5
+    command: /usr/local/bin/gunicorn -c /etc/gunicorn.conf.py --reload -b 0.0.0.0:5000 dci.app:create_app()
   client:
     build: ${DCI_GIT_REPO_DIR}/python-dciclient
     depends_on:
