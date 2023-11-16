@@ -1,4 +1,2 @@
 git-review
 podman-compose
-python-swiftclient
-python-keystoneclient
