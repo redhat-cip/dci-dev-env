@@ -22,3 +22,5 @@ dci-openshift-app-agent
 dci-blog/
 dci-pipeline/
 dci-release/
+dci-db/daily
+dci-db/current

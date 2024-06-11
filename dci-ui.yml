@@ -5,7 +5,7 @@ services:
     depends_on:
       - api
     environment:
-      - REACT_APP_BACKEND_HOST=http://localhost:5000
+      - REACT_APP_BACKEND_HOST=${DCI_CS_URL}
       - REACT_APP_SSO_URL=${SSO_URL}
       - REACT_APP_SSO_REALM=${SSO_REALM}
       - REACT_APP_SSO_CLIENT_ID=${SSO_CLIENT_ID}
