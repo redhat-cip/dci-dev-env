@@ -33,7 +33,7 @@ services:
       - "5000:5000"
     volumes:
       - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server:z
-    restart: always
+    restart: on-failure
     healthcheck:
       test: curl -sf http://api:5000/api/v1
       interval: 15s
