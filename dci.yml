@@ -2,10 +2,23 @@ version: "3"
 services:
   minio:
     image: quay.io/minio/minio
+    env_file: .env
     ports:
       - "9000:9000"
       - "9001:9001"
     command: server /data --console-address ":9001"
+  createbuckets:
+    image: quay.io/minio/mc
+    env_file: .env
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc alias set dciminio http://minio:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD};
+      /usr/bin/mc mb dciminio/${STORE_COMPONENTS_CONTAINER};
+      /usr/bin/mc mb dciminio/${STORE_CONTAINER_BUCKET};
+      exit 0;
+      "
   db:
     image: quay.io/sclorg/postgresql-13-c8s
     environment:
