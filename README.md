@@ -68,6 +68,12 @@ To run `tox` on dci-ansible:
 
     podman-compose exec -w /opt/dci-ansible tox tox
 
+### Feeder
+
+If you want to start the feeder, do not forget to start the createbuckets container
+
+    podman-compose -f dci.yml -f dci-feeder.yml up -d feeder createbuckets
+
 ### Keycloak Container
 
 This container allows to use `SSO` based authentication.
