@@ -1,24 +1,21 @@
 version: "3"
 services:
   ui:
-    build: ${DCI_GIT_REPO_DIR}/dci-ui
+    build:
+      context: ${DCI_GIT_REPO_DIR}/dci-ui
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_BACKEND_HOST: ${DCI_CS_URL}
+        REACT_APP_SSO_URL: ${SSO_URL}
+        REACT_APP_SSO_REALM: ${SSO_REALM}
+        REACT_APP_SSO_CLIENT_ID: ${SSO_CLIENT_ID}
+        REACT_APP_SSO_SCOPE: ${SSO_AUDIENCES}
     depends_on:
       - api
-    environment:
-      - REACT_APP_BACKEND_HOST=${DCI_CS_URL}
-      - REACT_APP_SSO_URL=${SSO_URL}
-      - REACT_APP_SSO_REALM=${SSO_REALM}
-      - REACT_APP_SSO_CLIENT_ID=${SSO_CLIENT_ID}
-      - CHOKIDAR_USEPOLLING=true
-    stdin_open: true
-    tty: true
     ports:
-      - "8000:8000"
+      - "8000:80"
     healthcheck:
-      test: curl -sf http://ui:8000
+      test: curl -sf http://localhost
       interval: 15s
       timeout: 5s
       retries: 5
-    volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-ui:/opt/app-root/src:Z
-      - /opt/app-root/src/node_modules
