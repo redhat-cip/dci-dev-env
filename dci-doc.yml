@@ -3,7 +3,9 @@ services:
   doc:
     build: ${DCI_GIT_REPO_DIR}/dci-doc
     ports:
-      - "4000:4000"
-    volumes:
-      - ${DCI_GIT_REPO_DIR}/dci-doc:/opt/app-root/src:Z
-      - /opt/app-root/src/node_modules
+      - "4000:80"
+    healthcheck:
+      test: curl -sf http://localhost
+      interval: 15s
+      timeout: 5s
+      retries: 5
