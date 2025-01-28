@@ -42,7 +42,6 @@ Other services are available in dci-`<service>`.yml
 
 - `ui`: contains the web app of DCI and serves it on localhost port `8000`.
 - `doc`: helper to build the project's documentation ;
-- `keycloak`: keycloak server for `SSO`. :warning: Use `localhost` as `keycloak`'s domain as it's set to this value and not <s>`127.0.0.1`</s> ;
 - `analytics`: analytics container running elatic service.
 - `feeder`: feeder container for synchronizing components.
 
@@ -73,11 +72,6 @@ To run `tox` on dci-ansible:
 If you want to start the feeder, do not forget to start the createbuckets container
 
     podman-compose -f dci.yml -f dci-feeder.yml up -d feeder createbuckets
-
-### Keycloak Container
-
-This container allows to use `SSO` based authentication.
-See dci-keycloak/README.md
 
 ### Documentation Container
 
