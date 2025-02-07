@@ -53,6 +53,7 @@ services:
       timeout: 5s
       retries: 5
     command: /usr/local/bin/gunicorn -c /etc/gunicorn.conf.py --reload -b 0.0.0.0:5000 dci.app:create_app()
+    entrypoint: /usr/local/sbin/entrypoint-devenv.sh
   tox:
     build: ./dci-tox
     env_file: .env
