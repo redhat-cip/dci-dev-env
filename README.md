@@ -34,13 +34,14 @@ To see logs of a specific container, use podman logs command
 
 Here is the list of containers for running the application:
 
+- haproxy: reverse-proxy in front of api & ui
 - `db`: contains the postgresql database and serves it on localhost port `5432`, started by default ;
-- `api`: contains the API of the application and serves it on localhost port `5000` ;
+- `api`: contains the API of the application. Accessible through haproxy on <http://localhost:8000/api/>
 - `tox`: container used to run test on dci-control-server, python-dciclient and dci-ansible ;
 
 Other services are available in dci-`<service>`.yml
 
-- `ui`: contains the web app of DCI and serves it on localhost port `8000`.
+- `ui`: contains the web app of DCI. Accessible via haproxy on <http://localhost:5000>
 - `doc`: helper to build the project's documentation ;
 - `analytics`: analytics container running elatic service.
 - `feeder`: feeder container for synchronizing components.

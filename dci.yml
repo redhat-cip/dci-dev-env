@@ -19,8 +19,17 @@ services:
       /usr/bin/mc mb dciminio/${STORE_CONTAINER_BUCKET};
       exit 0;
       "
+  haproxy:
+    image: docker.io/haproxytech/haproxy-alpine:3.0
+    depends_on:
+      - api
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy:ro,Z
+    ports:
+      - "8000:80"
+      - "8404:8404"
   db:
-    image: quay.io/sclorg/postgresql-13-c8s
+    image: quay.io/sclorg/postgresql-13-c9s
     environment:
       - POSTGRESQL_USER=dci
       - POSTGRESQL_PASSWORD=dci
@@ -42,11 +51,12 @@ services:
       - db
       - minio
     env_file: .env
-    ports:
-      - "5000:5000"
     volumes:
       - ${DCI_GIT_REPO_DIR}/dci-control-server:/opt/dci-control-server:z
     restart: on-failure
+    deploy:
+      more: replicated
+      replicas: 4
     healthcheck:
       test: curl -sf http://api:5000/api/v1
       interval: 15s

@@ -5,15 +5,13 @@ services:
       context: ${DCI_GIT_REPO_DIR}/dci-ui
       dockerfile: Dockerfile
       args:
-        REACT_APP_BACKEND_HOST: ${DCI_CS_URL}
+        REACT_APP_BACKEND_HOST: ${DCI_CS_URL_EXTERNAL}
         REACT_APP_SSO_URL: ${SSO_URL}
         REACT_APP_SSO_REALM: ${SSO_REALM}
         REACT_APP_SSO_CLIENT_ID: ${SSO_CLIENT_ID}
         REACT_APP_SSO_SCOPE: ${SSO_AUDIENCES}
     depends_on:
       - api
-    ports:
-      - "8000:80"
     healthcheck:
       test: curl -sf http://localhost
       interval: 15s
