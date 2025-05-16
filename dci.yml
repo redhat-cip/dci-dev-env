@@ -29,7 +29,7 @@ services:
       - "8000:80"
       - "8404:8404"
   db:
-    image: quay.io/sclorg/postgresql-13-c9s
+    image: quay.io/sclorg/postgresql-16-c9s
     environment:
       - POSTGRESQL_USER=dci
       - POSTGRESQL_PASSWORD=dci
