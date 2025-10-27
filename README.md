@@ -1,3 +1,6 @@
+⚠️ **Note:** This project has been migrated to a new repository.
+Please visit the new location [here](https://github.com/distributedci/dci-dev-env).
+
 # Distributed CI environment for development
 
 This repository is used to store the configuration of podman compose in order to provide an environment for development.
